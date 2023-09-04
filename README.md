@@ -8,7 +8,7 @@ Our project contributes to Goal 2 by:
 * Protecting Small Farmers:
   We prioritize the support and growth of small-scale farmers to enhance local food production and food security.
 
-*Preserving Genetic Diversity in Crops:
+* Preserving Genetic Diversity in Crops:
   We are committed to preserving and promoting genetic diversity in crops to ensure long-term agricultural sustainability.
 
 ### Goal 11: Sustainable Urban Development

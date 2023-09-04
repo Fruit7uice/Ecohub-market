@@ -7,8 +7,10 @@ Our project contributes to Goal 2 by:
 
 * Protecting Small Farmers:
   We prioritize the support and growth of small-scale farmers to enhance local food production and food security.
-Preserving Genetic Diversity in Crops: We are committed to preserving and promoting genetic diversity in crops to ensure long-term agricultural sustainability.
-Goal 11: Sustainable Urban Development
+*Preserving Genetic Diversity in Crops:
+We are committed to preserving and promoting genetic diversity in crops to ensure long-term agricultural sustainability.
+
+### Goal 11: Sustainable Urban Development
 In line with Goal 11, our application focuses on:
 
 * Inclusive Cities:
@@ -25,7 +27,8 @@ In this repository, we outline the scope of our project, including:
 
 ### What We Aim to Develop: 
 Our primary goal is to create a web-based application that facilitates the connection between consumers and local producers of fresh produce and hunted meat.
-Division of the Project: We have organized our development process into manageable stages to ensure a systematic approach to feature implementation.
+#### Division of the Project: 
+We have organized our development process into manageable stages to ensure a systematic approach to feature implementation.
 ### Timeline: 
 We have outlined a development schedule detailing when specific features will be implemented to maintain project progress.
 ### Technologies Used: 

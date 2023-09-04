@@ -28,8 +28,9 @@ Our primary goal is to create a web-based application that facilitates the conne
 Division of the Project: We have organized our development process into manageable stages to ensure a systematic approach to feature implementation.
 ### Timeline: 
 We have outlined a development schedule detailing when specific features will be implemented to maintain project progress.
-Technologies Used: Our application will be built using SQL, JavaScript, CSS, and HTML to ensure a robust and user-friendly experience.
-Thank you for your interest in our project. We are committed to contributing to the achievement of UN Sustainable Development Goals and promoting sustainable food systems. If you have any questions or would like to contribute to our project, please feel free to reach out.
+### Technologies Used: 
+Our application will be built using SQL, JavaScript, CSS, and HTML to ensure a robust and user-friendly experience.
+Thank you for your interest in our project. We are committed to contributing to the achievement of UN Sustainable Development Goals and promoting sustainable food systems.
 
 Note: This README file serves as a high-level overview. For detailed documentation and code implementation, please refer to the project's respective folders and documentation files.
 

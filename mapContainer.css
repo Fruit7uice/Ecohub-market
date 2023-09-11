@@ -1,3 +1,11 @@
-p{
-    color:red;
+.container{
+    height: 500px;
+    width: 500px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#map_container{
+    background-color: green;
 }

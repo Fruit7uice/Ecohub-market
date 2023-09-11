@@ -1,27 +1,34 @@
-// Initialize and add the map
-let map;
+function initMap() {
+    // Create a map centered at a specific location
+    const map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: YOUR_LATITUDE, lng: YOUR_LONGITUDE },
+        zoom: 12 // Set the initial zoom level
+    });
 
-async function initMap() {
-  // The location of Uluru
-  const position = { lat: -25.344, lng: 131.031 };
-  // Request needed libraries.
-  //@ts-ignore
-  const { Map } = await google.maps.importLibrary("maps");
-  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+    // Define an array of markers with their respective coordinates and information
+    const markers = [
+        {
+            position: { lat: 40.7128, lng: -74.0060 }, // Example coordinates (New York City)
+            info: "Marker 1 - Latitude: 40.7128, Longitude: -74.0060"
+        },
+        // Add more markers here as needed
+    ];
 
-  // The map, centered at Uluru
-  map = new Map(document.getElementById("map"), {
-    zoom: 4,
-    center: position,
-    mapId: "DEMO_MAP_ID",
-  });
+    // Loop through the markers and create them on the map
+    markers.forEach(markerInfo => {
+        const marker = new google.maps.Marker({
+            position: markerInfo.position,
+            map: map,
+        });
 
-  // The marker, positioned at Uluru
-  const marker = new AdvancedMarkerElement({
-    map: map,
-    position: position,
-    title: "Uluru",
-  });
+        // Create an info window to display when the marker is clicked
+        const infoWindow = new google.maps.InfoWindow({
+            content: markerInfo.info
+        });
+
+        // Add a click event listener to the marker
+        marker.addListener("click", () => {
+            infoWindow.open(map, marker);
+        });
+    });
 }
-
-initMap();

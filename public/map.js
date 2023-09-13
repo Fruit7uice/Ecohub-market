@@ -1,4 +1,3 @@
-
 /**
  * @initMap
  * Firstly the map is being centered to #center-coordinates of ones choice
@@ -9,7 +8,6 @@
  * 
 **/
 
-
 let map; // Define a global variable to hold the map object
 
 function initMap() {
@@ -17,7 +15,7 @@ function initMap() {
         center: { lat: 57.70544078751393, lng: 11.985471236320263 },
         zoom: 12
     });
- 
+
     const names = ["Tomater", "Gurkor"];
     // Define an array of markers with their respective coordinates and information
     const markers = [
@@ -52,6 +50,8 @@ function initMap() {
     map.addListener('rightclick', function(event) {
         addMarker(event.latLng); // Call the addMarker function with the clicked coordinates
     });
+
+
 }
 
 function addMarker(location) {
@@ -62,7 +62,7 @@ function addMarker(location) {
     });
 
     // Create an info window
-    
+
     const infoWindow = new google.maps.InfoWindow({
         content: `Latitude: ${location.lat()}, Longitude: ${location.lng()}`
     });

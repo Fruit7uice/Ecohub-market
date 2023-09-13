@@ -27,8 +27,8 @@ Contains the different types of allowed categories a product can belong to.
 
 CREATE TABLE Categories ( 
     name TEXT PRIMARY KEY
-    CHECK (name in ('Meats', 'Vegetables', 'Fruits', 'Dairy', 'Berries', 'Bread', 'Root vegetables',
-                    'Pastries' ))
+    CHECK (name in ('Meats', 'Vegetables', 'Fruits', 'Dairy', 'Berries', 'Bread', 
+                    'Root vegetables', 'Pastries' ))
 );
 
 /*  

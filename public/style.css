@@ -76,6 +76,7 @@ main{
     width: 100%;
     height: 70%;
     flex: 2;
+    color: #000;
 }
 
 .seller-info{

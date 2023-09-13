@@ -2,7 +2,6 @@
 -- Insert.sql is a file which different values are inserted into 
 -- different tables from the file Tables.sql
 
-
 -- Inserted values into the table Categories. The table is located in the file Tables.sql. 
 -- These are the allowed categories: 
 INSERT INTO Categories VALUES ('Meats');
@@ -26,15 +25,15 @@ INSERT INTO Locations VALUES('Kommendörsgatan 5', '57.698048, 11.929185');
 INSERT INTO Locations VALUES('Första Långgatan 12F', '57.69970, 11.94979');
 INSERT INTO Locations VALUES('Kulvertkonstens väg 11', '57.75809, 11.95134');
 
-
-
-
-
 -- Inserted values into the table Products. The table is located in the file Tables.sql.
-INSERT INTO Products VALUES (1, 'Habanero chillis', 'Vegetables', 'Kulvertkonstens väg 11', NULL, 'hot chillis 10 kr a piece', 199811200000, CURRENT_TIMESTAMP );
-INSERT INTO Products VALUES (2, 'Tomatoes', 'Vegetables', 'Kommendörsgatan 5', NULL, 'fine tomatoes 10 kr a peace', 199912013243, CURRENT_TIMESTAMP );
-INSERT INTO Products VALUES (3, 'Älgfärs', 'Meats', 'Lindholmsallén 25', NULL, 'Freschly grinded älgfärs', 200008060101, CURRENT_TIMESTAMP );
-INSERT INTO Products VALUES (10, 'Banan', 'Fruits', 'Första Långgatan 12F', NULL, 'Magical fruits', 199402234323, CURRENT_TIMESTAMP );
+INSERT INTO Products VALUES (1, 'Habanero chillis', 'Vegetables', 'Kulvertkonstens väg 11', NULL,
+                             'hot chillis 10 kr a piece', 199811200000, CURRENT_TIMESTAMP );
+INSERT INTO Products VALUES (2, 'Tomatoes', 'Vegetables', 'Kommendörsgatan 5', NULL, 
+                            'fine tomatoes 10 kr a peace', 199912013243, CURRENT_TIMESTAMP );
+INSERT INTO Products VALUES (3, 'Älgfärs', 'Meats', 'Lindholmsallén 25', NULL, 
+                            'Freschly grinded älgfärs', 200008060101, CURRENT_TIMESTAMP );
+INSERT INTO Products VALUES (10, 'Banan', 'Fruits', 'Första Långgatan 12F', NULL, 'Magical fruits',
+                             199402234323, CURRENT_TIMESTAMP );
 
 
 

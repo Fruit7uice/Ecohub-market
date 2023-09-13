@@ -14,6 +14,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 57.70544078751393, lng: 11.985471236320263 },
         zoom: 12
+        
     });
 
     const names = ["Tomater", "Gurkor"];

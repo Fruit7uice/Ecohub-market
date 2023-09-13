@@ -15,14 +15,13 @@ main{
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 87vh;
+    height: 100vh;
     display: flex;
 }
 
 .nav{
     width: 100%;
     height: 100px;
-    /* max-width: 100vw; */
     position: relative;
     background-color: aquamarine;
 }
@@ -35,6 +34,8 @@ main{
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
 }
 
 
@@ -43,7 +44,7 @@ main{
     list-style-position: inside;
     padding-left: 0;
     overflow-y: scroll;
-    background-color: #fff;
+    background-color: #fbafaf;
     height: 100%;
 }
 
@@ -77,26 +78,22 @@ main{
     border: 1 solid black;
     background-color: red;
     width: 100%;
-
     height: 30%;
     flex: 1;
 }
 
 .searchbox{
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
     width: 100%;
     height: 8%;
-    position: sticky;
-    
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    flex-direction: row;
+    /* position: relative; */
 }
 
 .searchbox input{
-    border: 2px solid transparent;
+    border: 0px solid transparent;
     width: 80%;
     height: 40px;
     border-radius: 30px;
@@ -107,8 +104,7 @@ main{
     position: relative;
     width: 1rem;
     height: 1rem;
-    left: 1.5rem;
-    /* right: 2.5rem; */
+    left: 1.8rem;
     fill: #9e9ea7;
 }
 

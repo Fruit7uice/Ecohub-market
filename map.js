@@ -17,13 +17,11 @@ function initMap() {
         center: { lat: 57.70544078751393, lng: 11.985471236320263 },
         zoom: 12
     });
-    const name = "name1";
-    const name2 = "name2"
-    const names = ["hej", "då"];
+ 
+    const names = ["Tomater", "Gurkor"];
     // Define an array of markers with their respective coordinates and information
     const markers = [
         {
-            name: name,
             position: { lat: 57.71, lng: 11.9060 }, 
             info: names[0] + " - latitude: 57.71, Longitude: 11.1060"
         },

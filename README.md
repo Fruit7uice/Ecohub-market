@@ -38,3 +38,10 @@ Thank you for your interest in our project. We are committed to contributing to 
 
 Note: This README file serves as a high-level overview. For detailed documentation and code implementation, please refer to the project's respective folders and documentation files.
 
+## How to run
+The project is using Node.js and Express to launch a web server which is available on localhost:3000.
+
+1. Open the folder which contains the server.js file in the terminal (VSC: right-click and select open in integrated terminal).
+2. In the terminal window, type: "npm install" (So that all the packages from the package.json file are installed on your machine).
+3. When installed, in the terminal window, type "node server.js", which will run the server.
+4. In your browser, enter in the url bar: localhost:3000. (This will display the home page, index.html)

@@ -23,3 +23,10 @@ CREATE VIEW meatProducts AS (
     WHERE (Products.Category = 'Meats' )
 );
 
+CREATE VIEW simpleProductInfo AS (
+    SELECT Products.name AS name, Products.description, locations, Sellers.name AS seller, 
+           phoneNumber
+    FROM Products, Sellers
+    WHERE Products.seller = Sellers.id
+);
+

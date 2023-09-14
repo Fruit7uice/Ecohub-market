@@ -24,7 +24,7 @@ CREATE VIEW meatProducts AS (
 );
 
 CREATE VIEW simpleProductInfo AS (
-    SELECT Products.name AS name, Products.description, locations, Sellers.name AS seller, 
+    SELECT Products.name AS product, Products.description, locations, Sellers.name AS seller, 
            phoneNumber
     FROM Products, Sellers
     WHERE Products.seller = Sellers.id

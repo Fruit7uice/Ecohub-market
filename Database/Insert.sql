@@ -14,10 +14,10 @@ INSERT INTO Categories VALUES ('Pastries');
 INSERT INTO Categories VALUES ('Root vegetables');
 
 -- Inserted values into the table Sellers. The table is located in the file Tables.sql. 
-INSERT INTO Sellers VALUES ('199912013243', 'Moa', 0725452671, 'Selling very fine tomatoes');
-INSERT INTO Sellers VALUES ('199811200000', 'Alex', 0739936668, 'Selling hot chillis');
-INSERT INTO Sellers VALUES ('200008060101', 'Josefin', 0707744757, 'Selling locally hunted älg');
-INSERT INTO Sellers VALUES ('199402234323','Elias',0705938902,'Selling fine meat');
+INSERT INTO Sellers VALUES ('199912013243', 'Moa', '0725452671', 'Selling very fine tomatoes');
+INSERT INTO Sellers VALUES ('199811200000', 'Alex', '0739936668', 'Selling hot chillis');
+INSERT INTO Sellers VALUES ('200008060101', 'Josefin', '0707744757', 'Selling locally hunted älg');
+INSERT INTO Sellers VALUES ('199402234323','Elias', '0705938902','Selling fine meat');
 
 -- Inserted values into the table Locations. The table is located in the file Tables.sql.
 INSERT INTO Locations VALUES('Lindholmsallén 25', '57.709043, 11.937399');

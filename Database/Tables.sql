@@ -16,7 +16,7 @@ A seller also has a name, a phone number and an optional description.
 CREATE TABLE Sellers ( 
     id CHAR(12) CHECK(id ~ '^[0-9]+$') PRIMARY KEY,
     name TEXT NOT NULL, 
-    phoneNumber INT NOT NULL CHECK(phonenumber > 0), -- Prevents negative numbers -- 
+    phoneNumber VARCHAR(20) CHECK (phoneNumber ~ '^[0-9]+$'), -- Prevents negative numbers -- 
                                                      -- TODO change to char to prevent the 0 from 
                                                      -- disappering at the beginning.
     description TEXT NOT NULL

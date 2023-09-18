@@ -9,8 +9,12 @@ SELECT * FROM Products
 
 -- A view of all sellers
 CREATE VIEW allSellers AS (
-SELECT * FROM Sellers
-);
+SELECT * FROM Sellers 
+); 
+
+
+
+
 
 -- A view of all added locations.
 CREATE VIEW allLocations AS (

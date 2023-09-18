@@ -56,6 +56,8 @@ CREATE TABLE Products(
     id INT PRIMARY KEY, --TODO automatically increase by 1 with Triggers.
     name TEXT NOT NULL CHECK (name not in ('cocaine')),
     category TEXT NOT NULL REFERENCES Categories,
+    price FLOAT NOT NULL CHECK (price > 0),
+    unit CHAR(12) NOT NULL CHECK (unit in ('kg', 'hg', 'g', 'pcs')),
     locations TEXT NOT NULL REFERENCES Locations,
     picture TEXT, -- TODO be able to add picture
     description TEXT NOT NULL,

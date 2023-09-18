@@ -12,3 +12,10 @@ async function getUserById(id) {
 }
 
 module.exports = { createUser, getUserById };
+
+async function createSeller(id, name, phonenumber, description) {
+    return await db.one(
+      'INSERT INTO sellers (name, email) VALUES ($1, $2) RETURNING *',
+      [name, email]
+    );
+  }

@@ -7,6 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="map.js"></script>
+    <script src="connect.js"></script>
+    <script src="query.js"></script>
 </head>
 
 <body>
@@ -24,7 +26,10 @@
                     </svg> <input placeholder="eg. &quot;Petters tomater&quot;">
                 </div>
                 <ul>
-                    <li>Seller 1</li>
+                    <!-- <li>Seller 1</li> -->
+                    <li>
+                        <div id="dataContainer"></div>
+                    </li>
                     <li>Seller 2</li>
                     <li>Seller 3</li>
                     <li>Seller 4</li>
@@ -43,6 +48,7 @@
                 </div>
                 <div class="container seller-info">
                     <h2>Seller 1</h2>
+                    <button onclick="buttonFunc()">Click me</button> 
                 </div>
             </div>
         </main>

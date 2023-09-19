@@ -31,17 +31,22 @@
                         </g>
                     </svg> <input placeholder="eg. &quot;Petters tomater&quot;">
                 </div>
-                <ul>
-                    <li>Seller 1</li>
-                    <li>Seller 2</li>
-                    <li>Seller 3</li>
-                    <li>Seller 4</li>
-                    <li>Seller 5</li>
-                    <li>Seller 6</li>
-                    <li>Seller 7</li>
-                    <li>Seller 8</li>
-                    <li>Seller 9</li>
-                    <li>Seller 10</li>
+                <ul id="seller-list">
+                    <script>
+                        // Fetches sellers from the db and creates list items with their name
+                        // In the future it should be more modular and apply filter options.
+                        fetch('/getsellers')
+                            .then(response => response.json())
+                            .then(data => {
+                                const sellerList = document.getElementById('seller-list');
+                                data.forEach(seller => {
+                                    const listItem = document.createElement('li');
+                                    listItem.textContent = seller.name;
+                                    sellerList.appendChild(listItem);
+                                });
+                            })
+                            .catch(error => console.error('Error fetching data:', error));
+                    </script>
                 </ul>
             </div>
 

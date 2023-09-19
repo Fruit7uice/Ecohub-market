@@ -102,6 +102,7 @@ main{
 
 .seller-column ul li:hover {
     background-color: #a1a859;
+    /* cursor: pointer; */
 }
 
 

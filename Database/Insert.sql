@@ -26,13 +26,16 @@ INSERT INTO Locations VALUES('Första Långgatan 12F', '57.69970, 11.94979');
 INSERT INTO Locations VALUES('Kulvertkonstens väg 11', '57.75809, 11.95134');
 
 -- Inserted values into the table Products. The table is located in the file Tables.sql.
-INSERT INTO Products VALUES (1, 'Habanero chillis', 'Vegetables', 'Kulvertkonstens väg 11', NULL,
+INSERT INTO Products VALUES (1, 'Habanero chillis', 'Vegetables',10, 'pcs', 'Kulvertkonstens väg 11', NULL,
                              'hot chillis 10 kr a piece', 199811200000, CURRENT_TIMESTAMP );
-INSERT INTO Products VALUES (2, 'Tomatoes', 'Vegetables', 'Kommendörsgatan 5', NULL, 
-                            'fine tomatoes 10 kr a peace', 199912013243, CURRENT_TIMESTAMP );
-INSERT INTO Products VALUES (3, 'Älgfärs', 'Meats', 'Lindholmsallén 25', NULL, 
+
+INSERT INTO Products VALUES (2, 'Tomatoes', 'Vegetables',10,'pcs', 'Kommendörsgatan 5', NULL, 
+                            'fine tomatoes 10 kr a piece', 199912013243, CURRENT_TIMESTAMP );
+
+INSERT INTO Products VALUES (3, 'Älgfärs', 'Meats', 300, 'kg', 'Lindholmsallén 25', NULL, 
                             'Freschly grinded älgfärs', 200008060101, CURRENT_TIMESTAMP );
-INSERT INTO Products VALUES (10, 'Banan', 'Fruits', 'Första Långgatan 12F', NULL, 'Magical fruits',
+
+INSERT INTO Products VALUES (10, 'Banan', 'Fruits', 25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
                              199402234323, CURRENT_TIMESTAMP );
 
 

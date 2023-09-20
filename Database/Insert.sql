@@ -13,6 +13,87 @@ INSERT INTO Categories VALUES ('Berries');
 INSERT INTO Categories VALUES ('Pastries');
 INSERT INTO Categories VALUES ('Root vegetables');
 
+-- Inserts the 20 most common meats, vegetables, fruits and berries
+INSERT INTO ValidProducts (product) VALUES
+-- MEATS
+    ('Chickens'),
+    ('Beefs'),
+    ('Porks'),
+    ('Lambs'),
+    ('Turkeys'),
+    ('Salmons'),
+    ('Tunas'),
+    ('Shrimps'),
+    ('Cods'),
+    ('Pikes'),
+    ('Trouts'),
+    ('Catfishes'),
+    ('Halibuts'),
+    ('Mackerels'),
+    ('Haddocks'),
+    ('Sardines'),
+    ('Scallops'),
+    ('Crabs'),
+    ('Lobsters'),
+    ('Mussels'),
+    ('Venison'),
+    ('Elk'),
+    ('Wild Boar'),
+    ('Rabbits'),
+    ('Ducks'),
+    ('Geese'),
+    ('Pheasants'),
+    ('Quails'),
+    ('Bison'),
+-- VEGETABLES and BERRIES
+    ('Potatoes'),
+    ('Carrots'),
+    ('Onions'),
+    ('Tomatoes'),
+    ('Cucumbers'),
+    ('Lettuce'),
+    ('Spinach'),
+    ('Broccoli'),
+    ('Cauliflower'),
+    ('Bell Peppers'),
+    ('Zucchinis'),
+    ('Green Beans'),
+    ('Peas'),
+    ('Asparagus'),
+    ('Eggplants'),
+    ('Kales'),
+    ('Celeries'),
+    ('Radishes'),
+    ('Brussels Sprouts'),
+    ('Cabbages'),
+    ('Sweet Potatoes'),
+    ('Corn'),
+    ('Avocadoes'),
+    ('Strawberries'),
+    ('Blueberries'),
+    ('Raspberries'),
+    ('Blackberries'),
+    ('Apples'),
+    ('Bananas'),
+    ('Oranges'),
+    ('Grapes'),
+    ('Cherries'),
+    ('Peaches'),
+    ('Pears'),
+    ('Pineapples'),
+    ('Mangoes'),
+    ('Kiwi'),
+    ('Lemons'),
+    ('Limes'),
+    ('Grapefruits'),
+    ('Habanero chillis');
+
+
+
+
+
+
+
 -- Inserted values into the table Sellers. The table is located in the file Tables.sql. 
 INSERT INTO Sellers VALUES ('199912013243', 'Moa', '0725452671', 'Selling very fine tomatoes');
 INSERT INTO Sellers VALUES ('199811200000', 'Alex', '0739936668', 'Selling hot chillis');
@@ -34,13 +115,14 @@ INSERT INTO Products (name ,category, price, unit, locations, picture, descripti
 VALUES ('Tomatoes', 'Vegetables',10,'pcs', 'Kommendörsgatan 5', NULL, 
                            'fine tomatoes 10 kr a piece', 199912013243, CURRENT_TIMESTAMP );
 
+
 INSERT INTO Products (name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ('Älgfärs', 'Meats', 300, 'kg', 'Lindholmsallén 25', NULL, 'Freschly grinded älgfärs', 200008060101, CURRENT_TIMESTAMP );
+VALUES ( 'Pikes', 'Meats', 300, 'kg', 'Lindholmsallén 25', NULL, 
+                            'Freschly grinded älgfärs', 200008060101, CURRENT_TIMESTAMP );
 
-INSERT INTO Products (name ,category, price, unit, locations, picture, description, seller, timeOfUpload) 
-VALUES ('Banan', 'Fruits', 25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
+INSERT INTO Products (name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
+VALUES ('Bananas', 'Fruits', 25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
                              199402234323, CURRENT_TIMESTAMP );
-
 
 
 

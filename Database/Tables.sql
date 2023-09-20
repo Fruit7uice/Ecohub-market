@@ -47,14 +47,27 @@ CREATE TABLE Locations (
                       -- automatically inserting coordinates
     
 );
+
+/*
+A table that contains all valid products. Is populated through the inserts.sql file.
+*/
+CREATE TABLE ValidProducts(
+    product VARCHAR(20) PRIMARY KEY
+);
+
+
 /*
  A product is an advertisement that a seller is selling.
  The different parts a product consists of (id, name, category, location, picture, 
  optional description, seller and time of upload)
  */
 CREATE TABLE Products(
+
+   
+   
+
     id SERIAL PRIMARY KEY, -- Increments with SERIAL
-    name TEXT NOT NULL CHECK (name not in ('cocaine')),
+    name TEXT NOT NULL REFERENCES ValidProducts,
     category TEXT NOT NULL REFERENCES Categories,
     price FLOAT NOT NULL CHECK (price > 0),
     unit CHAR(12) NOT NULL CHECK (unit in ('kg', 'hg', 'g', 'pcs')),

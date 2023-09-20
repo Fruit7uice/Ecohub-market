@@ -1,41 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Become a seller</title>
-    <link rel="stylesheet" href="./sellStyle.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Become a seller</title>
+  <link rel="stylesheet" href="./sellStyle.css" />
 
 </head>
+
 <body>
-    <div class="container-main">
-        <div class="container nav">
-            <a href="">Home</a>
-            <a href="./sellForm.html">Sell a product</a>
-            <a href="" id="brand-logo">
-                <img src="./assets/AgilLogo.png" alt="BrandLogo" style="width: 100px; height: auto;">
-            </a>
-            <a href="">Become a Seller</a>
-            <a href="">Info</a>
-        </div>  
-        <main>
-            <div class="container container-form">
-                <h1>Sell a product</h1>
-                <div class="sell-form">
-                    <form>
-                        <label for="name">Name:</label><br>
-                        <input type="text" id="txt-in" name="nameIn" placeholder="enter your name"><br>
-                        <label for="personalNr">Personal number:</label><br>
-                        <input type="text" id="txt-in" name="personalNr" placeholder="yyyymmddxxxx" maxlength="12"><br>
-                        <label for="phoneNr">Phonenumber:</label><br>
-                        <input type="text" id="txt-in" name="phoneNr" placeholder="phonenumber"><br>
-                        <label for="description">Description:</label><br>
-                        <textarea placeholder="short discription of yourself" maxlength="200"></textarea>
-                        <button type="button"> Next </button>
-                    </form>
-                </div>
+  <div class="container-main">
+    <div class="container nav">
+      <a href="">Home</a>
+      <a href="./sellForm.html">Sell a product</a>
+      <a href="" id="brand-logo">
+        <img src="./assets/AgilLogo.png" alt="BrandLogo" style="width: 100px; height: auto;">
+      </a>
+      <a href="">Become a Seller</a>
+      <a href="">Info</a>
+    </div>
+    <main>
+      <div class="container container-form">
+        <h1>
+          Enter your personal info
+        </h1>
+        <form>
+          <div class="left-half">
+            <div class="c-name">
+              <label for="name">Name:</label>
+              <input type="text" id="txt-in" name="name-in" placeholder="enter your name">
             </div>
-        </main>
-    </div> 
+
+            <div class="c-phonenumber">
+              <label for="personalNr">Personal number:</label>
+              <input type="text" id="txt-in" name="personal-nr" placeholder="yyyymmddxxxx" maxlength="12">
+            </div>
+
+            <div class="c-adress">
+              <label for="adress">Adress:</label>
+              <input type="text" id="txt-in" name="adress" placeholder="adress">
+            </div>
+
+            <div class="c-description">
+              <label for="description">Description:</label>
+              <textarea class="c-description-i" placeholder="short discription of yourself" maxlength="200"></textarea>
+            </div>
+          </div>
+
+          <div class="right-half">
+            <div>
+              <div class="c-last-name">
+                <label for="name">Name:</label>
+                <input type="text" id="txt-in" name="name-in" placeholder="enter your name">
+              </div>
+            </div> <!--dummyto make name be "on it's own"-->
+            <div class="c-personalnumber">
+              <label for="phone-nr">Phonenumber:</label>
+              <input type="text" id="txt-in" name="phone-nr" placeholder="phonenumber">
+            </div>
+            <div class="c-city-zip">
+              <div class="c-city">
+                <label for="city">City:</label>
+                <input class="half-input" type="text" id="txt-in" name="city" placeholder="city">
+              </div>
+
+              <div class="c-zip">
+                <label for="zip-code">Zip code:</label>
+                <input class="half-input" type="text" id="txt-in" name="zip-code" placeholder="zip-code">
+              </div>
+            </div>
+          </div>
+        </form>
+        <button type="button"> Next </button>
+
+      </div>
+  </div>
+  </main>
+  </div>
 </body>
+
 </html>

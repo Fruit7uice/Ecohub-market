@@ -107,18 +107,22 @@ INSERT INTO Locations VALUES('Första Långgatan 12F', '57.69970, 11.94979');
 INSERT INTO Locations VALUES('Kulvertkonstens väg 11', '57.75809, 11.95134');
 
 -- Inserted values into the table Products. The table is located in the file Tables.sql.
-INSERT INTO Products VALUES (1, 'Habanero chillis', 'Vegetables',10, 'pcs', 'Kulvertkonstens väg 11', NULL,
+INSERT INTO Products (name ,category, price, unit, locations, picture, description, seller, timeOfUpload) -- to be able to Insert without id-attribute since it depends on the order. Fixed with serial in table Product
+VALUES ('Habanero chillis', 'Vegetables',10, 'pcs', 'Kulvertkonstens väg 11', NULL,
                              'hot chillis 10 kr a piece', 199811200000, CURRENT_TIMESTAMP );
 
-INSERT INTO Products VALUES (2, 'Tomatoes', 'Vegetables',10,'pcs', 'Kommendörsgatan 5', NULL, 
-                            'fine tomatoes 10 kr a piece', 199912013243, CURRENT_TIMESTAMP );
+INSERT INTO Products (name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
+VALUES ('Tomatoes', 'Vegetables',10,'pcs', 'Kommendörsgatan 5', NULL, 
+                           'fine tomatoes 10 kr a piece', 199912013243, CURRENT_TIMESTAMP );
 
-INSERT INTO Products VALUES (3, 'Pikes', 'Meats', 300, 'kg', 'Lindholmsallén 25', NULL, 
+
+INSERT INTO Products (name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
+VALUES ( 'Pikes', 'Meats', 300, 'kg', 'Lindholmsallén 25', NULL, 
                             'Freschly grinded älgfärs', 200008060101, CURRENT_TIMESTAMP );
 
-INSERT INTO Products VALUES (10, 'Bananas', 'Fruits', 25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
+INSERT INTO Products (name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
+VALUES ('Bananas', 'Fruits', 25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
                              199402234323, CURRENT_TIMESTAMP );
-
 
 
 

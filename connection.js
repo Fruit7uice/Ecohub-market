@@ -1,6 +1,7 @@
 module.exports = {
     retrieveAllSellers,
-    getClient
+    getClient,
+    retrieveProductInfo
 };
 
 const { Client } = require('pg');
@@ -28,6 +29,25 @@ function retrieveAllSellers(client) {
             .catch(err => reject('Error connecting to PostgreSQL', err));
 
         client.query('SELECT * FROM Sellers;', (err, res) => {
+            if (err) {
+                reject('Error executing query', err);
+            } else {
+                console.log("Rows Retrieved")
+                resolve(res.rows);
+            }
+            client.end(); // Close the connection after the query
+            console.log("Client terminated!")
+        });
+    });
+}
+
+function retrieveProductInfo(client) {
+    return new Promise((resolve, reject) => {
+        client.connect()
+            .then(() => console.log('Connected to PostgreSQL database'))
+            .catch(err => reject('Error connecting to PostgreSQL', err));
+
+        client.query('SELECT * FROM simpleProductInfo;', (err, res) => {
             if (err) {
                 reject('Error executing query', err);
             } else {

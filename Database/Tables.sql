@@ -53,7 +53,7 @@ CREATE TABLE Locations (
  optional description, seller and time of upload)
  */
 CREATE TABLE Products(
-    id INT PRIMARY KEY, --TODO automatically increase by 1 with Triggers.
+    id SERIAL PRIMARY KEY, -- Increments with SERIAL
     name TEXT NOT NULL CHECK (name not in ('cocaine')),
     category TEXT NOT NULL REFERENCES Categories,
     price FLOAT NOT NULL CHECK (price > 0),

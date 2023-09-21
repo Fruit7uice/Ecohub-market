@@ -99,7 +99,6 @@ h1{
   color: white;
   font-size: 20px;
   text-align: center;
-  text-decoration: underline;
 }
 
 .left-half{
@@ -122,7 +121,7 @@ h1{
   padding-left: 5%;
 }
 .half-input{
-  width: 75%;
+  width: 85%;
 }
 
 input{
@@ -133,7 +132,7 @@ input{
     margin-bottom: 10px;
     border: none;
     box-shadow: 0px 0px 5px grey;
-    padding-left: 10px;
+    padding-left: 12px;
     margin-top: 7px;
 }
 
@@ -149,13 +148,19 @@ textarea{
     border-radius: 5px;
     font-family: 'Alice';
     box-shadow: 0px 0px 5px grey;
-
+    padding-left: 10px;
+    margin-top: 7px;
 }
 
 button{
     width: 200px;
     height: 40px;
     border-radius: 25px;
+}
+button:hover {
+  /* background-color: #3f6668; */
+  background-color: #e7b06f;
+  color: #f5f1e2;
 }
 
 .c-city-zip{

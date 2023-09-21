@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Become a seller</title>
   <link rel="stylesheet" href="./sellStyle.css" />
-
+  <script src="dropdown.js"></script>
 </head>
 
 <body>
@@ -60,36 +60,47 @@
                           </div>
             </div>   -->    
             <div class="form-x" id="form-2">
-              <div class="left-half">
-                  <label for="f-name-in">First name:</label>
-                  <input type="text" id="f-name-in" name="f-name-in" placeholder="first name">
-
-                  <label for="personal-nr">Personal number:</label>
-                  <input type="text" id="personal-nr" name="personal-nr" placeholder="yyyymmddxxxx" maxlength="12">
-
-                  <label for="adress">Adress:</label>
-                  <input type="text" id="adress" name="adress" placeholder="adress">
-
+              <div class="f2-left-half">
+                  <label for="p-name-in">Product name:</label>
+                  <input type="text" id="p-name-in" name="p-name-in" placeholder="product name">
+                  
                   <label for="description-in">Description:</label>
-                  <textarea class="c-description-i" id="description-in" name="description-in" placeholder="short discription of yourself" maxlength="350"></textarea>
-              </div>
-              <div class="right-half">
-                    <label for="l-name-in">Last name:</label>
-                    <input type="text" id="l-name-in" name="l-name-in" placeholder="last name">
-
-                  <label for="phone-nr">Phonenumber:</label>
-                  <input type="text" id="phone-nr" name="phone-nr" placeholder="phonenumber">
+                  <textarea class="c-description-i" id="description-in" name="description-in" placeholder="short discription of the product" maxlength="350"></textarea>
+                  
+                  <label for="image">Choose an image:</label>
+                  <input class="img-in" type="file" name="image" accept="image/png, image/jpeg" />
+                  
+                </div>             
+              
+              <div class="f2-right-half">
+                <label for="price">price</label>
                 
-                  <div class="c-city-zip">
-                    <div class="c-city">
-                      <label for="city-in">City:</label>
-                      <input class="half-input" type="text" id="city-in" name="city" placeholder="city">
-                    </div>
-                    <div class="c-zip">
-                      <label for="zip-code-in">Zip code:</label>
-                      <input class="half-input" type="text" id="zip-code-in" name="zip-code" placeholder="zip code">
-                    </div>
+                <div class="c-price">
+                  
+                  <input type="price" placeholder="0">
+                  <div class="radio-btns">
+
+                    <label class="container">kr/kg</label>
+                    <input class="checkmark-in" type="radio" checked="checked" name="radio">
+                    
+                    <label class="container">kr/unit</label>
+                    <input class="checkmark-in" type="radio" name="radio">
+                    
+                  </div>
+                  
                 </div>
+                  <label>Category:</label>
+                  <select name="category" id="category">
+                  <option value="" selected="selected">Select category</option>
+                </select>
+                <label>Item:</label>
+                
+                <select name="item" id="item">
+                  <option value="" selected="selected">Select category first</option>
+                
+                </select>
+                
+                
               </div>
             </div>    
     <!-- 
@@ -103,7 +114,7 @@
           -->           
             
         </form> 
-        <button type="button"> Next </button>
+        <button type="button" class="button-1" id ="button-1"> Next </button>
 
       </div>
   </div>

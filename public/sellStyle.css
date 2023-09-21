@@ -109,11 +109,6 @@ form{
   
 }
 
-
-
-
-
-
 h1{
   color: white;
   font-size: 20px;
@@ -143,18 +138,46 @@ h1{
   width: 85%;
 }
 
+
 input{
-    color: black;
-    border-radius: 5px;
-    width: 95%;
-    height: 40px;
-    margin-bottom: 10px;
-    border: none;
-    box-shadow: 0px 0px 5px grey;
-    padding-left: 12px;
-    margin-top: 7px;
+  color: black;
+  border-radius: 5px;
+  width: 95%;
+  height: 40px;
+  margin-bottom: 10px;
+  border: none;
+  box-shadow: 0px 0px 5px grey;
+  padding-left: 12px;
+  margin-top: 7px;
+}
+.checkmark-in{
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #000;
+  border-radius: 50%;
+  padding: 10% 0%;
 }
 
+
+.f2-right-half{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: baseline;
+  /*background-color: darksalmon;*/
+  padding-left: 5%;
+}
+.c-price{
+  display: flex;
+  flex-direction: row;
+}
+.img-in{
+  border: none;
+  box-shadow: none;
+}
 label{
     color: #3b3d3d;
     margin-left: 10px;
@@ -196,4 +219,10 @@ p{
 
 }
 
+
+.button-1{
+  margin-bottom: 20%;
+
+
+}
 

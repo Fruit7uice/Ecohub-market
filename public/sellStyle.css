@@ -68,6 +68,8 @@ main{
     background-color: transparent;
 }
 
+/* This is where the css-code starts, the code above needs to be duplicated */
+
 
 .container-main{
     display: flex;
@@ -83,13 +85,16 @@ main{
     flex-direction: column;
     padding-top: 8px;
 }
-
 form{
   width: 40%;
   height: 65%;
+}
+.form-1{
+  width: 100%;
+  height: 100%;
   background-color: #f5f1e2;
   border-radius: 25px;
-  padding: 1%;
+  padding: 3%;
   flex-direction: row;
   display: flex;
   justify-content: center;
@@ -166,36 +171,7 @@ button:hover {
 .c-city-zip{
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
-.c-f-name{
-  flex-direction: column;
-  display: flex;
-}
-.c-l-name{
-  flex-direction: column;
-  display: flex;
-}
-.c-phonenumber{
-  flex-direction: column;
-  display: flex;
-}.c-adress{
-  flex-direction: column;
-  display: flex;
-}
-.c-description{
-  flex-direction: column;
-  display: flex;
-}
-.c-personalnumber{
-  flex-direction: column;
-  display: flex;
-}
-.c-city{
-  flex-direction: column;
-  display: flex;
-}
-.c-zip{
-  flex-direction: column;
-  display: flex;
-}
+
 

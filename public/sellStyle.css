@@ -89,7 +89,7 @@ form{
   height: 65%;
   background-color: #f5f1e2;
   border-radius: 25px;
-  padding: 20px 5px 30px 20px;
+  padding: 1%;
   flex-direction: row;
   display: flex;
   justify-content: center;
@@ -108,7 +108,8 @@ h1{
   width: 100%;
   height: 100%;
   align-items: left;
-  
+ /* background-color: aqua;*/
+  justify-content: baseline;
 }
 
 .right-half{
@@ -116,8 +117,9 @@ h1{
   flex-direction: column;
   width: 100%;
   height: 100%;
-  align-items: left;
-
+  justify-content: baseline;
+  /*background-color: darksalmon;*/
+  padding-left: 5%;
 }
 .half-input{
   width: 75%;
@@ -126,7 +128,7 @@ h1{
 input{
     color: black;
     border-radius: 5px;
-    width: 90%;
+    width: 95%;
     height: 40px;
     margin-bottom: 10px;
     border: none;
@@ -140,11 +142,14 @@ label{
     margin-left: 10px;
 }
 textarea{
-    width: 300px;
+    width: 92%;
     height: 120px;
     resize: none;
-    border-radius: 1px;
+    border: none;
+    border-radius: 5px;
     font-family: 'Alice';
+    box-shadow: 0px 0px 5px grey;
+
 }
 
 button{
@@ -157,7 +162,11 @@ button{
   display: flex;
   flex-direction: row;
 }
-.c-name{
+.c-f-name{
+  flex-direction: column;
+  display: flex;
+}
+.c-l-name{
   flex-direction: column;
   display: flex;
 }

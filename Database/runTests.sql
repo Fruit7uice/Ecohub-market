@@ -18,7 +18,11 @@ SET client_min_messages TO NOTICE; -- More talk
 \ir Tables.sql
 \ir Insert.sql
 \ir Views.sql
+\ir test.sql
 
-SELECT * FROM simpleProductInfo
+
+--SELECT * FROM simpleProductInfo
+
+SELECT * FROM Products;
 -- Life-hack: When working on a new view you can write it as a query here 
 --(without creating a view) and when it works just add CREATE VIEW and put it in views.sql*/

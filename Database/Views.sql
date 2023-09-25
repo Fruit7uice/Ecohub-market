@@ -9,8 +9,12 @@ SELECT * FROM Products
 
 -- A view of all sellers
 CREATE VIEW allSellers AS (
-SELECT * FROM Sellers
-);
+SELECT * FROM Sellers 
+); 
+
+
+
+
 
 -- A view of all added locations.
 CREATE VIEW allLocations AS (
@@ -24,9 +28,14 @@ CREATE VIEW meatProducts AS (
 );
 
 CREATE VIEW simpleProductInfo AS (
-    SELECT Products.name AS product, Products.description, locations, Sellers.name AS seller, 
+    SELECT Products.name AS product, Products.description, price, unit, locations, Sellers.name AS seller, 
            phoneNumber
     FROM Products, Sellers
     WHERE Products.seller = Sellers.id
 );
+
+CREATE VIEW columnProductInfo AS (
+    SELECT name, price, unit, locations, timeOfUpload
+    FROM Products
+)
 

@@ -1,0 +1,228 @@
+@font-face {
+    font-family: 'Alice';
+    src: url('./fonts/Alice-Regular.ttf');
+    /* Add other formats if available */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    border: 0;
+    max-width: 100vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    color: #fff;
+    font-family: 'Alice';
+    font-weight: bold;
+}
+
+.container{
+    width: auto;
+    height: auto;
+}
+
+main{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.nav{
+    width: 100%;
+    height: 100px;
+    position: relative;
+    background-color: #f5f1e2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3f6668;
+    flex-direction: row;
+}
+
+.nav a{
+    width: 200px;
+    height: 40px;
+    border-radius: 25px;
+    background-color: #f5f1e2;
+    /* background-color: #e7b06f; */
+    color: #3f6668;
+    text-decoration: none;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    /* background-color: #3f6668; */
+    background-color: #e7b06f;
+    color: #f5f1e2;
+}
+
+#brand-logo{
+    background-color: transparent;
+}
+
+/* This is where the css-code starts, the code above needs to be duplicated */
+
+
+.container-main{
+    display: flex;
+    flex-flow: column;
+}
+
+.container-form{
+    background-color: #3f6668;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 8px;
+}
+form{
+  width: 40%;
+  height: 65%;
+}
+.form-x{
+  width: 100%;
+  height: 100%;
+  background-color: #f5f1e2;
+  border-radius: 25px;
+  padding: 3%;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+}
+#form-1{
+
+}
+#form-2{
+  
+}
+#form-3{
+  
+}
+
+h1{
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+.left-half{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: left;
+ /* background-color: aqua;*/
+  justify-content: baseline;
+}
+
+.right-half{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: baseline;
+  /*background-color: darksalmon;*/
+  padding-left: 5%;
+}
+.half-input{
+  width: 85%;
+}
+
+
+input{
+  color: black;
+  border-radius: 5px;
+  width: 95%;
+  height: 40px;
+  margin-bottom: 10px;
+  border: none;
+  box-shadow: 0px 0px 5px grey;
+  padding-left: 12px;
+  margin-top: 7px;
+}
+.checkmark-in{
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #000;
+  border-radius: 50%;
+  padding: 10% 0%;
+}
+
+
+.f2-right-half{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: baseline;
+  /*background-color: darksalmon;*/
+  padding-left: 5%;
+}
+.c-price{
+  display: flex;
+  flex-direction: row;
+}
+.img-in{
+  border: none;
+  box-shadow: none;
+}
+label{
+    color: #3b3d3d;
+    margin-left: 10px;
+}
+textarea{
+    width: 92%;
+    height: 120px;
+    resize: none;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Alice';
+    box-shadow: 0px 0px 5px grey;
+    padding-left: 10px;
+    margin-top: 7px;
+}
+
+button{
+    width: 200px;
+    height: 40px;
+    border-radius: 25px;
+}
+button:hover {
+  /* background-color: #3f6668; */
+  background-color: #e7b06f;
+  color: #f5f1e2;
+}
+
+.c-city-zip{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+p{
+  text-align: center;
+  font-family: 'Alice';
+  color: #3b3d3d;
+  font-size: 20px;
+
+}
+
+
+.button-1{
+  margin-bottom: 20%;
+
+
+}
+

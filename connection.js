@@ -15,7 +15,7 @@ function getClient(){
     const client = new Client({
         user: 'postgres',
         host: '127.0.0.1', // e.g., your_rds_endpoint.amazonaws.com
-        database: 'testdb',
+        database: 'postgres',
         password: 'postgres',
         port: 5432, // Default PostgreSQL port
     });
@@ -48,6 +48,8 @@ function retrieveProductInfo(client) {
             .then(() => console.log('Connected to PostgreSQL database'))
             .catch(err => reject('Error connecting to PostgreSQL', err));
 
+            
+
         client.query('SELECT * FROM columnProductInfo;', (err, res) => {
             if (err) {
                 reject('Error executing query', err);
@@ -60,7 +62,7 @@ function retrieveProductInfo(client) {
         });
     });
 
-}
+};
 
 //---------------------------------------
 // User story 38
@@ -69,30 +71,40 @@ function retrieveProductInfo(client) {
 function insertSeller(client, sellerInfo){
     return new Promise((resolve, reject) => {
         client.connect() 
-        .then(() => console.log('Connected to PostgreSQL database'))
-        .catch(err => reject('Error connecting to PostgreSQL', err));
+           .then(() => console.log('Connected to PostgreSQL database in insertSeller'))
+           .catch(err => reject('Error connecting to PostgreSQL', err));
 
-        try{
-            const { id, sellerName, sellerPhoneNumber, sellerDescription } = sellerInfo;
-            const insertQuery = `INSERT INTO Sellers VALUES (id, sellerName, sellerPhoneNumber, sellerDescription)`;
-            client.query(insertQuery, (err, res));
-            console.log('')
+           // const [sellerId, sellerName, sellerPhoneNumber, sellerDescription] = sellerInfo;
+            const sellerId = sellerInfo.id;
+            const sellerName = sellerInfo.name;
+            const sellerPhoneNumber = sellerInfo.phoneNumber;
+            const sellerDescription = sellerInfo.description;
+
+            const insertQuery = `
+            INSERT INTO Sellers (id, name, phoneNumber, description)
+            VALUES ($1, $2, $3, $4)
+            `;
+    
+            const values = [sellerId, sellerName, sellerPhoneNumber, sellerDescription];
+
+            client.query(insertQuery, values)
+     
+            .then(result => {
+            console.log('Data inserted successfully');
+            })
+            .catch(error => {
+            console.error('Error inserting data', error);
+            });
+
+
+                })}
+ 
             
-        }
-        catch(error){
-            console.error("could not retreive seller info: ", error);
-        }  
-        finally {
-
-            client.end();
-            console.log("Successfully inserted the seller info into the seller table")
-        }   
         
-    }
+
     
     
-    )
-}
+    
 
 /*
 seller function
@@ -109,7 +121,38 @@ location function
 retrive info from JSON, save in variables
 client.connect
 insert info into lactionTable
+*/
+function insertLocation(client, locationInfo){
+    return new Promise((resolve, reject) => {
+        client.connect() 
+           .then(() => console.log('Connected to PostgreSQL database in insertSeller'))
+           .catch(err => reject('Error connecting to PostgreSQL', err));
 
+           // const [sellerId, sellerName, sellerPhoneNumber, sellerDescription] = sellerInfo;
+            const sellerId = sellerInfo.id;
+            const sellerName = sellerInfo.name;
+            const sellerPhoneNumber = sellerInfo.phoneNumber;
+            const sellerDescription = sellerInfo.description;
+
+            const insertQuery = `
+            INSERT INTO Locations (id, name, phoneNumber, description)
+            VALUES ($1, $2, $3, $4)
+            `;
+    
+            const values = [sellerId, sellerName, sellerPhoneNumber, sellerDescription];
+
+            client.query(insertQuery, values)
+     
+            .then(result => {
+            console.log('Data inserted successfully');
+            })
+            .catch(error => {
+            console.error('Error inserting data', error);
+            });
+
+
+                })}
+/*
 
 product function
 -----------------

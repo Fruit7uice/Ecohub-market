@@ -61,6 +61,7 @@ CREATE TABLE ValidProducts(
  */
 CREATE TABLE Products(
     id SERIAL PRIMARY KEY, -- Increments with SERIAL
+    title TEXT NOT NULL,
     name TEXT NOT NULL REFERENCES ValidProducts,
     category TEXT NOT NULL REFERENCES Categories,
     price FLOAT CHECK (price >=0),

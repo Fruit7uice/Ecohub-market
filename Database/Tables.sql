@@ -28,7 +28,7 @@ Contains the different types of allowed categories a product can belong to.
 CREATE TABLE Categories ( 
     name TEXT PRIMARY KEY
     CHECK (name in ('Meats', 'Vegetables', 'Fruits', 'Dairy', 'Berries', 'Bread', 
-                    'Root vegetables', 'Pastries', 'Seafoods', 'Mushrooms' ))
+                    'Root Vegetables', 'Pastries', 'Seafoods', 'Mushrooms' ))
 );
 
 /*  
@@ -41,6 +41,8 @@ the database.
 */  
 CREATE TABLE Locations (
     adress TEXT PRIMARY KEY,
+    zipcode CHAR(5) NOT NULL,
+    city TEXT NOT NULL,
     coordinates POINT -- TODO make trigger for 
                       -- automatically inserting coordinates
     
@@ -50,7 +52,10 @@ CREATE TABLE Locations (
 A table that contains all valid products. Is populated through the inserts.sql file.
 */
 CREATE TABLE ValidProducts(
-    product VARCHAR(30) NOT NULL PRIMARY KEY
+    category TEXT NOT NULL REFERENCES Categories,
+    product TEXT NOT NULL,
+    PRIMARY KEY(category, product) 
+    
 );
 
 
@@ -61,15 +66,17 @@ CREATE TABLE ValidProducts(
  */
 CREATE TABLE Products(
     id SERIAL PRIMARY KEY, -- Increments with SERIAL
-    name TEXT NOT NULL REFERENCES ValidProducts,
-    category TEXT NOT NULL REFERENCES Categories,
+    name TEXT NOT NULL,
+    category TEXT NOT NULL,
+    title TEXT NOT NULL,
     price FLOAT CHECK (price >=0),
     unit CHAR(12) CHECK (unit in ('kg', 'hg', 'g', 'pcs')),
     locations TEXT NOT NULL REFERENCES Locations,
     picture TEXT, -- TODO be able to add picture
     description TEXT NOT NULL,
     seller CHAR(12) NOT NULL REFERENCES Sellers,
-    timeOfUpload TIMESTAMP NOT NULL --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
+    timeOfUpload TIMESTAMP NOT NULL, --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
+    FOREIGN KEY (category, name) REFERENCES ValidProducts(category,product)
 
 
 );

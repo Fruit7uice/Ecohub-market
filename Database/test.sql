@@ -7,10 +7,10 @@ INSERT INTO Sellers VALUES ('199811200000', 'Alex', '0739936668', 'Selling hot c
 INSERT INTO Sellers VALUES ('200008060101', 'Josefin', '0707744757', 'Selling locally fished pike');
 INSERT INTO Sellers VALUES ('199402234323','Elias', '0705938902','Selling fine meat');
 
-INSERT INTO Locations VALUES('Lindholmsallén 25', '57.709043, 11.937399');
-INSERT INTO Locations VALUES('Kommendörsgatan 5', '57.698048, 11.929185');
-INSERT INTO Locations VALUES('Första Långgatan 12F', '57.69970, 11.94979');
-INSERT INTO Locations VALUES('Kulvertkonstens väg 11', '57.75809, 11.95134');
+INSERT INTO Locations VALUES('Lindholmsallén 25','41753','Göteborg', '57.709043, 11.937399');
+INSERT INTO Locations VALUES('Kommendörsgatan 5', '41459','Göteborg','57.698048, 11.929185');
+INSERT INTO Locations VALUES('Första Långgatan 12F', '41656','Göteborg', '57.69970, 11.94979');
+INSERT INTO Locations VALUES('Kulvertkonstens väg 11','42250','Göteborg', '57.75809, 11.95134');
 
  -- Parenthesis (following products) does not include id-attribute since it depends on the order. Fixed with serial in table Product.
 INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)

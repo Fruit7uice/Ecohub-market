@@ -41,6 +41,8 @@ the database.
 */  
 CREATE TABLE Locations (
     adress TEXT PRIMARY KEY,
+    zipcode CHAR(5) NOT NULL,
+    city TEXT NOT NULL,
     coordinates POINT -- TODO make trigger for 
                       -- automatically inserting coordinates
     
@@ -66,6 +68,7 @@ CREATE TABLE Products(
     id SERIAL PRIMARY KEY, -- Increments with SERIAL
     name TEXT NOT NULL,
     category TEXT NOT NULL,
+    title TEXT NOT NULL,
     price FLOAT CHECK (price >=0),
     unit CHAR(12) CHECK (unit in ('kg', 'hg', 'g', 'pcs')),
     locations TEXT NOT NULL REFERENCES Locations,

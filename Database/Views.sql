@@ -34,3 +34,8 @@ CREATE VIEW simpleProductInfo AS (
     WHERE Products.seller = Sellers.id
 );
 
+CREATE VIEW columnProductInfo AS (
+    SELECT name, price, unit, locations, timeOfUpload
+    FROM Products
+)
+

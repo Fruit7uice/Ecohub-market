@@ -21,8 +21,11 @@ INSERT INTO Products (title, name ,category, price, unit, locations, picture, de
 VALUES ('Cherry tomatoes', 'Tomatoes', 'Vegetables',10,'pcs', 'Kommendörsgatan 5', NULL, 
                            'fine tomatoes 10 kr a piece', 199912013243, CURRENT_TIMESTAMP );
 
+
+
 INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
 VALUES ( 'Fresh fish','Pikes', 'Meats', 300, 'kg', 'Lindholmsallén 25', NULL, 
+
                             'Freschly grinded älgfärs', 200008060101, CURRENT_TIMESTAMP );
 
 INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
@@ -81,4 +84,8 @@ VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Chalmersgatan 5
 VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
                              199402234333, CURRENT_TIMESTAMP );*/
 
+-- Product does not match category
+/*INSERT INTO Products (name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
+VALUES ('Bananas', 'Meats', 25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
+                             199402234323, CURRENT_TIMESTAMP );*/
 

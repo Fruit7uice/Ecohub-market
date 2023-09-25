@@ -2,7 +2,9 @@ module.exports = {
     retrieveAllSellers,
     getClient,
     retrieveProductInfo,
-    insertSeller
+    insertSeller,
+    insertLocation,
+    insertProducts
 };
 
 const { Client } = require('pg');
@@ -98,12 +100,7 @@ function insertSeller(client, sellerInfo){
 
 
                 })}
- 
-            
-        
-
-    
-    
+     
     
 
 /*
@@ -113,7 +110,6 @@ seller function
 retrive info from JSON, save in variables
 client.connect
 insert info into sellerTable
-
 
 
 location function
@@ -129,17 +125,17 @@ function insertLocation(client, locationInfo){
            .catch(err => reject('Error connecting to PostgreSQL', err));
 
            // const [sellerId, sellerName, sellerPhoneNumber, sellerDescription] = sellerInfo;
-            const sellerId = sellerInfo.id;
-            const sellerName = sellerInfo.name;
-            const sellerPhoneNumber = sellerInfo.phoneNumber;
-            const sellerDescription = sellerInfo.description;
+            const locationAdress = locationInfo.adress;
+            const locationZipcode = locationInfo.zipcode;
+            const locationCity = locationInfo.city;
+            const locationCoordinates = locationInfo.coordinates;
 
             const insertQuery = `
-            INSERT INTO Locations (id, name, phoneNumber, description)
+            INSERT INTO Locations (adress, zipcode, city, coordinates)
             VALUES ($1, $2, $3, $4)
             `;
     
-            const values = [sellerId, sellerName, sellerPhoneNumber, sellerDescription];
+            const values = [locationAdress, locationZipcode, locationCity, locationCoordinates];
 
             client.query(insertQuery, values)
      
@@ -152,54 +148,43 @@ function insertLocation(client, locationInfo){
 
 
                 })}
-/*
 
-product function
------------------
-retrive info from JSON, save in variables
-client.connect
-insert info into productTable
+function insertProducts(client, productInfo){
+    return new Promise((resolve, reject) => {
+        client.connect() 
+            .then(() => console.log('Connected to PostgreSQL database in insertSeller'))
+            .catch(err => reject('Error connecting to PostgreSQL', err));
 
-*/
+            // const [sellerId, sellerName, sellerPhoneNumber, sellerDescription] = sellerInfo;
+            const productName = productInfo.name;
+            const productCategory = productInfo.category;
+            const productTitle = productInfo.title;
+            const productPrice = productInfo.price;
+            const productUnit = productInfo.unit;
+            const productLocation = productInfo.location;
+            const productPicture = productInfo.picture;
+            const productDescription = productInfo.description;
+            const productSeller = productInfo.seller;
 
+            const insertQuery = `
+            INSERT INTO Products (name, category, title, price, unit, 
+                                 location, picture, description, seller)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+            `;
+    
+            const values = [productName, productCategory, productTitle, 
+                            productPrice, productUnit, productLocation, productPicture, 
+                            productDescription, productSeller];
 
-
-// Function to insert seller information
-// async function insertSeller(sellerInfo) {
-//   try {
-//     // Connect to the PostgreSQL database
-//     await client.connect();
-
-//     // Extract information from the JSON object (assuming it contains relevant fields)
-//     const { sellerName, sellerEmail, sellerPhone } = sellerInfo;
-
-//     // Define your SQL query to insert data into the sellerTable
-//     const insertQuery = `
-//       INSERT INTO sellerTable (name, email, phone)
-//       VALUES ($1, $2, $3)
-//     `;
-
-//     // Execute the SQL query with the provided data
-//     await client.query(insertQuery, [sellerName, sellerEmail, sellerPhone]);
-
-//     console.log('Seller information inserted successfully.');
-//   } catch (error) {
-//     console.error('Error inserting seller information:', error);
-//   } finally {
-//     // Disconnect from the database
-//     await client.end();
-//   }
-// }
-
-// Example usage:
-// const sellerInfo = {
-//   sellerName: 'John Doe',
-//   sellerEmail: 'john@example.com',
-//   sellerPhone: '123-456-7890',
-// };
-
-// insertSeller(sellerInfo);
+            client.query(insertQuery, values)
+        
+            .then(result => {
+            console.log('Data inserted successfully');
+            })
+            .catch(error => {
+            console.error('Error inserting data', error);
+            });
 
 
-
+                })} 
 

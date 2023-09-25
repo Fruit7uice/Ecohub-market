@@ -165,3 +165,4 @@ INSERT INTO ValidProducts (category,product) VALUES
     ('Mushrooms', 'Chanterelle Mushrooms'),
     ('Mushrooms', 'Oyster Mushrooms'),
     ('Mushrooms', 'Porcini Mushrooms');
+   

@@ -35,8 +35,44 @@ const jsonObject =
     } 
 
 
+
+
+
 const client = dbCon.getClient();
 dbCon.insertSeller(client, jsonObject);
+
+
+
+const LocationJSON = 
+    {
+      "adress": "kuggen",
+      "zipcode": 41653,
+      "city": "Göteborg",
+      "coordinates": '57, 11'
+    } 
+
+const client2 = dbCon.getClient();
+//dbCon.insertLocation(client2, LocationJSON);
+
+const productJSON = 
+    {
+        "name" : 'Bananas',
+        "category" : 'Fruits',
+        "title" : 'Magic bananas',
+        "price" : 25,
+        "unit" : 'kg',
+        "location" : 'kuggen',
+        "picture" : null,
+        "decription" : 'hello',
+        "seller" : 123456789000
+
+        
+    }
+
+
+//const client3 = dbCon.getClient();
+//dbCon.insertProducts(client3, productJSON);
+
 
 app.listen(port, () => {
     console.log(`Server is running on: http://localhost:${port}`);

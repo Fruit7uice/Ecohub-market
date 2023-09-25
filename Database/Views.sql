@@ -13,9 +13,6 @@ SELECT * FROM Sellers
 ); 
 
 
-
-
-
 -- A view of all added locations.
 CREATE VIEW allLocations AS (
 SELECT * FROM Locations
@@ -37,5 +34,11 @@ CREATE VIEW simpleProductInfo AS (
 CREATE VIEW columnProductInfo AS (
     SELECT name, price, unit, locations, timeOfUpload
     FROM Products
-)
+);
 
+
+SELECT * FROM Sellers;
+
+SELECT * FROM Locations;
+
+SELECT * FROM Products

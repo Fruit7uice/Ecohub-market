@@ -71,11 +71,11 @@ CREATE TABLE Products(
     title TEXT NOT NULL,
     price FLOAT CHECK (price >=0),
     unit CHAR(12) CHECK (unit in ('kg', 'hg', 'g', 'pcs')),
-    locations TEXT NOT NULL REFERENCES Locations,
+    location TEXT NOT NULL REFERENCES Locations,
     picture TEXT, -- TODO be able to add picture
-    description TEXT NOT NULL,
+    description TEXT,
     seller CHAR(12) NOT NULL REFERENCES Sellers,
-    timeOfUpload TIMESTAMP NOT NULL, --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
+    timeOfUpload TIMESTAMP, --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
     FOREIGN KEY (category, name) REFERENCES ValidProducts(category,product)
 
 

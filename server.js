@@ -25,6 +25,39 @@ app.get('/getproducts', (req, res) => {
         });
 });
 
+const jsonObject = [
+    {
+      "id": 1,
+      "name": "Goran",
+      "phonenumber": "00000000",
+      "description": "hello"
+    } ]
+
+dbCon.insertSeller(client, jsonObject);
+
+//[
+    // {
+    //     "id": 1,
+    //     "name": "John Doe",
+    //     "phonenumber": "+1 (123) 456-7890"
+    //   },
+
+// app.get('/insertSellers', (req, res) => {
+//     const client = dbCon.getClient();
+
+//     console.log("Inside Api Call: /InsertSellers")
+//     dbCon.insertSeller(client)
+//         .then(result => {
+//             console.log("SQL Inserts successful")
+//             res.json(result);
+//             console.log("JSON Retrieved!")
+//         })
+//         .catch(error => {
+//             console.error(error);
+//             res.status(500).json({ error: 'Internal Server Error' });
+//         });
+// });
+
 
 
 app.listen(port, () => {

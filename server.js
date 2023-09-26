@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000;
 const dbCon = require('./connection.js');
+const insertHandler = require('./InsertHandler.js');
 
 
 
@@ -40,7 +41,7 @@ const jsonObject =
 
 const LocationJSON = 
     {
-      "adress": "kuggen",
+      "adress": 'kuggen',
       "zipcode": 41653,
       "city": "Göteborg",
       "coordinates": '57, 11'
@@ -56,9 +57,9 @@ const productJSON =
         "title" : 'Magic bananas',
         "price" : 25,
         "unit" : 'kg',
-        "location" : 'kuggen',
+        "locations" : 'kuggen',
         "picture" : null,
-        "decription" : 'hello',
+        "description" : 'hello',
         "seller" : 123456789000
      
     }
@@ -67,9 +68,9 @@ const productJSON =
 const client = dbCon.getClient();
 //dbCon.insertProducts(client3, productJSON);
 
-//dbCon.insertSeller(dbCon.getClient(), jsonObject);
-//dbCon.insertLocation(dbCon.getClient(), LocationJSON);
-//dbCon.insertProduct(dbCon.getClient(), productJSON);
+insertHandler.insertSeller(dbCon.getClient(), jsonObject);
+insertHandler.insertLocation(dbCon.getClient(), LocationJSON);
+insertHandler.insertProduct(dbCon.getClient(), productJSON);
 
 app.listen(port, () => {
     console.log(`Server is running on: http://localhost:${port}`);

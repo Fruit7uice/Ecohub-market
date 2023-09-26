@@ -30,7 +30,7 @@ function insertData(client, table, data) {
             console.error('Error inserting data', error);
             });
 })}
-// Inserts sellersData into the 'Sellers' table using the provided PostgreSQL client
+//Inserts sellersData into the 'Sellers' table using the provided PostgreSQL client
 function insertSeller(client, sellerData) {
     insertData(client, 'Sellers', sellerData);
 }
@@ -108,7 +108,7 @@ function insertProduct(client, productData) {
 
 //                 })}
 
-// function insertProducts(client, productInfo){
+// function insertProduct(client, productInfo){
 //     return new Promise((resolve, reject) => {
 //         client.connect() 
 //             .then(() => console.log('Connected to PostgreSQL database in insertSeller'))
@@ -120,14 +120,14 @@ function insertProduct(client, productData) {
 //             const productTitle = productInfo.title;
 //             const productPrice = productInfo.price;
 //             const productUnit = productInfo.unit;
-//             const productLocation = productInfo.location;
+//             const productLocation = productInfo.locations;
 //             const productPicture = productInfo.picture;
 //             const productDescription = productInfo.description;
 //             const productSeller = productInfo.seller;
 
 //             const insertQuery = `
 //             INSERT INTO Products (name, category, title, price, unit, 
-//                                  location, picture, description, seller)
+//                                  locations, picture, description, seller)
 //             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
 //             `;
     

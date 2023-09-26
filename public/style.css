@@ -153,9 +153,6 @@ main{
 
 }
 
-
-
-
 .right-content{
     width: 70%;
     height: 100%;
@@ -163,7 +160,6 @@ main{
     flex-direction: column;
     flex: 3;
 }
-
 
 .map{
     border: 1 solid black;
@@ -207,6 +203,8 @@ main{
     border: 0px solid transparent;
     width: 80%;
     height: 40px;
+    font-family: 'Alice';
+
     border-radius: 30px;
     padding-left: 2.2rem;
 }

@@ -76,8 +76,8 @@ CREATE TABLE Products(
     picture TEXT, -- TODO be able to add picture
     description TEXT,
     seller CHAR(12) NOT NULL REFERENCES Sellers,
-    timeOfUpload TIMESTAMP NOT NULL, --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
-    FOREIGN KEY (category, name) REFERENCES ValidProducts(category,product)
+    timeOfUpload TIMESTAMP DEFAULT CURRENT_TIMESTAMP, --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
+    FOREIGN KEY (category, name) REFERENCES ValidProducts(category,product),
     FOREIGN KEY (locationZipcode, locationAdress) REFERENCES Locations(zipcode, adress) -- Reference both columns as a composite foreign key
 
 

@@ -55,7 +55,7 @@ function retrieveProductInfo(client) {
             if (err) {
                 reject('Error executing query in retrieveProduct', err);
             } else {
-           //     console.log(res.rows)
+                console.log(res.rows)
                 console.log("Rows Retrieved")
                 resolve(res.rows);
             }

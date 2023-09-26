@@ -28,7 +28,8 @@ const productJSON =
         "title" : 'Magic bananas',
         "price" : 500,
         "unit" : 'kg',
-        "locations" : 'kuggen',
+        "locationAdress" : 'kuggen',
+        "locationZipCode" : 41653,
         "picture" : null,
         "description" : 'hello',
         "seller" : 123456789000

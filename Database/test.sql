@@ -21,7 +21,7 @@ INSERT INTO Products (title, name ,category, price, unit,locationAdress, locatio
 VALUES ('Cherry tomatoes', 'Tomatoes', 'Vegetables',10,'pcs', 'Kommendörsgatan 5','41459', NULL, 
                            'fine tomatoes 10 kr a piece', 199912013243, CURRENT_TIMESTAMP );
 
-INSERT INTO Products (title, name ,category, price, unit, llocationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller, timeOfUpload)
 VALUES ( 'Fresh fish','Pikes', 'Seafoods', 300, 'kg', 'Lindholmsallén 25','41753', NULL, 
                             'Freschly grinded älgfärs', 200008060101, CURRENT_TIMESTAMP );
 

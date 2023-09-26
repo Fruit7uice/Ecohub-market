@@ -13,25 +13,25 @@ INSERT INTO Locations VALUES('Första Långgatan 12F', '41656','Göteborg', '57.
 INSERT INTO Locations VALUES('Kulvertkonstens väg 11','42250','Göteborg', '57.75809, 11.95134');
 
  -- Parenthesis (following products) does not include id-attribute since it depends on the order. Fixed with serial in table Product.
-INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ('Hothot chillis (very spicy)','Habanero chillis', 'Vegetables',10, 'pcs', 'Kulvertkonstens väg 11', NULL,
+INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+VALUES ('Hothot chillis (very spicy)','Habanero chillis', 'Vegetables',10, 'pcs', 'Kulvertkonstens väg 11','42250', NULL,
                              'hot chillis 10 kr a piece', 199811200000, CURRENT_TIMESTAMP );
 
-INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ('Cherry tomatoes', 'Tomatoes', 'Vegetables',10,'pcs', 'Kommendörsgatan 5', NULL, 
+INSERT INTO Products (title, name ,category, price, unit,locationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+VALUES ('Cherry tomatoes', 'Tomatoes', 'Vegetables',10,'pcs', 'Kommendörsgatan 5','41459', NULL, 
                            'fine tomatoes 10 kr a piece', 199912013243, CURRENT_TIMESTAMP );
 
-INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ( 'Fresh fish','Pikes', 'Seafoods', 300, 'kg', 'Lindholmsallén 25', NULL, 
+INSERT INTO Products (title, name ,category, price, unit, llocationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+VALUES ( 'Fresh fish','Pikes', 'Seafoods', 300, 'kg', 'Lindholmsallén 25','41753', NULL, 
                             'Freschly grinded älgfärs', 200008060101, CURRENT_TIMESTAMP );
 
-INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
+INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Första Långgatan 12F','41656', NULL, 'Magical fruits',
                              199402234323, CURRENT_TIMESTAMP );
 
 -- Same seller selling from different locations.
-INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ('Very fine tomatoes','Tomatoes', 'Vegetables',10,'pcs', 'Första Långgatan 12F', NULL, 
+INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+VALUES ('Very fine tomatoes','Tomatoes', 'Vegetables',10,'pcs', 'Första Långgatan 12F','41656', NULL, 
                            'fine tomatoes 10 kr a piece', 199912013243, CURRENT_TIMESTAMP );                             
 
 ---------------------------------------------------------------------------------------------------------
@@ -50,39 +50,37 @@ VALUES ('Very fine tomatoes','Tomatoes', 'Vegetables',10,'pcs', 'Första Långga
 --INSERT INTO Sellers VALUES ('199912013243', 'Moa', 'HELLO0725452671', 'Selling very fine tomatoes');
 
 --Negative price
-/*INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ('Perfect yellow bananas','Bananas', 'Fruits', -25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
+/*INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+VALUES ('Perfect yellow bananas','Bananas', 'Fruits', -25, 'kg', 'Första Långgatan 12F','41656', NULL, 'Magical fruits',
                              199402234323, CURRENT_TIMESTAMP );*/
                              
 --Invalid name on product
-/*   INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ('Big elephant','Elephant', 'Fruits', 25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
+/*   INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+VALUES ('Big elephant','Elephant', 'Fruits', 25, 'kg', 'Första Långgatan 12F', '41656', NULL, 'Magical fruits',
                              199402234323, CURRENT_TIMESTAMP );*/
-
                           
 -- A category that does not exist
-/*INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ('Perfect yellow bananas','Bananas', 'Ivory', 25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
+/*INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+VALUES ('Perfect yellow bananas','Bananas', 'Ivory', 25, 'kg', 'Första Långgatan 12F', '41656', NULL, 'Magical fruits',
                              199402234323, CURRENT_TIMESTAMP );*/
 
 -- Non-existing unit
-/*INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'tonnes', 'Första Långgatan 12F', NULL, 'Magical fruits',
+/*INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'tonnes', 'Första Långgatan 12F', '41656', NULL, 'Magical fruits',
                              199402234323, CURRENT_TIMESTAMP );*/
 
-
  -- Non existing location
-/*INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Chalmersgatan 5', NULL, 'Magical fruits',
+/*INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Chalmersgatan 5','43214', NULL, 'Magical fruits',
                              199402234323, CURRENT_TIMESTAMP );*/
                              
 -- Non-existing Seller (wrong seller id)
-/*INSERT INTO Products (title, name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
+/*INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Första Långgatan 12F','41656', NULL, 'Magical fruits',
                              199402234333, CURRENT_TIMESTAMP );*/
 
 -- Product does not match category
-/*INSERT INTO Products (name ,category, price, unit, locations, picture, description, seller, timeOfUpload)
-VALUES ('Bananas', 'Meats', 25, 'kg', 'Första Långgatan 12F', NULL, 'Magical fruits',
+/*INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller, timeOfUpload)
+VALUES ('Perfect yellow bananas','Bananas', 'Meats', 25, 'kg', 'Första Långgatan 12F','41656', NULL, 'Magical fruits',
                              199402234323, CURRENT_TIMESTAMP );*/
 

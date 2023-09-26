@@ -4,7 +4,7 @@
 const insertHandler = require('./InsertHandler.js');
 const dbCon = require('./connection.js');
 
-
+// Example JSON file for a seller
 const sellerJSON = 
     {
       "id": 123456789000,
@@ -13,9 +13,9 @@ const sellerJSON =
       "description": "hello"
     } 
 
-const LocationJSON = 
+const locationJSON = 
     {
-      "adress": 'kuggen',
+      "adress": 'Kuggen',
       "zipcode": 41653,
       "city": "Göteborg",
       "coordinates": '57, 11'
@@ -23,15 +23,15 @@ const LocationJSON =
 
 const productJSON = 
     {
-        "name" : 'Bananas',
-        "category" : 'Fruits',
-        "title" : 'Magic bananas',
-        "price" : 500,
+        "name" : 'Blueberries',
+        "category" : 'Berries',
+        "title" : 'Very blue berries',
+        "price" : 3,
         "unit" : 'kg',
-        "locationAdress" : 'kuggen',
+        "locationAdress" : 'Kuggen',
         "locationZipCode" : 41653,
         "picture" : null,
-        "description" : 'hello',
+        "description" : 'blue and round',
         "seller" : 123456789000
     
      
@@ -39,5 +39,5 @@ const productJSON =
 
 
 insertHandler.insertSeller(dbCon.getClient(), sellerJSON);
-insertHandler.insertLocation(dbCon.getClient(), LocationJSON);
+insertHandler.insertLocation(dbCon.getClient(), locationJSON);
 insertHandler.insertProduct(dbCon.getClient(), productJSON);

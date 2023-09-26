@@ -31,12 +31,13 @@ CREATE VIEW simpleProductInfo AS (
     WHERE Products.seller = Sellers.id
 );
 
+-- Contains all info used for the product-element in the seller column. Orders by lowest price first.
 CREATE VIEW columnProductInfo AS (
-    SELECT name, price, unit, locationAdress, timeOfUpload
+    SELECT name, price, unit, locationAdress, timeOfUpload, title
     FROM Products
+    ORDER BY price ASC
     
 );
-
 
 SELECT * FROM Sellers;
 

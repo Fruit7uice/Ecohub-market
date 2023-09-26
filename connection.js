@@ -4,7 +4,8 @@ module.exports = {
     retrieveProductInfo,
     insertSeller,
     insertLocation,
-    insertProducts
+    insertProduct, 
+    insertData
 };
 
 const { Client } = require('pg');
@@ -69,122 +70,145 @@ function retrieveProductInfo(client) {
 //---------------------------------------
 // User story 38
 
-
-function insertSeller(client, sellerInfo){
+function insertData(client, table, data) {
+   
     return new Promise((resolve, reject) => {
+        const columns = Object.keys(data);
+        const values = Object.values(data);
+
+        const placeholders = columns.map((col, index) => `$${index + 1}`).join(', ');
+        const insertQuery = `INSERT INTO ${table} (${columns.join(', ')}) VALUES (${placeholders})`;
+
         client.connect() 
-           .then(() => console.log('Connected to PostgreSQL database in insertSeller'))
-           .catch(err => reject('Error connecting to PostgreSQL', err));
-
-           // const [sellerId, sellerName, sellerPhoneNumber, sellerDescription] = sellerInfo;
-            const sellerId = sellerInfo.id;
-            const sellerName = sellerInfo.name;
-            const sellerPhoneNumber = sellerInfo.phoneNumber;
-            const sellerDescription = sellerInfo.description;
-
-            const insertQuery = `
-            INSERT INTO Sellers (id, name, phoneNumber, description)
-            VALUES ($1, $2, $3, $4)
-            `;
-    
-            const values = [sellerId, sellerName, sellerPhoneNumber, sellerDescription];
-
-            client.query(insertQuery, values)
-     
-            .then(result => {
-            console.log('Data inserted successfully');
-            })
-            .catch(error => {
-            console.error('Error inserting data', error);
-            });
-
-
-                })}
-     
-    
-
-/*
-seller function
----------------
-
-retrive info from JSON, save in variables
-client.connect
-insert info into sellerTable
-
-
-location function
-------------------
-retrive info from JSON, save in variables
-client.connect
-insert info into lactionTable
-*/
-function insertLocation(client, locationInfo){
-    return new Promise((resolve, reject) => {
-        client.connect() 
-           .then(() => console.log('Connected to PostgreSQL database in insertSeller'))
-           .catch(err => reject('Error connecting to PostgreSQL', err));
-
-           // const [sellerId, sellerName, sellerPhoneNumber, sellerDescription] = sellerInfo;
-            const locationAdress = locationInfo.adress;
-            const locationZipcode = locationInfo.zipcode;
-            const locationCity = locationInfo.city;
-            const locationCoordinates = locationInfo.coordinates;
-
-            const insertQuery = `
-            INSERT INTO Locations (adress, zipcode, city, coordinates)
-            VALUES ($1, $2, $3, $4)
-            `;
-    
-            const values = [locationAdress, locationZipcode, locationCity, locationCoordinates];
-
-            client.query(insertQuery, values)
-     
-            .then(result => {
-            console.log('Data inserted successfully');
-            })
-            .catch(error => {
-            console.error('Error inserting data', error);
-            });
-
-
-                })}
-
-function insertProducts(client, productInfo){
-    return new Promise((resolve, reject) => {
-        client.connect() 
-            .then(() => console.log('Connected to PostgreSQL database in insertSeller'))
+            .then(() => console.log('Connected to PostgreSQL database in insertData'))
             .catch(err => reject('Error connecting to PostgreSQL', err));
 
-            // const [sellerId, sellerName, sellerPhoneNumber, sellerDescription] = sellerInfo;
-            const productName = productInfo.name;
-            const productCategory = productInfo.category;
-            const productTitle = productInfo.title;
-            const productPrice = productInfo.price;
-            const productUnit = productInfo.unit;
-            const productLocation = productInfo.location;
-            const productPicture = productInfo.picture;
-            const productDescription = productInfo.description;
-            const productSeller = productInfo.seller;
-
-            const insertQuery = `
-            INSERT INTO Products (name, category, title, price, unit, 
-                                 location, picture, description, seller)
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-            `;
-    
-            const values = [productName, productCategory, productTitle, 
-                            productPrice, productUnit, productLocation, productPicture, 
-                            productDescription, productSeller];
-
-            client.query(insertQuery, values)
-        
+        client.query(insertQuery, values)
+            
             .then(result => {
             console.log('Data inserted successfully');
+                
             })
             .catch(error => {
             console.error('Error inserting data', error);
             });
+            
+         
 
 
-                })} 
+})}
+
+function insertSeller(client, sellerData) {
+    insertData(client, 'Sellers', sellerData);
+}
+
+function insertLocation(client, locationData) {
+    insertData(client, 'Locations', locationData);
+}
+
+function insertProduct(client, productData) {
+    insertData(client, 'Products', productData)
+}
+
+
+// function insertSeller(client, sellerInfo){
+//     return new Promise((resolve, reject) => {
+//         client.connect() 
+//            .then(() => console.log('Connected to PostgreSQL database in insertSeller'))
+//            .catch(err => reject('Error connecting to PostgreSQL', err));
+
+//            // const [sellerId, sellerName, sellerPhoneNumber, sellerDescription] = sellerInfo;
+//             const sellerId = sellerInfo.id;
+//             const sellerName = sellerInfo.name;
+//             const sellerPhoneNumber = sellerInfo.phoneNumber;
+//             const sellerDescription = sellerInfo.description;
+
+//             const insertQuery = `
+//             INSERT INTO Sellers (id, name, phoneNumber, description)
+//             VALUES ($1, $2, $3, $4)
+//             `;
+    
+//             const values = [sellerId, sellerName, sellerPhoneNumber, sellerDescription];
+
+//             client.query(insertQuery, values)
+     
+//             .then(result => {
+//             console.log('Data inserted successfully');
+//             })
+//             .catch(error => {
+//             console.error('Error inserting data', error);
+//             });
+
+
+//                 })}
+
+// function insertLocation(client, locationInfo){
+//     return new Promise((resolve, reject) => {
+//         client.connect() 
+//            .then(() => console.log('Connected to PostgreSQL database in insertSeller'))
+//            .catch(err => reject('Error connecting to PostgreSQL', err));
+
+//            // const [sellerId, sellerName, sellerPhoneNumber, sellerDescription] = sellerInfo;
+//             const locationAdress = locationInfo.adress;
+//             const locationZipcode = locationInfo.zipcode;
+//             const locationCity = locationInfo.city;
+//             const locationCoordinates = locationInfo.coordinates;
+
+//             const insertQuery = `
+//             INSERT INTO Locations (adress, zipcode, city, coordinates)
+//             VALUES ($1, $2, $3, $4)
+//             `;
+    
+//             const values = [locationAdress, locationZipcode, locationCity, locationCoordinates];
+
+//             client.query(insertQuery, values)
+     
+//             .then(result => {
+//             console.log('Data inserted successfully');
+//             })
+//             .catch(error => {
+//             console.error('Error inserting data', error);
+//             });
+
+
+//                 })}
+
+// function insertProducts(client, productInfo){
+//     return new Promise((resolve, reject) => {
+//         client.connect() 
+//             .then(() => console.log('Connected to PostgreSQL database in insertSeller'))
+//             .catch(err => reject('Error connecting to PostgreSQL', err));
+
+//             // const [sellerId, sellerName, sellerPhoneNumber, sellerDescription] = sellerInfo;
+//             const productName = productInfo.name;
+//             const productCategory = productInfo.category;
+//             const productTitle = productInfo.title;
+//             const productPrice = productInfo.price;
+//             const productUnit = productInfo.unit;
+//             const productLocation = productInfo.location;
+//             const productPicture = productInfo.picture;
+//             const productDescription = productInfo.description;
+//             const productSeller = productInfo.seller;
+
+//             const insertQuery = `
+//             INSERT INTO Products (name, category, title, price, unit, 
+//                                  location, picture, description, seller)
+//             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+//             `;
+    
+//             const values = [productName, productCategory, productTitle, 
+//                             productPrice, productUnit, productLocation, productPicture, 
+//                             productDescription, productSeller];
+
+//             client.query(insertQuery, values)
+        
+//             .then(result => {
+//             console.log('Data inserted successfully');
+//             })
+//             .catch(error => {
+//             console.error('Error inserting data', error);
+//             });
+
+
+//                 })} 
 

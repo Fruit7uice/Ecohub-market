@@ -38,10 +38,8 @@ const jsonObject =
 
 
 
-const client = dbCon.getClient();
-dbCon.insertSeller(client, jsonObject);
-
-
+// const client = dbCon.getClient();
+// dbCon.insertSeller(client, jsonObject);
 
 const LocationJSON = 
     {
@@ -51,8 +49,8 @@ const LocationJSON =
       "coordinates": '57, 11'
     } 
 
-const client2 = dbCon.getClient();
-//dbCon.insertLocation(client2, LocationJSON);
+// const client2 = dbCon.getClient();
+// dbCon.insertLocation(client2, LocationJSON);
 
 const productJSON = 
     {
@@ -70,9 +68,12 @@ const productJSON =
     }
 
 
-//const client3 = dbCon.getClient();
+const client = dbCon.getClient();
 //dbCon.insertProducts(client3, productJSON);
 
+dbCon.insertSeller(dbCon.getClient(), jsonObject);
+dbCon.insertLocation(dbCon.getClient(), LocationJSON);
+dbCon.insertProduct(dbCon.getClient(), productJSON);
 
 app.listen(port, () => {
     console.log(`Server is running on: http://localhost:${port}`);

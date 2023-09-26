@@ -15,13 +15,23 @@ var counter = 1;
 // hides the "Next" button, and makes the "Register" button visible.
 // The function also logs the current value of counter to the console.
 function forwardProgress() {
+        var form1 = document.getElementById('form-1')
+        var form2 = document.getElementById('form-2')
+        var form3 = document.getElementById('form-3')
 
     if (!(counter >= 3)) {
+        var form1 = document.getElementById('form-1')
+        form1.style.zIndex = 1;
         counter++;
     }
     if (counter == 2) {
         const state2 = document.getElementById('state2');
         const line1 = document.getElementById('line1');
+
+        
+        form1.style.zIndex = -1;
+        form2.style.zIndex = 1;
+        form3.style.zIndex = -1;
 
         state2.style.border = "5px solid " + activeColor;
         state2.style.color = activeColor;
@@ -34,6 +44,12 @@ function forwardProgress() {
     if (counter == 3) {
         const state3 = document.getElementById('state3');
         const line2 = document.getElementById('line2');
+
+     
+        form1.style.zIndex = -1;
+        form2.style.zIndex = -1;
+        form3.style.zIndex = 1;
+
 
         state3.style.border = "5px solid " + activeColor;
         state3.style.color = activeColor;
@@ -59,6 +75,9 @@ function forwardProgress() {
 // The function assumes the existence of HTML elements 
 // with specific IDs and uses the passiveColor variable for styling.
 function backwardProgress() {
+    var form1 = document.getElementById('form-1')
+    var form2 = document.getElementById('form-2')
+    var form3 = document.getElementById('form-3')
 
     if (!(counter <= 1)) {
         counter--;
@@ -66,6 +85,10 @@ function backwardProgress() {
     if (counter == 1) {
         const state2 = document.getElementById('state2');
         const line1 = document.getElementById('line1');
+
+        form1.style.zIndex = 1;
+        form2.style.zIndex = -1;
+        form3.style.zIndex = -1;
 
         state2.style.border = "5px solid " + passiveColor;
         state2.style.color = passiveColor;
@@ -78,6 +101,10 @@ function backwardProgress() {
     if (counter == 2) {
         const state3 = document.getElementById('state3');
         const line2 = document.getElementById('line2');
+
+        form1.style.zIndex = -1;
+        form2.style.zIndex = 1;
+        form3.style.zIndex = -1;
 
         state3.style.border = "5px solid " + passiveColor;
         state3.style.color = passiveColor;

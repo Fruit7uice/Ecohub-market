@@ -4,6 +4,7 @@ const port = 3000;
 const dbCon = require('./connection.js');
 
 
+
 app.use(express.static('public'));
 
 
@@ -34,10 +35,6 @@ const jsonObject =
       "description": "hello"
     } 
 
-
-
-
-
 // const client = dbCon.getClient();
 // dbCon.insertSeller(client, jsonObject);
 
@@ -63,17 +60,16 @@ const productJSON =
         "picture" : null,
         "decription" : 'hello',
         "seller" : 123456789000
-
-        
+     
     }
 
 
 const client = dbCon.getClient();
 //dbCon.insertProducts(client3, productJSON);
 
-dbCon.insertSeller(dbCon.getClient(), jsonObject);
-dbCon.insertLocation(dbCon.getClient(), LocationJSON);
-dbCon.insertProduct(dbCon.getClient(), productJSON);
+//dbCon.insertSeller(dbCon.getClient(), jsonObject);
+//dbCon.insertLocation(dbCon.getClient(), LocationJSON);
+//dbCon.insertProduct(dbCon.getClient(), productJSON);
 
 app.listen(port, () => {
     console.log(`Server is running on: http://localhost:${port}`);

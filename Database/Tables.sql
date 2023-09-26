@@ -40,11 +40,11 @@ Possible problem: If a seller adds a product on a location that is already in
 the database.
 */  
 CREATE TABLE Locations (
-    adress TEXT PRIMARY KEY,
+    adress TEXT PRIMARY KEY ,
     zipcode CHAR(5) NOT NULL,
     city TEXT NOT NULL,
     coordinates POINT -- TODO make trigger for 
-                      -- automatically inserting coordinates
+                 -- automatically inserting coordinates
     
 );
 

@@ -51,10 +51,11 @@ function retrieveProductInfo(client) {
             .then(() => console.log('Connected to PostgreSQL database'))
             .catch(err => reject('Error connecting to PostgreSQL', err));
 
-        client.query('SELECT * FROM columnProductInfo;', (err, res) => {
+        const result = client.query('SELECT * FROM columnProductInfo;', (err, res) => {
             if (err) {
-                reject('Error executing query in retrieveProductInfo', err);
+                reject('Error executing query in retrieveProduct', err);
             } else {
+           //     console.log(res.rows)
                 console.log("Rows Retrieved")
                 resolve(res.rows);
             }

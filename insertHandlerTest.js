@@ -1,8 +1,6 @@
 // Test file for testing the insertHandler.js file. Run node insertHandlerTest to test. 
 // The JSON objects are hardcoded and will, if succesful be inserted into the database.
 
-
-
 const insertHandler = require('./InsertHandler.js');
 const dbCon = require('./connection.js');
 
@@ -28,12 +26,13 @@ const productJSON =
         "name" : 'Bananas',
         "category" : 'Fruits',
         "title" : 'Magic bananas',
-        "price" : 25,
+        "price" : 500,
         "unit" : 'kg',
         "locations" : 'kuggen',
         "picture" : null,
         "description" : 'hello',
         "seller" : 123456789000
+    
      
     }
 

@@ -75,7 +75,7 @@ CREATE TABLE Products(
     picture TEXT, -- TODO be able to add picture
     description TEXT,
     seller CHAR(12) NOT NULL REFERENCES Sellers,
-    timeOfUpload TIMESTAMP, --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
+    timeOfUpload TIMESTAMP DEFAULT CURRENT_TIMESTAMP , --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
     FOREIGN KEY (category, name) REFERENCES ValidProducts(category,product)
 
 

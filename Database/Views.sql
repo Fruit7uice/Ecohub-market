@@ -34,6 +34,7 @@ CREATE VIEW simpleProductInfo AS (
 CREATE VIEW columnProductInfo AS (
     SELECT name, price, unit, locations, timeOfUpload
     FROM Products
+    
 );
 
 

@@ -2,9 +2,6 @@ const express = require('express')
 const app = express()
 const port = 3000;
 const dbCon = require('./connection.js');
-const insertHandler = require('./InsertHandler.js');
-
-
 
 app.use(express.static('public'));
 
@@ -28,49 +25,7 @@ app.get('/getproducts', (req, res) => {
 });
 
 
-const jsonObject = 
-    {
-      "id": 123456789000,
-      "name": "Goran",
-      "phoneNumber": 1234567890,
-      "description": "hello"
-    } 
 
-// const client = dbCon.getClient();
-// dbCon.insertSeller(client, jsonObject);
-
-const LocationJSON = 
-    {
-      "adress": 'kuggen',
-      "zipcode": 41653,
-      "city": "Göteborg",
-      "coordinates": '57, 11'
-    } 
-
-// const client2 = dbCon.getClient();
-// dbCon.insertLocation(client2, LocationJSON);
-
-const productJSON = 
-    {
-        "name" : 'Bananas',
-        "category" : 'Fruits',
-        "title" : 'Magic bananas',
-        "price" : 25,
-        "unit" : 'kg',
-        "locations" : 'kuggen',
-        "picture" : null,
-        "description" : 'hello',
-        "seller" : 123456789000
-     
-    }
-
-
-const client = dbCon.getClient();
-//dbCon.insertProducts(client3, productJSON);
-
-insertHandler.insertSeller(dbCon.getClient(), jsonObject);
-insertHandler.insertLocation(dbCon.getClient(), LocationJSON);
-insertHandler.insertProduct(dbCon.getClient(), productJSON);
 
 app.listen(port, () => {
     console.log(`Server is running on: http://localhost:${port}`);

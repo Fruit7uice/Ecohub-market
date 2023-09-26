@@ -18,101 +18,97 @@
       </a>
       <a href="">Info</a>
     </div>
+    
     <main>
       <div class="container container-form">
         <h1>
           Enter your personal info
         </h1>
         <form>
-        <!--  <div class="form-x" id="form-1">
+      <!--  
+          <div class="form-x" id="form-1">
                           <div class="left-half">
                               <label for="f-name-in">First name:</label>
-                              <input type="text" id="f-name-in" name="f-name-in" placeholder="first name">
+                              <input type="text" id="f-name-in" name="f-name-in" placeholder="First name">
 
                               <label for="personal-nr">Personal number:</label>
-                              <input type="text" id="personal-nr" name="personal-nr" placeholder="yyyymmddxxxx" maxlength="12">
+                              <input type="number" id="personal-nr" name="personal-nr" placeholder="(yyyymmddxxxx)" maxlength="12">
 
                               <label for="adress">Adress:</label>
-                              <input type="text" id="adress" name="adress" placeholder="adress">
+                              <input type="text" id="adress" name="adress" placeholder="Adress">
 
                               <label for="description-in">Description:</label>
-                              <textarea class="c-description-i" id="description-in" name="description-in" placeholder="short discription of yourself" maxlength="350"></textarea>
+                              <textarea id="description-in" name="description-in" placeholder="Short discription of yourself" maxlength="350"></textarea>
                           </div>
                           <div class="right-half">
                                 <label for="l-name-in">Last name:</label>
-                                <input type="text" id="l-name-in" name="l-name-in" placeholder="last name">
+                                <input type="text" id="l-name-in" name="l-name-in" placeholder="Last name">
 
                               <label for="phone-nr">Phonenumber:</label>
-                              <input type="text" id="phone-nr" name="phone-nr" placeholder="phonenumber">
+                              <input type="number" id="phone-nr" name="phone-nr" placeholder="Phonenumber">
                             
                               <div class="c-city-zip">
-                                <div class="c-city">
+                                <div >
                                   <label for="city-in">City:</label>
-                                  <input class="half-input" type="text" id="city-in" name="city" placeholder="city">
+                                  <input class="half-input" type="text" id="city-in" name="city" placeholder="City">
                                 </div>
-                                <div class="c-zip">
+                                <div>
                                   <label for="zip-code-in">Zip code:</label>
-                                  <input class="half-input" type="text" id="zip-code-in" name="zip-code" placeholder="zip code">
+                                  <input class="half-input" type="text" id="zip-code-in" name="zip-code" placeholder="Zip code">
                                 </div>
                             </div>
                           </div>
-            </div>   -->    
+            </div>    
+          -->
+            <!-- left half ---------------------------------------------------->
             <div class="form-x" id="form-2">
-              <div class="f2-left-half">
+              <div> 
                   <label for="p-name-in">Product name:</label>
-                  <input type="text" id="p-name-in" name="p-name-in" placeholder="product name">
+                  <input type="text" id="p-name-in" name="p-name-in" placeholder="Product name">
                   
                   <label for="description-in">Description:</label>
-                  <textarea class="c-description-i" id="description-in" name="description-in" placeholder="short discription of the product" maxlength="350"></textarea>
+                  <textarea id="description-in" name="description-in" placeholder="Short discription of the product" maxlength="350"></textarea>
                   
                   <label for="image">Choose an image:</label>
                   <input class="img-in" type="file" name="image" accept="image/png, image/jpeg" />
                   
                 </div>             
-              
+              <!-- right half ---------------------------------------------------->
               <div class="f2-right-half">
-                <label for="price">price</label>
+                <label for="price">Price</label>
                 
-                <div class="c-price">
+                <div class="c-price">                
+                  <input type="number" placeholder="0">
                   
-                  <input type="price" placeholder="0">
-                  <div class="radio-btns">
-
-                    <label class="container">kr/kg</label>
-                    <input class="checkmark-in" type="radio" checked="checked" name="radio">
-                    
-                    <label class="container">kr/unit</label>
-                    <input class="checkmark-in" type="radio" name="radio">
-                    
-                  </div>
-                  
+                  <div class="unit-dropdown">
+                    <select name="price" id="price">
+                      <option value="" selected="selected">Select pricing</option>
+                    </select>
+                 </div>
+                
                 </div>
-                  <label>Category:</label>
-                  <select name="category" id="category">
+                
+                <label class="r-label">Category:</label>
+                <select name="category" id="category" class="category-dropdown">
                   <option value="" selected="selected">Select category</option>
                 </select>
-                <label>Item:</label>
                 
-                <select name="item" id="item">
+                <label class="r-label">Item:</label>
+                <select name="item" id="item" class="category-dropdown">
                   <option value="" selected="selected">Select category first</option>
-                
-                </select>
-                
-                
+                </select>            
               </div>
             </div>    
-    <!-- 
-
+    
+            <!--
             <div class="form-x" id="form-3">
               <p>
                 Welcome ******* to "website name", you have now succesfully been registered to "website name".
               </p>  
               
             </div>  
-          -->           
-            
+        -->
         </form> 
-        <button type="button" class="button-1" id ="button-1"> Next </button>
 
       </div>
   </div>

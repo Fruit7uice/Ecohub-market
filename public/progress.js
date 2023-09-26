@@ -1,5 +1,5 @@
 
-var activeColor = "#3f6668";
+var activeColor = "#e7b06f";
 var passiveColor = "#adadad";
 var counter = 1;
 

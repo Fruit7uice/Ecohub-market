@@ -40,12 +40,12 @@ Possible problem: If a seller adds a product on a location that is already in
 the database.
 */  
 CREATE TABLE Locations (
-    adress TEXT PRIMARY KEY ,
-    zipcode CHAR(5) NOT NULL,
+    adress TEXT ,
+    zipcode CHAR(5),
     city TEXT NOT NULL,
-    coordinates POINT -- TODO make trigger for 
-                 -- automatically inserting coordinates
-    
+    coordinates POINT, -- TODO make trigger for 
+                      -- automatically inserting coordinates
+    PRIMARY KEY (zipcode, adress)
 );
 
 /*
@@ -71,12 +71,14 @@ CREATE TABLE Products(
     title TEXT NOT NULL,
     price FLOAT CHECK (price >=0),
     unit CHAR(12) CHECK (unit in ('kg', 'hg', 'g', 'pcs')),
-    locations TEXT NOT NULL REFERENCES Locations,
+    locationAdress TEXT NOT NULL,
+    locationZipcode CHAR(5) NOT NULL,
     picture TEXT, -- TODO be able to add picture
     description TEXT,
     seller CHAR(12) NOT NULL REFERENCES Sellers,
-    timeOfUpload TIMESTAMP DEFAULT CURRENT_TIMESTAMP , --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
+    timeOfUpload TIMESTAMP NOT NULL, --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
     FOREIGN KEY (category, name) REFERENCES ValidProducts(category,product)
+    FOREIGN KEY (locationZipcode, locationAdress) REFERENCES Locations(zipcode, adress) -- Reference both columns as a composite foreign key
 
 
 );

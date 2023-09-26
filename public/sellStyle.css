@@ -97,13 +97,11 @@ p{
 form{
   height: 80%;
   width: 50%;
-
   flex-direction: column;
-  border: 3px solid red;
 }
 
 .all-forms{
-  background-color: rosybrown;
+  margin-top: 5%;
   height: 80%;
 }
 

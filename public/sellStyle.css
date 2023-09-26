@@ -69,8 +69,6 @@ main{
 }
 
 /* This is where the css-code starts, the code above needs to be duplicated */
-
-
 .container-main{
     display: flex;
     flex-flow: column;
@@ -85,6 +83,20 @@ main{
     flex-direction: column;
     padding-top: 8px;
 }
+h1{
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+p{
+  text-align: center;
+  font-family: 'Alice';
+  color: #3b3d3d;
+  font-size: 20px;
+}
+
+/*for all forms--------------------*/
 form{
   width: 40%;
   height: 65%;
@@ -99,20 +111,41 @@ form{
   display: flex;
   justify-content: center;
 }
+
+label{
+  color: #3b3d3d;
+  margin-left: 10px;
+}
+
+input{
+  color: black;
+  border-radius: 5px;
+  width: 95%;
+  height: 40px;
+  margin-bottom: 10px;
+  border: none;
+  font-family: 'Alice';
+  box-shadow: 0px 0px 5px grey;
+  padding-left: 12px;
+  margin-top: 7px;
+}
+
+textarea{
+    width: 95%;
+    height: 120px;
+    resize: none;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Alice';
+    box-shadow: 0px 0px 5px grey;
+    padding: 2px 2px 2px 10px;
+    margin: 7px 0px 10px;
+}
+
+/*form 1*/
+
 #form-1{
 
-}
-#form-2{
-  
-}
-#form-3{
-  
-}
-
-h1{
-  color: white;
-  font-size: 20px;
-  text-align: center;
 }
 
 .left-half{
@@ -121,7 +154,6 @@ h1{
   width: 100%;
   height: 100%;
   align-items: left;
- /* background-color: aqua;*/
   justify-content: baseline;
 }
 
@@ -131,36 +163,23 @@ h1{
   width: 100%;
   height: 100%;
   justify-content: baseline;
-  /*background-color: darksalmon;*/
   padding-left: 5%;
 }
+
 .half-input{
   width: 85%;
 }
 
-
-input{
-  color: black;
-  border-radius: 5px;
-  width: 95%;
-  height: 40px;
-  margin-bottom: 10px;
-  border: none;
-  box-shadow: 0px 0px 5px grey;
-  padding-left: 12px;
-  margin-top: 7px;
-}
-.checkmark-in{
-  top: 0;
-  left: 0;
-  height: 15px;
-  width: 15px;
-  background-color: #000;
-  border-radius: 50%;
-  padding: 10% 0%;
+.c-city-zip{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-
+/*form 2*/
+#form-2{
+  
+}
 .f2-right-half{
   display: flex;
   flex-direction: column;
@@ -174,55 +193,30 @@ input{
   display: flex;
   flex-direction: row;
 }
+.r-label{
+  margin: 5px 0px;
+}
+
 .img-in{
   border: none;
   box-shadow: none;
 }
-label{
-    color: #3b3d3d;
-    margin-left: 10px;
-}
-textarea{
-    width: 92%;
-    height: 120px;
-    resize: none;
-    border: none;
-    border-radius: 5px;
-    font-family: 'Alice';
-    box-shadow: 0px 0px 5px grey;
-    padding-left: 10px;
-    margin-top: 7px;
+
+#price{
+  margin: 14px 0px 0px 20px;
+  height: 40%;
+
 }
 
-button{
-    width: 200px;
-    height: 40px;
-    border-radius: 25px;
-}
-button:hover {
-  /* background-color: #3f6668; */
-  background-color: #e7b06f;
-  color: #f5f1e2;
-}
-
-.c-city-zip{
-  display: flex;
-  flex-direction: row;
+.unit-dropdown{
   justify-content: center;
 }
 
-p{
-  text-align: center;
-  font-family: 'Alice';
-  color: #3b3d3d;
-  font-size: 20px;
-
+.category-dropdown{
+  height: 5.5%;
 }
 
-
-.button-1{
-  margin-bottom: 20%;
-
-
+/*form 3*/
+#form-3{
+  
 }
-

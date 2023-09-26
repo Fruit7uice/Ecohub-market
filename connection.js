@@ -53,7 +53,7 @@ function retrieveProductInfo(client) {
 
         client.query('SELECT * FROM columnProductInfo;', (err, res) => {
             if (err) {
-                reject('Error executing query', err);
+                reject('Error executing query in retrieveProductInfo', err);
             } else {
                 console.log("Rows Retrieved")
                 resolve(res.rows);

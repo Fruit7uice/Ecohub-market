@@ -71,7 +71,7 @@ CREATE TABLE Products(
     title TEXT NOT NULL,
     price FLOAT CHECK (price >=0),
     unit CHAR(12) CHECK (unit in ('kg', 'hg', 'g', 'pcs')),
-    location TEXT NOT NULL REFERENCES Locations,
+    locations TEXT NOT NULL REFERENCES Locations,
     picture TEXT, -- TODO be able to add picture
     description TEXT,
     seller CHAR(12) NOT NULL REFERENCES Sellers,

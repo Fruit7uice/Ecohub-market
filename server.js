@@ -4,6 +4,8 @@ const port = 3000;
 const dbCon = require('./connection.js');
 const bodyParser = require('body-parser');
 
+const formFunction = require('./public/formFunctions');
+
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -38,6 +40,13 @@ app.post('/register', (req, res) => {
 
     // *** TODO: INSERT INTO DATABASE ***
     console.log(userData);
+
+    //prints the information 
+    console.log(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
+    console.log(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
+    console.log(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
+
+    
     // Process userData
 
 

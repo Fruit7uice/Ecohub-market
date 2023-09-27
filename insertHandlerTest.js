@@ -3,6 +3,7 @@
 
 const insertHandler = require('./insertHandler.js');
 const dbCon = require('./connection.js');
+const coordinateGetter = require('./coordinateGetter.js');
 
 // Example JSON file for a seller
 const sellerJSON = 
@@ -13,6 +14,14 @@ const sellerJSON =
       "description": "hello"
     } 
 
+    //detta har hämtats från formulär
+const locationNoCoordinatesJSON = 
+    {
+      "adress": 'Lindholmsallén 25',
+      "zipcode": 41753,
+      "city": "Göteborg"
+    } 
+/*
 const locationJSON = 
     {
       "adress": 'Kuggen',
@@ -36,8 +45,12 @@ const productJSON =
     
      
     }
+*/
 
+//insertHandler.insertSeller(dbCon.getClient(), sellerJSON);
+//insertHandler.insertLocation(dbCon.getClient(), locationJSON);
+//insertHandler.insertProduct(dbCon.getClient(), productJSON);
 
-insertHandler.insertSeller(dbCon.getClient(), sellerJSON);
-insertHandler.insertLocation(dbCon.getClient(), locationJSON);
-insertHandler.insertProduct(dbCon.getClient(), productJSON);
+console.log("test from inserthandlertest");
+var coordinates = coordinateGetter.getCoordinates(locationNoCoordinatesJSON);
+console.log(coordinates);

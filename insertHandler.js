@@ -30,17 +30,30 @@ function insertData(client, table, data) {
             console.error('Error inserting data', error);
             });
 })}
+
+
+function insertLocation(client, locationData){
+const { address, zipcode, city } = locationData;
+const apiKey= ''
+
+ // Construct the address string using components from the locationData
+ const fullAddress = `${address}, ${zipcode}, ${city}`;
+
+}
 //Inserts sellersData into the 'Sellers' table using the provided PostgreSQL client
 function insertSeller(client, sellerData) {
     insertData(client, 'Sellers', sellerData);
 }
 // Inserts locationData into the 'Locations' table using the provided PostgreSQL client
 function insertLocation(client, locationData) {
-    // TODO retreive coordinates from locationData so that it can be inserted into the "point" attribute of the location-table.
-
+    // TODO insert coordinates in to the location table via the GetCoordinates(address, zipcode, city) function...
+    
     insertData(client, 'Locations', locationData);
 }
 // Inserts productData into the 'Products' table using the provided PostgreSQL client
 function insertProduct(client, productData) {
     insertData(client, 'Products', productData)
 }
+
+
+

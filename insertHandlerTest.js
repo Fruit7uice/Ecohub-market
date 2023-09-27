@@ -1,7 +1,7 @@
 // Test file for testing the insertHandler.js file. Run node insertHandlerTest to test. 
 // The JSON objects are hardcoded and will, if succesful be inserted into the database.
 
-const insertHandler = require('./InsertHandler.js');
+const insertHandler = require('./insertHandler.js');
 const dbCon = require('./connection.js');
 
 // Example JSON file for a seller

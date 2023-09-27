@@ -65,7 +65,10 @@
                                     city.textContent = product.locationadress;
 
                                     const img = document.createElement('img');
-                                    img.src = './assets/tomat.png';
+                                    const productName = product.name
+                             
+                                    img.src = './assets/' + productName + '.png';
+                                  
                                     
                                     const timestamp = document.createElement('p');
                                     

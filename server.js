@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000;
 const dbCon = require('./connection.js');
+const dbRetreiver = require('./retrieverHandler.js');
 
 app.use(express.static('public'));
 
@@ -12,7 +13,7 @@ app.get('/getproducts', (req, res) => {
     const client = dbCon.getClient();
 
     console.log("Inside Api Call: /getproducts")
-    dbCon.retrieveProductInfo(client)
+    dbRetreiver.retrieveProductDataByItems(client, ['Tomatoes', 'Blueberries'])
         .then(result => {
             console.log("SQL Rows Retrieved!")
             res.json(result);

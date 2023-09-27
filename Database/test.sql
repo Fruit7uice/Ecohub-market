@@ -31,8 +31,8 @@ VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Första Långga
 
 -- Same seller selling from different locations.
 INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
-VALUES ('Very fine tomatoes','Tomatoes', 'Vegetables',10,'pcs', 'Första Långgatan 12F','41656', NULL, 
-                           'fine tomatoes 10 kr a piece', 199912013243);                             
+VALUES ('Very fine fish','Salmons', 'Seafoods', 10 ,'pcs', 'Första Långgatan 12F','41656', NULL, 
+                           'fine salmons 10 kr a piece', 199912013243);                             
 
 ---------------------------------------------------------------------------------------------------------
 

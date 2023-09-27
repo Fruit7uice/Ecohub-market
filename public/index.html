@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="map.js"></script>
-    <script src="productCol.js"></script>
+    <!-- <script src="productCol.js"></script> -->
     <script src="expand.js"></script>
 </head>
 
@@ -68,7 +68,8 @@
                                     city.textContent = product.locationadress;
 
                                     const img = document.createElement('img');
-                                    img.src = './assets/' + productName + '.png';
+                                    const productName = product.name;
+                                    img.src = './assets/' + 'Tomatoes' + '.png';
                                     
                                     const timestamp = document.createElement('p');
                                     
@@ -78,7 +79,6 @@
                                     span2.appendChild(city);
                                     span2.appendChild(img);
                                     span2.appendChild(timestamp);
-
 
                                     // listItem.textContent = product.name;
                                     productList.appendChild(listItem);

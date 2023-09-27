@@ -36,8 +36,7 @@ const productJSON =
     
      
     }
-
-
+    
 insertHandler.insertSeller(dbCon.getClient(), sellerJSON);
 insertHandler.insertLocation(dbCon.getClient(), locationJSON);
 insertHandler.insertProduct(dbCon.getClient(), productJSON);

@@ -1,12 +1,5 @@
 module.exports = {
-    retrieveAllSellers,
-    getClient,
-    retrieveProductInfo,
-    retrieveDataFromTable,
-    insertSeller,
-    insertLocation,
-    insertProduct, 
-    insertData
+    getClient
 
 };
 

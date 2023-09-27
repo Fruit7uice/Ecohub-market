@@ -17,6 +17,9 @@ function initMap() {
         
     });
 
+    // TODO: On launch, add the markers on the map based on the coordinates in the database.
+
+
     const names = ["Tomater", "Gurkor"];
     // Define an array of markers with their respective coordinates and information
     const markers = [
@@ -47,10 +50,7 @@ function initMap() {
         });
     });
 
-    // Add a right-click event listener to the map
-    map.addListener('rightclick', function(event) {
-        addMarker(event.latLng); // Call the addMarker function with the clicked coordinates
-    });
+
 
 
 }

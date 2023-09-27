@@ -8,11 +8,11 @@ module.exports = {
 }
 
 function retreiveCategories(client) {
-    retrieveAllDataFromTable(client, 'Categories');
+    return retrieveAllDataFromTable(client, 'Categories');
 }
 
 function retrieveSubCategories(client, item) {
-    retrieveDataByColumnValues(client, 'ValidProducts', 'category', item, 'product');
+    return retrieveDataByColumnValues(client, 'ValidProducts', 'category', item, 'product');
 }
 
 function retrieveProductDataWithFilter(client, items) {

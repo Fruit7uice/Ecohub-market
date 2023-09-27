@@ -93,7 +93,7 @@
 
                                     const img = document.createElement('img');
                                     const productName = product.name;
-                                    img.src = './assets/' + product.category + '.jpg';
+                                    img.src = './assets/' + product.category.replace(/\s/g, '') + '.jpg';
                                     
                                     const timestamp = document.createElement('p');
                                     

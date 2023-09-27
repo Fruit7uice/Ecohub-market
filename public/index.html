@@ -20,72 +20,43 @@
         </div>
         <main>
             <div class="container seller-column">
+
                 <div class="searchbox">
-                    <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
-                        <g>
-                            <path
-                                d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-                            </path>
-                        </g>
-                    </svg> <input placeholder="eg. &quot;Petters tomater&quot;">
+                    <div class="filter-options">
+                        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+                            <g>
+                                <path
+                                    d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                                </path>
+                            </g>
+                        </svg> 
+                        <input placeholder="eg. &quot;Petters tomater&quot;">
+                        
+                            <button type="button" id="filterBtn" onclick="expandCollapseFilter()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-filter"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                                </svg>
+                            </button>
+                    </div>
+                        <div id="filter-dd">
+                            <select name="category" id="filter-category">
+                                <option value="none">Category</option>
+                            </select>
+
+                            <select name="subCategory" id="filter-sub">
+                                <option value="none">Sub Category</option>
+                            </select>
+
+                            <button>Filter</button>
+                        </div>
                 </div>
+
+                <script src="filter.js"></script>
                 <ul id="seller-list">
                     
-                    <script>
-                        // Fetches sellers from the db and creates list items with their name
-                        // In the future it should be more modular and apply filter options.
-                        fetch('/getproducts')
-                            .then(response => response.json())
-                            .then(data => {
-                                const productList = document.getElementById('seller-list');
-                                data.forEach(product => {
-                                    const listItem = document.createElement('li');
-                                    const span1 = document.createElement('span');
-                                    span1.className = "product-info1";
-                                    const span2 = document.createElement('span');
-                                    span2.className = "product-info2";
-
-                                    listItem.appendChild(span1)
-                                    listItem.appendChild(span2)
-
-                                    //Span 1 h4 and p creation
-                                    const title = document.createElement('h4');
-                                    title.textContent = product.title;
-
-                                    const price = document.createElement('p');
-                                    price.textContent = product.price;
-                                    price.textContent += (' ' + product.unit);
-
-                                    span1.appendChild(title)
-                                    span1.appendChild(price)
-
-
-                                    //Span 2 p, img and p creation
-                                    const city = document.createElement('p');
-                                    city.textContent = product.locationadress;
-
-                                    const img = document.createElement('img');
-                                    const productName = product.name
-                             
-                                    img.src = './assets/' + productName + '.png';
-                                  
-                                    
-                                    const timestamp = document.createElement('p');
-                                    
-                                    timestamp.textContent = product.timeofupload.split('T')[0];
-                                    timestamp.id = 'timestamp'
-
-                                    span2.appendChild(city);
-                                    span2.appendChild(img);
-                                    span2.appendChild(timestamp);
-
-
-                                    // listItem.textContent = product.name;
-                                    productList.appendChild(listItem);
-                                });
-                            })
-                            .catch(error => console.error('Error fetching data:', error));
-                    </script>
+                    
                 </ul>
             </div>
 

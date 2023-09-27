@@ -1,3 +1,8 @@
+:root {
+    --customGreen: #3f6668;
+    --light: #f5f1e2;
+}
+
 @font-face {
     font-family: 'Alice';
     src: url('./fonts/Alice-Regular.ttf');
@@ -35,11 +40,11 @@ main{
     width: 100%;
     height: 100px;
     position: relative;
-    background-color: #f5f1e2;
+    background-color: var(--light);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #3f6668;
+    color: var(--customGreen);
     flex-direction: row;
 }
 
@@ -194,13 +199,8 @@ main{
     
 } */
 .searchbox{
-    /* border-bottom: 1px solid black; */
+    height: auto;
     width: 100%;
-    height: 8%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* position: relative; */
 }
 
 .searchbox input{
@@ -220,9 +220,63 @@ main{
 }
 
 
+.filter-options{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    flex-flow: row;
+}
+
+
 .container-main{
     display: flex;
     flex-flow: column;
 }
 
+
+/* FILTER BUTTON */
+
+#filterBtn{
+    background: #d3d3d3;
+    width: 35px;
+    height: 35px;
+    border: none;
+    margin: 10px;
+}
+
+#filterBtn:active {
+    background: #939393;
+    
+}
+
+#filter-dd{
+    height: 200px;
+    width: inherit;
+    min-width: 160px;
+    position: absolute;
+    display: none;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    background-color: var(--customGreen);
+    transition: 1s;
+}
+
+/* FILTER BOX CHILDREN */
+#filter-dd *{
+    width: 30%;
+    font-weight: bold;
+        
+}
+
+#filter-dd button{
+    height: 30px;
+}
+
+#filter-dd select, option{
+    height: 25px;
+    width: 40%;
+}
 

@@ -32,13 +32,13 @@
                 <input type="text" id="f-name-in" name="f-name-in" placeholder="First name">
 
                 <label for="personal-nr">Personal number:</label>
-                <input type="number" id="personal-nr" name="personal-nr" placeholder="(yyyymmddxxxx)" maxlength="12">
+                <input type="text" id="personal-nr" name="personal-nr" placeholder="(yyyymmddxxxx)" maxlength="12">
 
                 <label for="adress">Adress:</label>
                 <input type="text" id="adress" name="adress" placeholder="Adress">
 
-                <label for="description-in">Description:</label>
-                <textarea id="description-in" name="description-in" placeholder="Short discription of yourself"
+                <label for="seller-description-in">Description:</label>
+                <textarea id="seller-description-in" name="seller-description-in" placeholder="Short discription of yourself"
                   maxlength="350"></textarea>
               </div>
               
@@ -67,8 +67,8 @@
                 <label for="p-name-in">Product name:</label>
                 <input type="text" id="p-name-in" name="p-name-in" placeholder="Product name">
 
-                <label for="description-in">Description:</label>
-                <textarea id="description-in" name="description-in" placeholder="Short discription of the product"
+                <label for="product-description-in">Description:</label>
+                <textarea id="product-description-in" name="product-description-in" placeholder="Short discription of the product"
                   maxlength="350"></textarea>
 
                 <label for="image">Choose an image:</label>
@@ -79,10 +79,10 @@
                 <label for="price">Price</label>
 
                 <div class="c-price">
-                  <input type="number" placeholder="0">
+                  <input id="price" type="number" placeholder="0">
 
                   <div class="unit-dropdown">
-                    <select name="price" id="price">
+                    <select name="unit" id="unit">
                       <option value="" selected="selected">Select pricing</option>
                     </select>
                   </div>

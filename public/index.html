@@ -7,6 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="map.js"></script>
+    <!-- <script src="productCol.js"></script> -->
+    <script src="expand.js"></script>
 </head>
 
 <body>
@@ -51,12 +53,64 @@
 
                             <button>Filter</button>
                         </div>
+
                 </div>
 
                 <script src="filter.js"></script>
                 <ul id="seller-list">
-                    
-                    
+                    <script>
+                        // Fetches sellers from the db and creates list items with their name
+                        // In the future it should be more modular and apply filter options.
+                        fetch('/getproducts')
+                            .then(response => response.json())
+                            .then(data => {
+                                const productList = document.getElementById('seller-list');
+                                data.forEach(product => {
+                                    const listItem = document.createElement('li');
+                                    const span1 = document.createElement('span');
+                                    span1.className = "product-info1";
+                                    const span2 = document.createElement('span');
+                                    span2.className = "product-info2";
+
+                                    listItem.appendChild(span1)
+                                    listItem.appendChild(span2)
+
+                                    //Span 1 h4 and p creation
+                                    const title = document.createElement('h4');
+                                    title.textContent = product.title;
+
+                                    const price = document.createElement('p');
+                                    price.textContent = product.price;
+                                    price.textContent += (' ' + product.unit);
+
+                                    span1.appendChild(title)
+                                    span1.appendChild(price)
+
+
+                                    //Span 2 p, img and p creation
+                                    const city = document.createElement('p');
+                                    city.textContent = product.locationadress;
+
+                                    const img = document.createElement('img');
+                                    const productName = product.name;
+                                    img.src = './assets/' + 'Tomatoes' + '.png';
+                                    
+                                    const timestamp = document.createElement('p');
+                                    
+                                    timestamp.textContent = product.timeofupload.split('T')[0];
+                                    timestamp.id = 'timestamp'
+
+                                    span2.appendChild(city);
+                                    span2.appendChild(img);
+                                    span2.appendChild(timestamp);
+
+                                    // listItem.textContent = product.name;
+                                    productList.appendChild(listItem);
+                                });
+                            })
+                            .catch(error => console.error('Error fetching data:', error));
+                    </script>
+
                 </ul>
             </div>
 
@@ -64,8 +118,22 @@
                 <div class="container map" id="map"> <!--Always need the id to render the map-->
                     <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwr8jBrc60ZcZ2iifSYupGIoGH3YB9fMo&callback=initMap"></script> -->
                 </div>
-                <div class="container seller-info">
-                    <h2>Seller 1</h2>
+                <div class="container info-c" id="info-c">
+                    
+                    <button type="button"  onclick="expandInfo()">
+                        <svg id="expandIcon" xmlns="http://www.w3.org/2000/svg" height="2em" fill="#fff"
+                            viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            <path
+                                d="M246.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L224 109.3 361.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160zm160 352l-160-160c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L224 301.3 361.4 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3z" />
+                        </svg>
+                    </button>
+
+                    <div class="seller-info" id="seller-info">
+                        <div id="full-product">
+                            <h2>No info yet!</h2>
+                            <p>Choose a product to view here</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

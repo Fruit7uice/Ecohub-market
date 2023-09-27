@@ -1,6 +1,34 @@
 module.exports = {
     retrieveDataFromTable,
-    retrieveProductDataByItems
+    retrieveProductDataByItems,
+    retreiveCategories,
+    retrieveSubCategories
+}
+
+function retreiveCategories(client) {
+    retrieveDataFromTable(client, 'Categories');
+}
+
+function retrieveSubCategories(client, item) {
+    return new Promise((resolve, reject) => {
+        client.connect()
+            .then(() => console.log('Connected to PostgreSQL database'))
+            .catch(err => reject('Error connecting to PostgreSQL', err));
+
+             const query = 'SELECT product FROM ValidProducts WHERE category = $1';
+
+        client.query(query, [item], (err, res) => {
+            if (err) {
+                reject(`Error executing query in retrieveSubCategories for Products`, err);
+            } else {
+                console.log(res.rows);
+                console.log("Rows Retrieved");
+                resolve(res.rows);
+            }
+            client.end(); // Close the connection after the query
+            console.log("Client terminated!");
+        });
+    });
 }
 
 function retrieveDataFromTable(client, tableName) {
@@ -24,6 +52,32 @@ function retrieveDataFromTable(client, tableName) {
     });
 }
 
+// In progress
+function retrieveTableDataByItems(client, table, column, items) {
+    return new Promise((resolve, reject) => {
+        client.connect()
+            .then(() => console.log('Connected to PostgreSQL database'))
+            .catch(err => reject('Error connecting to PostgreSQL', err));
+
+        const placeholders = items.map((_, index) => `$${index + 1}`).join(', ');
+        const query = `SELECT * FROM ${table} WHERE ${column} IN (${placeholders});`;
+        
+
+        client.query(query, items, (err, res) => {
+            if (err) {
+                reject(`Error executing query in retrieveTableDataByItems in ${table}`, err);
+            } else {
+                console.log(res.rows);
+                console.log("Rows Retrieved");
+                resolve(res.rows);
+            }
+            client.end(); // Close the connection after the query
+            console.log("Client terminated!");
+        });
+    });
+}
+
+
 function retrieveProductDataByItems(client, items) {
     return new Promise((resolve, reject) => {
         client.connect()
@@ -46,76 +100,3 @@ function retrieveProductDataByItems(client, items) {
         });
     });
 }
-
-
-
-
-
-
-
-// Example usage:
-// const attributeNames = ['input_attribute1', 'input_attribute2', 'input_attribute3']; // Replace with your list of attribute names
-// retrieveDataByNames(client, 'YourTableName', attributeNames).then(data => {
-//     // Handle data here (data will contain rows that match any of the specified attribute names)
-// }).catch(error => {
-//     // Handle error here
-// });
-
-
-// Example usage:
-// const conditions = { column1: 'value1', column2: 'value2' }; // Replace with your desired conditions
-// retrieveDataWithConditions(client, 'YourTableName', conditions).then(data => {
-//     // Handle data here
-// }).catch(error => {
-//     // Handle error here
-// });
-
-
-// // Create a client instance
-// function retrieveAllSellers(client) {
-//     return new Promise((resolve, reject) => {
-//         client.connect()
-//             .then(() => console.log('Connected to PostgreSQL database'))
-//             .catch(err => reject('Error connecting to PostgreSQL', err));
-
-//         client.query('SELECT * FROM Sellers;', (err, res) => {
-//             if (err) {
-//                 reject('Error executing query', err);
-//             } else {
-//                 console.log("Rows Retrieved")
-//                 resolve(res.rows);
-//             }
-//             client.end(); // Close the connection after the query
-//             console.log("Client terminated!")
-//         });
-//     });
-// }
-
-// function retrieveProductInfo(client) {
-//     return new Promise((resolve, reject) => {
-//         client.connect()
-//             .then(() => console.log('Connected to PostgreSQL database'))
-//             .catch(err => reject('Error connecting to PostgreSQL', err));
-
-//         client.query('SELECT * FROM columnProductInfo;', (err, res) => {
-//             if (err) {
-//                 reject('Error executing query in retrieveProduct', err);
-//             } else {
-//                 console.log(res.rows)
-//                 console.log("Rows Retrieved")
-//                 resolve(res.rows);
-//             }
-//             client.end(); // Close the connection after the query
-//             console.log("Client terminated!")
-//         });
-//     });
-
-// };
-// Example usage:
-// const attributes = ['column1', 'column2', 'column3']; // Replace with your desired attribute names
-// retrieveDataWithAttributes(client, 'YourTableName', attributes).then(data => {
-    //     // Handle data here
-    // }).catch(error => {
-        //     // Handle error here
-        // });
-        

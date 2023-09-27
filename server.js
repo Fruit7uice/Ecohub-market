@@ -3,7 +3,6 @@ const app = express()
 const port = 3000;
 const dbCon = require('./connection.js');
 
-
 app.use(express.static('public'));
 
 
@@ -24,7 +23,6 @@ app.get('/getproducts', (req, res) => {
             res.status(500).json({ error: 'Internal Server Error' });
         });
 });
-
 
 
 app.listen(port, () => {

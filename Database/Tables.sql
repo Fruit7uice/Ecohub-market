@@ -41,7 +41,7 @@ the database.
 */  
 CREATE TABLE Locations (
     adress TEXT ,
-    zipcode CHAR(5) ,
+    zipcode CHAR(5),
     city TEXT NOT NULL,
     coordinates POINT, -- TODO make trigger for 
                       -- automatically inserting coordinates
@@ -74,11 +74,12 @@ CREATE TABLE Products(
     locationAdress TEXT NOT NULL,
     locationZipcode CHAR(5) NOT NULL,
     picture TEXT, -- TODO be able to add picture
-    description TEXT NOT NULL,
+    description TEXT,
     seller CHAR(12) NOT NULL REFERENCES Sellers,
-    timeOfUpload TIMESTAMP NOT NULL, --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
+    timeOfUpload TIMESTAMP DEFAULT CURRENT_TIMESTAMP, --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
     FOREIGN KEY (category, name) REFERENCES ValidProducts(category,product),
     FOREIGN KEY (locationZipcode, locationAdress) REFERENCES Locations(zipcode, adress) -- Reference both columns as a composite foreign key
+
 
 );
 

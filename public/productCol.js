@@ -1,4 +1,4 @@
-// Fetches sellers from the db and creates list items with their name
+// Fetches products from the db and creates list items with their credentials
 // In the future it should be more modular and apply filter options.
 fetch('/getproducts')
     .then(response => response.json())
@@ -15,7 +15,7 @@ fetch('/getproducts')
             listItem.appendChild(span2)
 
             //Span 1 h4 and p creation
-            const title = document.createElement('h4');
+            const title = document.createElement('h5');
             title.textContent = product.name;
 
             const price = document.createElement('p');

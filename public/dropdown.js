@@ -1,5 +1,5 @@
   var categoryObject = {
-    "Vegetables": ["Tomatoes", "Broccoli", "Spinach", "Cucumber", "lettuce"],
+    "Vegetables": ["Tomatoes", "Broccolies", "Spinach", "Cucumbers", "lettuce"],
     "Fruits": ["Apple", "Banana", "Orange","Grapes", "Peaches", "kiwi"],
     "Meats": ["Beef", "Chicken", "Pork","Lamb", "Turkey","Elk","Wild Boar","Rabbits","Ducks","Geese","Quails"],
     "Breads":["Rye","Sour dough","Kebabpizza"],

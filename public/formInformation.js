@@ -1,4 +1,3 @@
-
 // Add an event listener to the form with the ID 'registrationForm'
 document.getElementById('registrationForm').addEventListener('submit', function (event) {
     // Prevent the default form submission behavior (which would refresh the page)

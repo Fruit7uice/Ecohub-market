@@ -5,6 +5,10 @@ const dbCon = require('./connection.js');
 const bodyParser = require('body-parser');
 
 const formFunction = require('./public/formFunctions');
+const insertHandler = require('./insertHandler')
+//const insertHandlerTest = require('./insertHandlerTest')
+
+
 
 
 app.use(bodyParser.json());
@@ -35,6 +39,7 @@ app.listen(port, () => {
 });
 
 
+
 app.post('/register', (req, res) => {
     const userData = req.body; // This will contain the JSON data sent from the form
 
@@ -42,16 +47,20 @@ app.post('/register', (req, res) => {
     console.log(userData);
 
     //prints the information 
+    
+    // Process userData
     console.log(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
     console.log(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
     console.log(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
-    
-    // Process userData
+    insertHandler.insertSeller(dbCon.getClient(), formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
+    insertHandler.insertLocation(dbCon.getClient(), formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
+    insertHandler.insertProduct(dbCon.getClient(), formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
 
-    // Send a response back to the client
-    res.send({ message: 'Registration successful' });
-    // Redirect the user to the home page
-    // res.redirect('/');
+// Send a response back to the client
+res.send({ message: 'Registration successful' });
+// Redirect the user to the home page
+// res.redirect('/');
 });
+

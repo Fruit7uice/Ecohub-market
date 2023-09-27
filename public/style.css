@@ -111,7 +111,7 @@ main{
     cursor: pointer;
 }
 
-.seller-column ul li h4, p {
+.seller-column ul li h5, p {
     padding: 0;
     margin: 0;
 }

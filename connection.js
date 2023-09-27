@@ -25,7 +25,7 @@ function getClient(){
     return client;
 }
 
-// Create a client instance
+// SQL Query to retrieve all sellers
 function retrieveAllSellers(client) {
     return new Promise((resolve, reject) => {
         client.connect()
@@ -40,11 +40,13 @@ function retrieveAllSellers(client) {
                 resolve(res.rows);
             }
             client.end(); // Close the connection after the query
-            console.log("Client terminated!")
+            // console.log("Client terminated!")
         });
     });
 }
 
+// Creates a SQL query to retrieve Products.
+// Returns JSON object of the retrieved data.
 function retrieveProductInfo(client) {
     return new Promise((resolve, reject) => {
         client.connect()
@@ -60,7 +62,7 @@ function retrieveProductInfo(client) {
                 resolve(res.rows);
             }
             client.end(); // Close the connection after the query
-            console.log("Client terminated!")
+            // console.log("Client terminated!")
         });
     });
 

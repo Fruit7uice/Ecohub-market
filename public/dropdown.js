@@ -45,7 +45,7 @@
 
 function unitSelect() {
     //fetches the id of the html element and "stores" it in variables
-    var unitSel = document.getElementById("price");
+    var unitSel = document.getElementById("unit");
 
     for ( var x in priceObject ){
       unitSel.options[unitSel.options.length] = new Option(x,x);

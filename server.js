@@ -2,7 +2,10 @@ const express = require('express')
 const app = express()
 const port = 3000;
 const dbCon = require('./connection.js');
+const bodyParser = require('body-parser');
 
+
+app.use(bodyParser.json());
 app.use(express.static('public'));
 
 
@@ -27,4 +30,19 @@ app.get('/getproducts', (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server is running on: http://localhost:${port}`);
+});
+
+
+app.post('/register', (req, res) => {
+    const userData = req.body; // This will contain the JSON data sent from the form
+
+    // *** TODO: INSERT INTO DATABASE ***
+    console.log(userData);
+    // Process userData
+
+
+    // Send a response back to the client
+    res.send({ message: 'Registration successful' });
+    // Redirect the user to the home page
+    // res.redirect('/');
 });

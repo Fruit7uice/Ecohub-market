@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./sellStyle.css" />
   <script src="dropdown.js"></script>
   <script src="progress.js"></script>
+  <script src="formInformation.js"></script>
 </head>
 
 <body>
@@ -23,10 +24,10 @@
     <main>
       <div class="container container-form">
         
-        <form action="">
+        <form id="registrationForm" action="/register">
           <div class="all-forms">
-           
-             <div class="form-x" id="form-1">
+          
+            <div class="form-x" id="form-1">
               <div class="left-half">
                 <label for="f-name-in">First name:</label>
                 <input type="text" id="f-name-in" name="f-name-in" placeholder="First name">
@@ -52,11 +53,11 @@
                 <div class="c-city-zip">
                   <div>
                     <label for="city-in">City:</label>
-                    <input class="half-input" type="text" id="city-in" name="city" placeholder="City">
+                    <input class="half-input" type="text" id="city-in" name="city-in" placeholder="City">
                   </div>
                   <div>
                     <label for="zip-code-in">Zip code:</label>
-                    <input class="half-input" type="text" id="zip-code-in" name="zip-code" placeholder="Zip code">
+                    <input class="half-input" type="text" id="zip-code-in" name="zip-code-in" placeholder="Zip code">
                   </div>
                 </div>
               </div>
@@ -72,14 +73,14 @@
                   maxlength="350"></textarea>
 
                 <label for="image">Choose an image:</label>
-                <input class="img-in" type="file" name="image" accept="image/png, image/jpeg" />
+                <input class="img-in" type="file" name="img-in" accept="image/png, image/jpeg" />
 
               </div>
               <div class="f2-right-half">
                 <label for="price">Price</label>
 
                 <div class="c-price">
-                  <input id="price" type="number" placeholder="0">
+                  <input id="price" name="price" type="number" placeholder="0">
 
                   <div class="unit-dropdown">
                     <select name="unit" id="unit">

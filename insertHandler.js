@@ -40,7 +40,7 @@ function insertLocation(client, locationData) {
 }
 // Inserts productData into the 'Products' table using the provided PostgreSQL client
 function insertProduct(client, productData) {
-    insertData(client, 'Products', productData)
+    insertData(client, 'Products', productData);
 }
 
 

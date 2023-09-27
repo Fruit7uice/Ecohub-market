@@ -36,6 +36,8 @@ function insertSeller(client, sellerData) {
 }
 // Inserts locationData into the 'Locations' table using the provided PostgreSQL client
 function insertLocation(client, locationData) {
+    // TODO retreive coordinates from locationData so that it can be inserted into the "point" attribute of the location-table.
+
     insertData(client, 'Locations', locationData);
 }
 // Inserts productData into the 'Products' table using the provided PostgreSQL client

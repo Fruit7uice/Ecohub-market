@@ -20,8 +20,25 @@ const locationNoCoordinatesJSON =
       "adress": 'Lindholmsallén 25',
       "zipcode": 41753,
       "city": "Göteborg"
+      
     } 
+    
+    
+
+    const locationJSON = 
+    {
+    "adress": 'Lindholmsallén 25',
+    "zipcode": 41753,
+    "city": "Göteborg",
+    "coordinates": console.log(coordinateGetter.getCoordinates(locationNoCoordinatesJSON))
+
+    
+  } 
+
+    
 /*
+
+
 const locationJSON = 
     {
       "adress": 'Kuggen',
@@ -47,10 +64,11 @@ const productJSON =
     }
 */
 
-//insertHandler.insertSeller(dbCon.getClient(), sellerJSON);
-//insertHandler.insertLocation(dbCon.getClient(), locationJSON);
+insertHandler.insertSeller(dbCon.getClient(), sellerJSON);
 //insertHandler.insertProduct(dbCon.getClient(), productJSON);
+coordinateGetter.getCoordinates(locationNoCoordinatesJSON);
+//console.log("test from inserthandlertest");
+//console.log(coordinates);
 
-console.log("test from inserthandlertest");
-var coordinates = coordinateGetter.getCoordinates(locationNoCoordinatesJSON);
-console.log(coordinates);
+
+insertHandler.insertLocation(dbCon.getClient(), locationJSON);

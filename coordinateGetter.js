@@ -1,3 +1,5 @@
+const insertHandler = require('./insertHandler.js');
+const dbCon = require('./connection.js');
 module.exports = {
   getCoordinates
 }
@@ -15,6 +17,7 @@ const address = `${locationData.address}, ${locationData.zipcode}, ${locationDat
 
 //'Lindholmsallén 25, 41753, Göteborg';
 
+
 // Perform geocoding
 client
   // Passes a JSON object as argument into the geocode function.
@@ -30,9 +33,12 @@ client
     // Extract the latitude and longitude from the response
       const result = response.data.results[0];
       const { lat, lng } = result.geometry.location;
+      //return result.geometry.location;
     // Log the latitude and longitude to the console
-      //console.log('Latitude:', lat);
-      //console.log('Longitude:', lng);
+      
+    //const point = ( lat + ',' + lng);
+   
+    return { lat, lng }; 
       
     } else {
       // Handle the case where geocoding was not successful
@@ -44,5 +50,5 @@ client
     console.error('Error:', error);
   });
 
-  return client.geocode.data;
 }
+//AIzaSyDwr8jBrc60ZcZ2iifSYupGIoGH3YB9fMo

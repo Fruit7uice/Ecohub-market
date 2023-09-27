@@ -6,7 +6,7 @@ module.exports = {
 const { Client } = require('pg');
 
 // Creates a client for a local database with default attributes.
-// CHANGE to become more modular, with parameters. 
+
 function getClient(){
     const client = new Client({
         user: 'postgres',
@@ -17,3 +17,4 @@ function getClient(){
     });
     return client;
 }
+

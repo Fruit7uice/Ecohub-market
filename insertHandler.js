@@ -4,6 +4,19 @@ module.exports = {
     insertProduct
 }
 
+//Inserts sellersData into the 'Sellers' table using the provided PostgreSQL client
+function insertSeller(client, sellerData) {
+    insertData(client, 'Sellers', sellerData);
+}
+// Inserts locationData into the 'Locations' table using the provided PostgreSQL client
+function insertLocation(client, locationData) {
+    insertData(client, 'Locations', locationData);
+}
+// Inserts productData into the 'Products' table using the provided PostgreSQL client
+function insertProduct(client, productData) {
+    insertData(client, 'Products', productData);
+}
+
 function insertData(client, table, data) {
     // Promise is an object. Resolve and reject are callback functions that are part of the constructor of the promise object.
     return new Promise((resolve, reject) => {
@@ -30,15 +43,4 @@ function insertData(client, table, data) {
             console.error('Error inserting data', error);
             });
 })}
-//Inserts sellersData into the 'Sellers' table using the provided PostgreSQL client
-function insertSeller(client, sellerData) {
-    insertData(client, 'Sellers', sellerData);
-}
-// Inserts locationData into the 'Locations' table using the provided PostgreSQL client
-function insertLocation(client, locationData) {
-    insertData(client, 'Locations', locationData);
-}
-// Inserts productData into the 'Products' table using the provided PostgreSQL client
-function insertProduct(client, productData) {
-    insertData(client, 'Products', productData);
-}
+

@@ -14,24 +14,24 @@ INSERT INTO Locations VALUES('Kulvertkonstens väg 11','42250','Göteborg', '57.
 
  -- Parenthesis (following products) does not include id-attribute since it depends on the order. Fixed with serial in table Product.
 INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
-VALUES ('Hothot chillis (very spicy)','Habanero chillis', 'Vegetables',10, 'pcs', 'Kulvertkonstens väg 11','42250', NULL,
+VALUES ('Hothot chillis (very spicy)','Habanero chillis', 'Vegetables',10, 'pcs', 'Kulvertkonstens väg 11','42250', 'HabaneroChillis',
                              'hot chillis 10 kr a piece', 199811200000);
 
 INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
-VALUES ('Cherry tomatoes', 'Tomatoes', 'Vegetables',10,'pcs', 'Kommendörsgatan 5','41459', NULL, 
+VALUES ('Cherry tomatoes', 'Tomatoes', 'Vegetables',10,'pcs', 'Kommendörsgatan 5','41459', 'Tomatoes', 
                            'fine tomatoes 10 kr a piece', 199912013243);
 
 INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
-VALUES ( 'Fresh fish','Pikes', 'Seafoods', 300, 'kg', 'Lindholmsallén 25','41753', NULL, 
+VALUES ( 'Fresh fish','Pikes', 'Seafoods', 300, 'kg', 'Lindholmsallén 25','41753', 'Pikes', 
                             'Freschly grinded älgfärs', 200008060101);
 
 INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
-VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Första Långgatan 12F','41656', NULL, 'Magical fruits',
+VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Första Långgatan 12F','41656', 'Bananas', 'Magical fruits',
                              199402234323);
 
 -- Same seller selling from different locations.
 INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
-VALUES ('Very fine fish','Salmons', 'Seafoods', 10 ,'pcs', 'Första Långgatan 12F','41656', NULL, 
+VALUES ('Very fine fish','Salmons', 'Seafoods', 10 ,'pcs', 'Första Långgatan 12F','41656', 'Salmons', 
                            'fine salmons 10 kr a piece', 199912013243);                             
 
 ---------------------------------------------------------------------------------------------------------

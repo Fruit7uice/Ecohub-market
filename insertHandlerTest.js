@@ -15,7 +15,7 @@ const sellerJSON =
 
 const locationJSON = 
     {
-      "adress": 'Kuggen',
+      "adress": "Kuggen",
       "zipcode": 41653,
       "city": "Göteborg",
       "coordinates": '57, 11'

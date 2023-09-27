@@ -20,8 +20,6 @@ function forwardProgress() {
         var form3 = document.getElementById('form-3')
 
     if (!(counter >= 3)) {
-        var form1 = document.getElementById('form-1')
-        form1.style.zIndex = 1;
         counter++;
     }
     if (counter == 2) {

@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="./sellStyle.css" />
   <script src="dropdown.js"></script>
   <script src="progress.js"></script>
-  <script src="formInformation.js"></script>
 </head>
 
 <body>
+  
   <div class="container-main">
     <div class="container nav">
       <a href="./sellForm.html">Sell a product</a>
@@ -20,36 +20,36 @@
       </a>
       <a href="">Info</a>
     </div>
-
+    
     <main>
       <div class="container container-form">
         
         <form id="registrationForm" action="/register">
           <div class="all-forms">
-          
+            
             <div class="form-x" id="form-1">
               <div class="left-half">
                 <label for="f-name-in">First name:</label>
                 <input type="text" id="f-name-in" name="f-name-in" placeholder="First name">
-
+                
                 <label for="personal-nr">Personal number:</label>
                 <input type="text" id="personal-nr" name="personal-nr" placeholder="(yyyymmddxxxx)" maxlength="12">
-
+                
                 <label for="adress">Adress:</label>
                 <input type="text" id="adress" name="adress" placeholder="Adress">
-
+                
                 <label for="seller-description-in">Description:</label>
                 <textarea id="seller-description-in" name="seller-description-in" placeholder="Short discription of yourself"
-                  maxlength="350"></textarea>
+                maxlength="350"></textarea>
               </div>
               
               <div class="right-half">
                 <label for="l-name-in">Last name:</label>
                 <input type="text" id="l-name-in" name="l-name-in" placeholder="Last name">
-
+                
                 <label for="phone-nr">Phonenumber:</label>
                 <input type="number" id="phone-nr" name="phone-nr" placeholder="Phonenumber">
-
+                
                 <div class="c-city-zip">
                   <div>
                     <label for="city-in">City:</label>
@@ -62,54 +62,54 @@
                 </div>
               </div>
             </div>
-
+            
             <div class="form-x" id="form-2">
               <div>
                 <label for="p-name-in">Product name:</label>
                 <input type="text" id="p-name-in" name="p-name-in" placeholder="Product name">
-
+                
                 <label for="product-description-in">Description:</label>
                 <textarea id="product-description-in" name="product-description-in" placeholder="Short discription of the product"
-                  maxlength="350"></textarea>
-
+                maxlength="350"></textarea>
+                
                 <label for="image">Choose an image:</label>
                 <input class="img-in" type="file" name="img-in" accept="image/png, image/jpeg" />
-
+                
               </div>
               <div class="f2-right-half">
                 <label for="price">Price</label>
-
+                
                 <div class="c-price">
                   <input id="price" name="price" type="number" placeholder="0">
-
+                  
                   <div class="unit-dropdown">
                     <select name="unit" id="unit">
                       <option value="" selected="selected">Select pricing</option>
                     </select>
                   </div>
-
+                  
                 </div>
-
+                
                 <label class="r-label">Category:</label>
                 <select name="category" id="category" class="category-dropdown">
                   <option value="" selected="selected">Select category</option>
                 </select>
-
+                
                 <label class="r-label">Item:</label>
                 <select name="item" id="item" class="category-dropdown">
                   <option value="" selected="selected">Select category first</option>
                 </select>
               </div>
             </div>
-
-
+            
+            
             <div class="form-x" id="form-3">
               <p>
                 Welcome ******* to "website name", press "Register" to register your information and product.
               </p>
-
+              
             </div>
-
+            
           </div>
           <div class="progress-container">
             <div class="progress-bar">
@@ -129,13 +129,13 @@
               </div>
             </div>
           </div>
-
+          
         </form>
-
+        <script src="formInformation.js"></script> <!-- Must be here -->
       </div>
-  </div>
+    </div>
   </main>
-  </div>
+</div>
 </body>
 
 </html>

@@ -1,54 +1,60 @@
 const insertHandler = require('./insertHandler.js');
 const dbCon = require('./connection.js');
 module.exports = {
-  getCoordinates
+  insertLocation
 }
-
-function getCoordinates(locationData){
-
-// Status: [OK, ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED, INVALID_REQUEST]
-const { Client, Status } = require('@googlemaps/google-maps-services-js');
-
-// Initialize the client 
-const client = new Client({});
-
-// Retrieve address, zipcode and city from locationNoCoordinates an address to geocode
-const address = `${locationData.address}, ${locationData.zipcode}, ${locationData.city}`;
-
-//'Lindholmsallén 25, 41753, Göteborg';
-
-
-// Perform geocoding
-client
-  // Passes a JSON object as argument into the geocode function.
-  .geocode({
-    params: {
-      address: address,
-      key: 'AIzaSyDwr8jBrc60ZcZ2iifSYupGIoGH3YB9fMo', // Our Google Maps API key
-    },
-  })
-  .then((response) => {
-    // Check if the geocoding was successful
-    if (response.data.status === Status.OK) {
-    // Extract the latitude and longitude from the response
-      const result = response.data.results[0];
-      const { lat, lng } = result.geometry.location;
-      //return result.geometry.location;
-    // Log the latitude and longitude to the console
+// InsertLocation retrieve cordinates for the given location. Jsonobject and cordinates are sent into insertFinalJson on row 26.
+async function insertLocation(locationData) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const { Client, Status } = require('@googlemaps/google-maps-services-js');
+      const client = new Client({});
+      const address = `${locationData.adress}, ${locationData.zipcode}, ${locationData.city}`;
       
-    //const point = ( lat + ',' + lng);
-   
-    return { lat, lng }; 
-      
-    } else {
-      // Handle the case where geocoding was not successful
-      console.log('Geocode was not successful:', response.data.status);
+      const response = await client.geocode({
+        params: {
+          address: address,
+          key: 'AIzaSyDwr8jBrc60ZcZ2iifSYupGIoGH3YB9fMo', // Replace with your Google Maps API key
+        },
+      });
+
+      if (response.data.status === Status.OK) {
+        const result = response.data.results[0];
+        const { lat, lng } = result.geometry.location;
+        const point = `${lat},${lng}`;
+        
+        await insertFinalJson(locationData, point);
+        resolve(point);
+      } else {
+        console.log('Geocode was not successful:', response.data.status);
+        reject(new Error('Geocode was not successful'));
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      reject(error);
     }
-  })
-  // Handle any errors that occur during the geocoding process
-  .catch((error) => {
-    console.error('Error:', error);
   });
-
 }
-//AIzaSyDwr8jBrc60ZcZ2iifSYupGIoGH3YB9fMo
+//insertFinalJson creates a new JsonObject with the cordinates added to the original jsonObject. Finally insertFinalJson can insert the values to the database by calling insertLocation in insertHandler
+function insertFinalJson(locationData, point) {
+  return new Promise((resolve, reject) => {
+    const finalStreet = `${locationData.adress}`;
+    const finalZipCode = `${locationData.zipcode}`;
+    const finalCity = `${locationData.city}`;
+
+    const jsonLocation = {
+      "adress": finalStreet,
+      "zipcode": finalZipCode,
+      "city": finalCity,
+      "coordinates": point
+    };
+
+    insertHandler.insertLocation(dbCon.getClient(), jsonLocation)
+      .then(result => {
+        resolve(result); // Resolve the promise with the result if successful
+      })
+      .catch(error => {
+        reject(error); // Reject the promise with the error if it fails
+      });
+  });
+}

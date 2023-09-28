@@ -17,27 +17,11 @@ const sellerJSON =
     //detta har hämtats från formulär
 const locationNoCoordinatesJSON = 
     {
-      "adress": 'Lindholmsallén 25',
-      "zipcode": 41753,
+      "adress": 'Kuggen',
+      "zipcode": 41653,
       "city": "Göteborg"
       
     } 
-    
-    
-
-    const locationJSON = 
-    {
-    "adress": 'Lindholmsallén 25',
-    "zipcode": 41753,
-    "city": "Göteborg",
-    "coordinates": console.log(coordinateGetter.getCoordinates(locationNoCoordinatesJSON))
-
-    
-  } 
-
-    
-/*
-
 
 const locationJSON = 
     {
@@ -62,13 +46,23 @@ const productJSON =
     
      
     }
-*/
 
-insertHandler.insertSeller(dbCon.getClient(), sellerJSON);
-//insertHandler.insertProduct(dbCon.getClient(), productJSON);
-coordinateGetter.getCoordinates(locationNoCoordinatesJSON);
-//console.log("test from inserthandlertest");
-//console.log(coordinates);
+async function runTests() {
+  await insertHandler.insertSeller(dbCon.getClient(), sellerJSON);
+  await coordinateGetter.insertLocation(locationNoCoordinatesJSON);
+  await insertHandler.insertProduct(dbCon.getClient(), productJSON);
+                                      
+}
+
+runTests();
 
 
-insertHandler.insertLocation(dbCon.getClient(), locationJSON);
+
+
+
+
+
+
+
+
+

@@ -1,13 +1,19 @@
+  const retriever = require('../retrieverHandler')
+  const dbCon = require('../connection')
+  
+  
   var categoryObject = {
-    "Vegetables": ["Tomatoes", "Broccolies", "Spinach", "Cucumbers", "lettuce"],
-    "Fruits": ["Apple", "Banana", "Orange","Grapes", "Peaches", "kiwi"],
-    "Meats": ["Beef", "Chicken", "Pork","Lamb", "Turkey","Elk","Wild Boar","Rabbits","Ducks","Geese","Quails"],
-    "Breads":["Rye","Sour dough","Kebabpizza"],
-    "Berries":["Strawberries", "Blueberries", "Blackberries"],
-    "Dairy":["Milk","Cream","Butter"],
-    "Pastries":["Cinnamonbun","Carrotcake"],
-    "Mushrooms":["Chantarelle", "Portobello"],
-    "Root Vegetables": ["Potatoes", "Carrots"]
+    "Meats": retriever.retrieveSubCategories(dbCon.getClient(), ['Meats']),
+    "Bread": retriever.retrieveSubCategories(dbCon.getClient(), ['Bread']),
+    "Vegetables": retriever.retrieveSubCategories(dbCon.getClient(), ['Vegetables']),
+    "Fruits": retriever.retrieveSubCategories(dbCon.getClient(), ['FruitsMeats']),
+    "Dairy": retriever.retrieveSubCategories(dbCon.getClient(), ['Dairy']),
+    "Berries": retriever.retrieveSubCategories(dbCon.getClient(), ['Berries']),
+    "Pastries": retriever.retrieveSubCategories(dbCon.getClient(), ['Pastries']),
+    "Root Vegetables": retriever.retrieveSubCategories(dbCon.getClient(), ['Root Vegetables']),
+    "Seafoods": retriever.retrieveSubCategories(dbCon.getClient(), ['Seafoods']),
+    "Mushrooms": retriever.retrieveSubCategories(dbCon.getClient(), ['Mushrooms'])
+    
   };
   
   function categorySelect() {

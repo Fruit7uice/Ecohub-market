@@ -1,5 +1,5 @@
 module.exports = {
-    retrieveCategories,
+    retreiveCategories,
     retrieveSubCategories,
     retrieveAllDataFromTable,
     retrieveProductDataWithFilter,
@@ -7,7 +7,7 @@ module.exports = {
 
 }
 
-function retrieveCategories(client) {
+function retreiveCategories(client) {
     return retrieveAllDataFromTable(client, 'Categories');
 }
 
@@ -41,14 +41,14 @@ function retrieveAllDataFromTable(client, tableName) {
     });
 }
 
-function retrieveDataByColumnValues(client, tableName, columnName, values) {
+function retrieveDataByColumnValues(client, tableName, columnName, values, column) {
     return new Promise((resolve, reject) => {
         client.connect()
         .then(() => console.log('Connected to PostgreSQL database'))
         .catch(err => reject(`Error connecting to PostgreSQL: ${err}`));
             
         const placeholders = values.map((_, index) => `$${index + 1}`).join(', ');
-        const query = `SELECT * FROM ${tableName} WHERE ${columnName} IN (${placeholders});`;
+        const query = `SELECT ${column} FROM ${tableName} WHERE ${columnName} IN (${placeholders});`;
         
         client.query(query, values, (err, res) => {
             if (err) {

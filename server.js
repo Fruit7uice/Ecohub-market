@@ -48,7 +48,7 @@ app.post('/register', (req, res) => {
 
     //prints the information 
     
-    // Process userData
+    // Print userData
     console.log(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
     console.log(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
     console.log(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));

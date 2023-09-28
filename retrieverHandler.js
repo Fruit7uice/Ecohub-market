@@ -1,5 +1,5 @@
 module.exports = {
-    retreiveCategories,
+    retrieveCategories,
     retrieveSubCategories,
     retrieveAllDataFromTable,
     retrieveProductDataWithFilter,
@@ -7,7 +7,7 @@ module.exports = {
 
 }
 
-function retreiveCategories(client) {
+function retrieveCategories(client) {
     return retrieveAllDataFromTable(client, 'Categories');
 }
 

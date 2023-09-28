@@ -13,6 +13,7 @@ A seller sells products. The id is the unique personal number of the seller.
 A seller also has a name, a phone number and an optional description.
 
 */  
+
 CREATE TABLE Sellers ( 
     id CHAR(12) CHECK(id ~ '^[0-9]+$') PRIMARY KEY,
     name TEXT NOT NULL, 
@@ -40,7 +41,7 @@ Possible problem: If a seller adds a product on a location that is already in
 the database.
 */  
 CREATE TABLE Locations (
-    adress TEXT ,
+    adress TEXT,
     zipcode CHAR(5),
     city TEXT NOT NULL,
     coordinates POINT, -- TODO make trigger for 
@@ -72,7 +73,7 @@ CREATE TABLE Products(
     price FLOAT CHECK (price >=0),
     unit CHAR(12) CHECK (unit in ('kg', 'hg', 'g', 'pcs')),
     locationAdress TEXT NOT NULL,
-    locationZipcode CHAR(5) NOT NULL,
+    locationZipcode CHAR(5) NOT NULL, 
     picture TEXT, -- TODO be able to add picture
     description TEXT,
     seller CHAR(12) NOT NULL REFERENCES Sellers,

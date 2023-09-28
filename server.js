@@ -2,16 +2,18 @@ const express = require('express')
 const app = express()
 const port = 3000;
 const dbCon = require('./connection.js');
+const dbRetreiver = require('./retrieverHandler.js');
 const bodyParser = require('body-parser');
-
 const formFunction = require('./public/formFunctions');
 const insertHandler = require('./insertHandler')
-//const insertHandlerTest = require('./insertHandlerTest')
+
+
 
 
 
 
 app.use(bodyParser.json());
+
 app.use(express.static('public'));
 
 
@@ -21,7 +23,7 @@ app.get('/getproducts', (req, res) => {
     const client = dbCon.getClient();
 
     console.log("Inside Api Call: /getproducts")
-    dbCon.retrieveProductInfo(client)
+    dbRetreiver.retrieveAllDataFromTable(client, 'Products')
         .then(result => {
             console.log("SQL Rows Retrieved!")
             res.json(result);
@@ -32,7 +34,6 @@ app.get('/getproducts', (req, res) => {
             res.status(500).json({ error: 'Internal Server Error' });
         });
 });
-
 
 app.listen(port, () => {
     console.log(`Server is running on: http://localhost:${port}`);

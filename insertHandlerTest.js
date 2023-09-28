@@ -15,7 +15,7 @@ const sellerJSON =
 
 const locationJSON = 
     {
-      "adress": 'Kuggen',
+      "adress": "Kuggen",
       "zipcode": 41653,
       "city": "Göteborg",
       "coordinates": '57, 11'
@@ -36,8 +36,7 @@ const productJSON =
     
      
     }
-
-
+    
 insertHandler.insertSeller(dbCon.getClient(), sellerJSON);
 insertHandler.insertLocation(dbCon.getClient(), locationJSON);
 insertHandler.insertProduct(dbCon.getClient(), productJSON);

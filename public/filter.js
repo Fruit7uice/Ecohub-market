@@ -1,3 +1,5 @@
+// const { retrieveSubCategories } = require("../retrieverHandler");
+
 var expanded = false;
 var childVisibility;
 
@@ -22,3 +24,49 @@ function expandCollapseFilter() {
 
     expanded = !expanded;
 }
+
+
+function getCaregories(){
+    fetch('/getCategories')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(category => {
+                const list = getSub(category);
+                // console.log(`Trying to print ${category.name} list :`, list);
+                categorySub[category.name] = list;
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+
+function getSub(category){
+    const items = [];
+    fetch('/getSub', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(category)
+        })
+        .then(response => response.json())
+        .then(data => { // LIST OF {CATEGORY : ITEM} OBJECTS
+            data.forEach(obj => {
+                items.push(obj.product)
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    return items;
+}
+
+
+function fillCategoryObject(){
+    getCaregories();
+}
+
+
+const categorySub = {};
+fillCategoryObject();
+console.log('Object with categories and subcategories: ', categorySub)

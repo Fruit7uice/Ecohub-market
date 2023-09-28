@@ -54,7 +54,7 @@ function retrieveDataByColumnValues(client, tableName, columnName, values) {
             if (err) {
                 reject(`Error executing query in retrieveDataByColumnValues for ${tableName}: ${err}`);
             } else {
-                console.log(res.rows);
+                // console.log(res.rows); 
                 console.log("Rows Retrieved");
                 resolve(res.rows);
             }

@@ -11,7 +11,7 @@ function getClient(){
     const client = new Client({
         user: 'postgres',
         host: '127.0.0.1', // e.g., your_rds_endpoint.amazonaws.com
-        database: 'postgres',
+        database: 'postgres1',
         password: 'postgres',
         port: 5432, // Default PostgreSQL port
     });

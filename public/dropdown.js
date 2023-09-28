@@ -10,6 +10,28 @@
     "Root Vegetables": ["Potatoes", "Carrots"]
   };
   
+/*
+  var categoryObject = {
+    retriever.retrieveCategories
+    "Meats": retriever.retrieveSubCategories(dbCon.getClient(), [retrieveCategories]),
+    "Bread": retriever.retrieveSubCategories(dbCon.getClient(), ['Bread']),
+    "Vegetables": retriever.retrieveSubCategories(dbCon.getClient(), ['Vegetables']),
+    "Fruits": retriever.retrieveSubCategories(dbCon.getClient(), ['FruitsMeats']),
+    "Dairy": retriever.retrieveSubCategories(dbCon.getClient(), ['Dairy']),
+    "Berries": retriever.retrieveSubCategories(dbCon.getClient(), ['Berries']),
+    "Pastries": retriever.retrieveSubCategories(dbCon.getClient(), ['Pastries']),
+    "Root Vegetables": retriever.retrieveSubCategories(dbCon.getClient(), ['Root Vegetables']),
+    "Seafoods": retriever.retrieveSubCategories(dbCon.getClient(), ['Seafoods']),
+    "Mushrooms": retriever.retrieveSubCategories(dbCon.getClient(), ['Mushrooms'])
+    
+  };
+  */
+
+
+
+
+
+
   function categorySelect() {
     //fetches the id of the html elements and "stores" them in variables
     var categorySel = document.getElementById("category"); 

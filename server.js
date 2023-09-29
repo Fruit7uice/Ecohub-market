@@ -47,7 +47,7 @@ app.get('/getCategories', (req, res) => {
         .then(result => {
             console.log("SQL Rows Retrieved!")
             res.json(result);
-            // console.log(result)
+            console.log(result)
         })
         .catch(error => {
             console.error(error);

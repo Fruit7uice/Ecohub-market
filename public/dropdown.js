@@ -1,4 +1,4 @@
-  const retriever = require('../retrieverHandler')
+  /*const retriever = require('../retrieverHandler')
   const dbCon = require('../connection')
   
   
@@ -15,7 +15,22 @@
     "Mushrooms": retriever.retrieveSubCategories(dbCon.getClient(), ['Mushrooms'])
     
   };
-  
+  */
+
+  var categoryObject = {
+    "Vegetables": ["Tomatoes", "Broccolies", "Spinach", "Cucumbers", "lettuce"],
+    "Fruits": ["Apple", "Banana", "Orange","Grapes", "Peaches", "kiwi"],
+    "Meats": ["Beef", "Chicken", "Pork","Lamb", "Turkey","Elk","Wild Boar","Rabbits","Ducks","Geese","Quails"],
+    "Breads":["Rye","Sour dough","Kebabpizza"],
+    "Berries":["Strawberries", "Blueberries", "Blackberries"],
+    "Dairy":["Milk","Cream","Butter"],
+    "Pastries":["Cinnamonbun","Carrotcake"],
+    "Mushrooms":["Chantarelle", "Portobello"],
+    "Root Vegetables": ["Potatoes", "Carrots"]
+  };
+
+
+
   function categorySelect() {
     //fetches the id of the html elements and "stores" them in variables
     var categorySel = document.getElementById("category"); 

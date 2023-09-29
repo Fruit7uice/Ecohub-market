@@ -113,11 +113,26 @@ form{
   padding: 2%;
   display: flex;
   justify-content: center;
+  animation: slideIn 1s forwards;
+  left: 25%;
 }
 #form-1{
   position: absolute;
   z-index: 1;
+  animation: slideIn 1s forwards;
+  left: 25%; /* Center horizontally */
 }
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%); /* Start off the screen */
+  }
+  100% {
+    transform: translateX(0); /* Slide in to center */
+  }
+}
+
+
 #form-2{
   position: absolute;
   z-index: -1;
@@ -238,7 +253,16 @@ textarea{
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+  }
+  
+  @keyframes fadeIn {
+    100% {
+      opacity: 1;
+    }
+  }
+
 
 .progress-bar{
   width: 80%; /* CHAGNE HERE TO CHANGE SIZE OF PROGRESS BAR*/

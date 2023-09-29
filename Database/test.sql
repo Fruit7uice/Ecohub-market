@@ -2,37 +2,54 @@
 -- TEST #1: Insert valid values into Sellers,Locations and Products. 
 -- EXPECTED OUTCOME: Pass
 
-INSERT INTO Sellers VALUES ('199912013243', 'Moa', '0725452671', 'Selling very fine tomatoes');
-INSERT INTO Sellers VALUES ('199811200000', 'Alex', '0739936668', 'Selling hot chillis');
-INSERT INTO Sellers VALUES ('200008060101', 'Josefin', '0707744757', 'Selling locally fished pike');
-INSERT INTO Sellers VALUES ('199402234323','Elias', '0705938902','Selling fine meat');
+INSERT INTO Sellers VALUES 
+('199912013243', 'Moa', '0725452671', 'Selling very fine tomatoes'),
+('199811200000', 'Alex', '0739936668', 'Selling hot chillis'),
+('200008060101', 'Josefin', '0707744757', 'Selling locally fished pike'),
+('199402234323','Elias', '0705938902','Selling fine meat');
 
---INSERT INTO Locations VALUES('Lindholmsallén 25','41753','Göteborg', '57.709043, 11.937399');
-INSERT INTO Locations VALUES('Kommendörsgatan 5', '41459','Göteborg','57.698048, 11.929185');
-INSERT INTO Locations VALUES('Första Långgatan 12F', '41656','Göteborg', '57.69970, 11.94979');
-INSERT INTO Locations VALUES('Kulvertkonstens väg 11','42250','Göteborg', '57.75809, 11.95134');
+INSERT INTO Locations VALUES
+('Lindholmsallén 25','41753','Göteborg', '57.709043, 11.937399'),
+('Kommendörsgatan 5', '41459','Göteborg','57.698048, 11.929185'),
+('Första Långgatan 12F', '41656','Göteborg', '57.69970, 11.94979'),
+('Kulvertkonstens väg 11','42250','Göteborg', '57.75809, 11.95134');
 
  -- Parenthesis (following products) does not include id-attribute since it depends on the order. Fixed with serial in table Product.
-INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
-VALUES ('Hothot chillis (very spicy)','Habanero chillis', 'Vegetables',10, 'pcs', 'Kulvertkonstens väg 11','42250', NULL,
-                             'hot chillis 10 kr a piece', 199811200000);
+INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller) VALUES 
+('Hothot chillis (very spicy)','Habanero chillis', 'Vegetables',10, 'pcs', 'Kulvertkonstens väg 11','42250', NULL,
+'hot chillis 10 kr a piece', 199811200000),
 
-INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
-VALUES ('Cherry tomatoes', 'Tomatoes', 'Vegetables',10,'pcs', 'Kommendörsgatan 5','41459', NULL, 
-                           'fine tomatoes 10 kr a piece', 199912013243);
+( 'Fresh fish','Pikes', 'Seafoods', 300, 'kg', 'Lindholmsallén 25','41753', 'Pikes', 
+'Freschly grinded älgfärs', 200008060101),
 
-/*INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
-VALUES ( 'Fresh fish','Pikes', 'Seafoods', 300, 'kg', 'Lindholmsallén 25','41753', NULL, 
-                            'Freschly grinded älgfärs', 200008060101);*/
-
-INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
-VALUES ('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Första Långgatan 12F','41656', NULL, 'Magical fruits',
-                             199402234323);
+('Perfect yellow bananas','Bananas', 'Fruits', 25, 'kg', 'Första Långgatan 12F','41656', NULL, 'Magical fruits',
+                             199402234323),
 
 -- Same seller selling from different locations.
-INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
-VALUES ('Very fine tomatoes','Tomatoes', 'Vegetables',10,'pcs', 'Första Långgatan 12F','41656', NULL, 
-                           'fine tomatoes 10 kr a piece', 199912013243);                             
+('Very fine fish','Salmons', 'Seafoods', 10 ,'pcs', 'Första Långgatan 12F','41656', NULL, 
+'fine salmons 10 kr a piece', 199912013243),
+
+('Cherry tomatoes', 'Tomatoes', 'Vegetables',10,'pcs', 'Kommendörsgatan 5','41459', NULL, 
+'fine tomatoes 10 kr a piece', 199912013243);
+
+-- More inserts for testing
+
+-- INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
+-- VALUES ('Fine Kantareller', 'Chanterelle Mushrooms', 'Mushrooms', 10 ,'pcs', 'Kommendörsgatan 5','41459', NULL, 
+--                            'höstens skörd', 199912013243);
+
+-- INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
+-- VALUES ('Home baked bread', 'Sourdough Bread', 'Bread', 30 ,'pcs', 'Kommendörsgatan 5','41459', NULL, 
+--                            'Baked af', 199912013243);
+
+-- INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
+-- VALUES ('Goatmilk', 'Milk', 'Dairy', 40 ,'kg', 'Kommendörsgatan 5','41459', NULL, 
+--                            'delish', 199912013243);
+
+-- INSERT INTO Products (title, name ,category, price, unit, locationAdress, locationZipcode, picture, description, seller)
+-- VALUES ('Elk meat (20-taggare)', 'Elk', 'Meats', 300 ,'kg', 'Kommendörsgatan 5','41459', NULL, 
+--                            'älg', 199912013243);
+
 
 ---------------------------------------------------------------------------------------------------------
 

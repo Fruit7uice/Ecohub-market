@@ -11,6 +11,7 @@
 </head>
 
 <body>
+  
   <div class="container-main">
     <div class="container nav">
       <a href="./sellForm.html">Sell a product</a>
@@ -19,96 +20,95 @@
       </a>
       <a href="">Info</a>
     </div>
-
+    
     <main>
       <div class="container container-form">
         
-        <form action="">
+        <form id="registrationForm" action="/register">
           <div class="all-forms">
-           
-             <div class="form-x" id="form-1">
+            
+            <div class="form-x" id="form-1">
               <div class="left-half">
-                <label for="f-name-in">First name:</label>
-                <input type="text" id="f-name-in" name="f-name-in" placeholder="First name">
-
-                <label for="personal-nr">Personal number:</label>
-                <input type="number" id="personal-nr" name="personal-nr" placeholder="(yyyymmddxxxx)" maxlength="12">
-
+                <label for="firstName">First name:</label>
+                <input type="text" id="firstName" name="firstName" placeholder="First name">
+                
+                <label for="personalNumber">Personal number:</label>
+                <input type="number" id="personalNumber" name="personalNumber" placeholder="(yyyymmddxxxx)" >
+                
                 <label for="adress">Adress:</label>
                 <input type="text" id="adress" name="adress" placeholder="Adress">
-
-                <label for="description-in">Description:</label>
-                <textarea id="description-in" name="description-in" placeholder="Short discription of yourself"
-                  maxlength="350"></textarea>
+                
+                <label for="sellerDescription">Description:</label>
+                <textarea id="sellerDescription" name="sellerDescription" placeholder="Short discription of yourself" maxlength="350"></textarea>
               </div>
               
               <div class="right-half">
-                <label for="l-name-in">Last name:</label>
-                <input type="text" id="l-name-in" name="l-name-in" placeholder="Last name">
-
-                <label for="phone-nr">Phonenumber:</label>
-                <input type="number" id="phone-nr" name="phone-nr" placeholder="Phonenumber">
-
+                <label for="lastName">Last name:</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Last name">
+                
+                <label for="phoneNumber">Phonenumber:</label>
+                <input type="number" id="phoneNumber" name="phoneNumber" placeholder="Phonenumber" >
+                
                 <div class="c-city-zip">
                   <div>
-                    <label for="city-in">City:</label>
-                    <input class="half-input" type="text" id="city-in" name="city" placeholder="City">
+                    <label for="city">City:</label>
+                    <input class="half-input" type="text" id="city" name="city" placeholder="City">
                   </div>
                   <div>
-                    <label for="zip-code-in">Zip code:</label>
-                    <input class="half-input" type="text" id="zip-code-in" name="zip-code" placeholder="Zip code">
+                    <label for="zipCode">Zip code:</label>
+                    <input class="half-input" type="number" id="zipCode" name="zipCode" placeholder="Zip code">
                   </div>
                 </div>
               </div>
             </div>
-
+            
             <div class="form-x" id="form-2">
               <div>
-                <label for="p-name-in">Product name:</label>
-                <input type="text" id="p-name-in" name="p-name-in" placeholder="Product name">
-
-                <label for="description-in">Description:</label>
-                <textarea id="description-in" name="description-in" placeholder="Short discription of the product"
-                  maxlength="350"></textarea>
-
-                <label for="image">Choose an image:</label>
-                <input class="img-in" type="file" name="image" accept="image/png, image/jpeg" />
-
+                <label for="productName">Product name:</label>
+                <input type="text" id="productName" name="productName" placeholder="Product name">
+                
+                <label for="productDescription">Description:</label>
+                <textarea id="productDescription" name="productDescription" placeholder="Short discription of the product"
+                maxlength="350"></textarea>
+                
+                <label for="img">Choose an image:</label>
+                <input class="img" type="file" name="img" accept="image/png, image/jpeg" />
+                
               </div>
               <div class="f2-right-half">
                 <label for="price">Price</label>
-
+                
                 <div class="c-price">
-                  <input type="number" placeholder="0">
-
+                  <input id="price" name="price" type="number" placeholder="0">
+                  
                   <div class="unit-dropdown">
-                    <select name="price" id="price">
+                    <select name="unit" id="unit">
                       <option value="" selected="selected">Select pricing</option>
                     </select>
                   </div>
-
+                  
                 </div>
-
+                
                 <label class="r-label">Category:</label>
                 <select name="category" id="category" class="category-dropdown">
                   <option value="" selected="selected">Select category</option>
                 </select>
-
+                
                 <label class="r-label">Item:</label>
                 <select name="item" id="item" class="category-dropdown">
                   <option value="" selected="selected">Select category first</option>
                 </select>
               </div>
             </div>
-
-
+            
+            
             <div class="form-x" id="form-3">
               <p>
                 Welcome ******* to "website name", press "Register" to register your information and product.
               </p>
-
+              
             </div>
-
+            
           </div>
           <div class="progress-container">
             <div class="progress-bar">
@@ -124,17 +124,17 @@
               </div>
               <div>
                 <button onclick="forwardProgress()" type="button" id="next-btn">Next</button>
-                <button type="submit" style="visibility: hidden;" id="register-btn">Register</button>
+                <button onclick="document.location='index.html'" type="submit" style="visibility: hidden;" id="register-btn">Register</button>
               </div>
             </div>
           </div>
-
+          
         </form>
-
+        <script src="formInformation.js"></script> <!-- Must be here after the form <div> -->
       </div>
-  </div>
+    </div>
   </main>
-  </div>
+</div>
 </body>
 
 </html>

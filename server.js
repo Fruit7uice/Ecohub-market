@@ -2,6 +2,17 @@ const express = require('express')
 const app = express()
 const port = 3000;
 const dbCon = require('./connection.js');
+const dbRetreiver = require('./retrieverHandler.js');
+const bodyParser = require('body-parser');
+const formFunction = require('./public/formFunctions');
+const insertHandler = require('./insertHandler')
+
+
+
+
+
+
+app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
@@ -12,7 +23,7 @@ app.get('/getproducts', (req, res) => {
     const client = dbCon.getClient();
 
     console.log("Inside Api Call: /getproducts")
-    dbCon.retrieveProductInfo(client)
+    dbRetreiver.retrieveAllDataFromTable(client, 'Products')
         .then(result => {
             console.log("SQL Rows Retrieved!")
             res.json(result);
@@ -24,7 +35,33 @@ app.get('/getproducts', (req, res) => {
         });
 });
 
-
 app.listen(port, () => {
     console.log(`Server is running on: http://localhost:${port}`);
 });
+
+
+
+app.post('/register', (req, res) => {
+    const userData = req.body; // This will contain the JSON data sent from the form
+
+    // *** TODO: INSERT INTO DATABASE ***
+    console.log(userData);
+
+    //prints the information 
+    
+    // Print userData
+    console.log(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
+    console.log(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
+    console.log(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
+
+    insertHandler.insertSeller(dbCon.getClient(), formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
+    insertHandler.insertLocation(dbCon.getClient(), formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
+    insertHandler.insertProduct(dbCon.getClient(), formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
+
+
+// Send a response back to the client
+res.send({ message: 'Registration successful' });
+// Redirect the user to the home page
+// res.redirect('/');
+});
+

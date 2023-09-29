@@ -1,7 +1,5 @@
 module.exports = {
-    retrieveAllSellers,
     getClient,
-    retrieveProductInfo
 };
 
 const { Client } = require('pg');

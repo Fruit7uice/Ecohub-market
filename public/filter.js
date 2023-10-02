@@ -1,3 +1,4 @@
+
 var expanded = false;
 var childVisibility;
 
@@ -22,3 +23,6 @@ function expandCollapseFilter() {
 
     expanded = !expanded;
 }
+
+
+

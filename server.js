@@ -39,7 +39,57 @@ app.listen(port, () => {
     console.log(`Server is running on: http://localhost:${port}`);
 });
 
+app.get('/getCategories', (req, res) => {
+    const client = dbCon.getClient();
 
+    // console.log("")
+    dbRetreiver.retrieveCategories(client)
+        .then(result => {
+            console.log("SQL Rows Retrieved!")
+            res.json(result);
+            console.log(result)
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
+});
+
+// app.get('/getSub', (req, res) => {
+//     const client = dbCon.getClient();
+
+//     // console.log("")
+//     dbRetreiver.retrieveSubCategories(client, )
+//         .then(result => {
+//             console.log("SQL Rows Retrieved!")
+//             res.json(result);
+//             // console.log(result)
+//         })
+//         .catch(error => {
+//             console.error(error);
+//             res.status(500).json({ error: 'Internal Server Error' });
+//         });
+// });
+
+
+app.post('/getSub', (req, res) => {
+    // console.log("4) INSIDE GETSUB POST REQ");
+
+    const receivedData = req.body; // category
+    console.log('5) Received data:', receivedData);
+
+    const client = dbCon.getClient();
+
+    dbRetreiver.retrieveSubCategories(client, [receivedData.name])
+        .then(result => {
+            // console.log("6)SERVER!!!: retrieveSubCategories result:  ", result)
+            res.json(result);
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
+});
 
 app.post('/register', (req, res) => {
     const userData = req.body; // This will contain the JSON data sent from the form
@@ -64,4 +114,5 @@ res.send({ message: 'Registration successful' });
 // Redirect the user to the home page
 // res.redirect('/');
 });
+
 

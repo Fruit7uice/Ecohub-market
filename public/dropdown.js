@@ -1,5 +1,5 @@
   var categoryObject = {
-    "Vegetables": ["Tomatoes", "Broccoli", "Spinach", "Cucumber", "lettuce"],
+    "Vegetables": ["Tomatoes", "Broccolies", "Spinach", "Cucumbers", "lettuce"],
     "Fruits": ["Apple", "Banana", "Orange","Grapes", "Peaches", "kiwi"],
     "Meats": ["Beef", "Chicken", "Pork","Lamb", "Turkey","Elk","Wild Boar","Rabbits","Ducks","Geese","Quails"],
     "Breads":["Rye","Sour dough","Kebabpizza"],
@@ -45,7 +45,7 @@
 
 function unitSelect() {
     //fetches the id of the html element and "stores" it in variables
-    var unitSel = document.getElementById("price");
+    var unitSel = document.getElementById("unit");
 
     for ( var x in priceObject ){
       unitSel.options[unitSel.options.length] = new Option(x,x);

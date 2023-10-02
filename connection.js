@@ -1,6 +1,5 @@
 module.exports = {
-    getClient
-
+    getClient,
 };
 
 const { Client } = require('pg');

@@ -119,7 +119,7 @@ form{
 #form-1{
   position: absolute;
   z-index: 1;
-  animation: slideIn 1s forwards;
+  animation: slideIn 0.75s forwards;
   left: 25%; /* Center horizontally */
 }
 

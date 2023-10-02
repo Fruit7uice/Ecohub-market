@@ -91,7 +91,7 @@ app.post('/getSub', (req, res) => {
         });
 });
 
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
     const userData = req.body; // This will contain the JSON data sent from the form
 
     // *** TODO: INSERT INTO DATABASE ***
@@ -104,9 +104,9 @@ app.post('/register', (req, res) => {
     console.log(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
     console.log(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
-    insertHandler.insertSeller(dbCon.getClient(), formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
-    insertHandler.insertLocation(dbCon.getClient(), formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
-    insertHandler.insertProduct(dbCon.getClient(), formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
+    await insertHandler.insertSeller(dbCon.getClient(), formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
+    await insertHandler.insertLocation(dbCon.getClient(), formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
+    await insertHandler.insertProduct(dbCon.getClient(), formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
 
 // Send a response back to the client

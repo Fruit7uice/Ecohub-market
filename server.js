@@ -18,7 +18,7 @@ app.get('/getproducts', (req, res) => {
     const client = dbCon.getClient();
 
     console.log("Inside Api Call: /getproducts")
-    dbRetreiver.retrieveAllDataFromTable(client, 'Products')
+    dbRetreiver.retrieveAllDataFromTable('Products')
         .then(result => {
             console.log("SQL Rows Retrieved!")
             res.json(result);
@@ -38,7 +38,7 @@ app.get('/getCategories', (req, res) => {
     const client = dbCon.getClient();
 
     // console.log("")
-    dbRetreiver.retrieveCategories(client)
+    dbRetreiver.retrieveCategories()
         .then(result => {
             console.log("SQL Rows Retrieved!")
             res.json(result);
@@ -59,7 +59,7 @@ app.post('/getSub', (req, res) => {
 
     const client = dbCon.getClient();
 
-    dbRetreiver.retrieveSubCategories(client, [receivedData.name])
+    dbRetreiver.retrieveSubCategories([receivedData.name])
         .then(result => {
             // console.log("6)SERVER!!!: retrieveSubCategories result:  ", result)
             res.json(result);

@@ -5,7 +5,8 @@ const dbCon = require('./connection.js');
 const dbRetreiver = require('./retrieverHandler.js');
 const bodyParser = require('body-parser');
 const formFunction = require('./public/formFunctions');
-const insertHandler = require('./insertHandler')
+const insertHandler = require('./insertHandler');
+const coordinateGetter = require('./coordinateGetter');
 
 
 
@@ -105,7 +106,7 @@ app.post('/register', async (req, res) => {
     console.log(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
     await insertHandler.insertSeller(dbCon.getClient(), formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
-    await insertHandler.insertLocation(dbCon.getClient(), formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
+    await coordinateGetter.insertLocation(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
     await insertHandler.insertProduct(dbCon.getClient(), formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
 

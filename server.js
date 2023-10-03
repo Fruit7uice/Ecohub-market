@@ -15,7 +15,6 @@ app.use(express.static('public'));
 // Only works to retrieve data when the Database is online.
 // If you get the error "Error executing query", the Database may not be active.
 app.get('/getproducts', (req, res) => {
-    const client = dbCon.getClient();
 
     console.log("Inside Api Call: /getproducts")
     dbRetreiver.retrieveAllDataFromTable('Products')
@@ -35,9 +34,7 @@ app.listen(port, () => {
 });
 
 app.get('/getCategories', (req, res) => {
-    const client = dbCon.getClient();
 
-    // console.log("")
     dbRetreiver.retrieveCategories()
         .then(result => {
             console.log("SQL Rows Retrieved!")
@@ -56,8 +53,6 @@ app.post('/getSub', (req, res) => {
 
     const receivedData = req.body; // category
     console.log('5) Received data:', receivedData);
-
-    const client = dbCon.getClient();
 
     dbRetreiver.retrieveSubCategories([receivedData.name])
         .then(result => {

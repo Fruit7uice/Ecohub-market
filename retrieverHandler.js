@@ -84,41 +84,6 @@ function retrieveAllDataFromTable(tableName) {
     });
 }
 
-
-// // Define a function to retrieve data from a PostgreSQL database based on specified column values.
-// function retrieveDataByColumnValues(tableName, columnName, values) {
-//     // Get client 
-//     const client = dbCon.getClient();
-
-//     return new Promise((resolve, reject) => {
-//         // Establish a connection to the PostgreSQL database.
-//         client.connect()
-//         .then(() => console.log('Connected to PostgreSQL database'))
-//         .catch(err => reject(`Error connecting to PostgreSQL: ${err}`));
-            
-//         // Create placeholders for the values to be used in the SQL query.
-//         const placeholders = values.map((_, index) => `$${index + 1}`).join(', ');
-        
-//         // Construct the SQL query with placeholders for the IN clause.
-//         const query = `SELECT * FROM ${tableName} WHERE ${columnName} IN (${placeholders});`;
-        
-//         // Execute the SQL query with the specified values.
-//         client.query(query, values, (err, res) => {
-//             if (err) {
-//                 // If an error occurs during the query execution, reject the promise with an error message.
-//                 reject(`Error executing query in retrieveDataByColumnValues for ${tableName}: ${err}`);
-//             } else {
-//                 // If the query is successful, log the result and resolve the promise with the retrieved rows.
-//                 console.log("Rows Retrieved");
-//                 resolve(res.rows);
-//             }
-//             // Close the database connection after the query is complete.
-//             client.end();
-//             console.log("Client terminated!");
-//         });
-//     });
-// }
-
 /*A function used for retrieving data from database. The query to the database will be changed based on which parameters the function is called with.
  Parameters
  tableName: Which table to fetch data from.

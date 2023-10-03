@@ -168,19 +168,16 @@ main{
 }
 
 .map{
-    position: absolute;
-    /* border: 1 solid black; */
+    position: relative;
     background-color: #e7b06f;
     width: 100%;
     height: 100%;
-    /* flex: 2; */
     color: #000;
-    z-index: -1;
 }
 
 
 .info-c{
-    position: relative;
+    position: absolute;
     display: flex;
     align-items: center;
     flex-flow: column;

@@ -1,11 +1,16 @@
+const dbCon = require('./connection.js');
+
 module.exports = {
     insertSeller,
     insertLocation,
     insertProduct
 }
-const coordinateGetter = require('./coordinateGetter.js');
 
-async function insertData(client, table, data) {
+async function insertData(table, data) {
+
+    // Get client 
+    const client = dbCon.getClient();
+
     // Promise is an object. Resolve and reject are callback functions that are part of the constructor of the promise object.
     return new Promise((resolve, reject) => {
         // Keys and values are the key/value pair matrix in the json-file (data).
@@ -25,7 +30,7 @@ async function insertData(client, table, data) {
         // queries the client database with the insertQuery, and logging "Data inserted successfully" upon success and logging detailed error information upon failure.
         client.query(insertQuery, values)
             .then(result => {
-            //console.log("Data inserted successfully")
+            console.log("Data inserted successfully")
             resolve(result); 
 
             }) 
@@ -35,16 +40,16 @@ async function insertData(client, table, data) {
 })}
 
 //Inserts sellersData into the 'Sellers' table using the provided PostgreSQL client
-async function insertSeller(client, sellerData) {
-    insertData(client, 'Sellers', sellerData);
+async function insertSeller(sellerData) {
+    insertData('Sellers', sellerData);
 }
 // Inserts locationData into the 'Locations' table using the provided PostgreSQL client
-async function insertLocation(client, locationData) {
-    insertData(client, 'Locations', locationData);
+async function insertLocation(locationData) {
+    insertData('Locations', locationData);
 }
 // Inserts productData into the 'Products' table using the provided PostgreSQL client
-async function insertProduct(client, productData) {
-    insertData(client, 'Products', productData)
+async function insertProduct(productData) {
+    insertData('Products', productData)
 }
 
 

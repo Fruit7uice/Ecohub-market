@@ -2,7 +2,6 @@
 // The JSON objects are hardcoded and will, if succesful be inserted into the database.
 
 const insertHandler = require('./insertHandler.js');
-const dbCon = require('./connection.js');
 const coordinateGetter = require('./coordinateGetter.js');
 
 // Example JSON file for a seller
@@ -48,9 +47,9 @@ const productJSON =
     }
 
 async function runTests() {
-  await insertHandler.insertSeller(dbCon.getClient(), sellerJSON);
+  await insertHandler.insertSeller(sellerJSON);
   await coordinateGetter.insertLocation(locationNoCoordinatesJSON);
-  await insertHandler.insertProduct(dbCon.getClient(), productJSON);
+  await insertHandler.insertProduct(productJSON);
                                       
 }
 

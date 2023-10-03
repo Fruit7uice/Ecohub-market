@@ -1,3 +1,5 @@
+const dbCon = require('./connection.js');
+
 module.exports = {
     retrieveCategories,
     retrieveSubCategories,
@@ -8,24 +10,27 @@ module.exports = {
 }
 
 // Function to retrieve all active categories from the database. E.g ['Meats', 'Fish'...]
-function retrieveCategories(client) {
-    return retrieveAllDataFromTable(client, 'Categories');
+function retrieveCategories() {
+    return retrieveAllDataFromTable('Categories');
 }
 
 // Function to retrieve all active subcategories of the input argument 'category'. 
-function retrieveSubCategories(client, category) {
-    return retrieveDataByColumnValues(client, 'ValidProducts', 'category', category, 'product');
+function retrieveSubCategories(category) {
+    return retrieveDataByColumnValues('ValidProducts', 'category', category, 'product');
 }
 
 // Function to retrieve all products that have the input argument 'items' as the subcategory.
-function retrieveProductDataWithFilter(client, items) {
-    return retrieveDataByColumnValues(client, 'Products', 'name', items)
+function retrieveProductDataWithFilter(items) {
+    return retrieveDataByColumnValues('Products', 'name', items)
 }
 
 
 // Function to retrieve coordinates from a specific ad from the products table. 
 
-function retrieveCoordinates(client, productID){
+function retrieveCoordinates(productID){
+    // Get client 
+    const client = dbCon.getClient();
+
     return new Promise((resolve, reject) => {
         // Establish a connection to the PostgreSQL database.
         client.connect()
@@ -55,7 +60,10 @@ function retrieveCoordinates(client, productID){
 
 
 // Function to retrieve all rows and columns from a specified table in a PostgreSQL database.
-function retrieveAllDataFromTable(client, tableName) {
+function retrieveAllDataFromTable(tableName) {
+    // Get client 
+    const client = dbCon.getClient();
+
     return new Promise((resolve, reject) => {
         // Establish a connection to the PostgreSQL database.
         client.connect()
@@ -86,7 +94,10 @@ function retrieveAllDataFromTable(client, tableName) {
 
 
 // Define a function to retrieve data from a PostgreSQL database based on specified column values.
-function retrieveDataByColumnValues(client, tableName, columnName, values) {
+function retrieveDataByColumnValues(tableName, columnName, values) {
+    // Get client 
+    const client = dbCon.getClient();
+
     return new Promise((resolve, reject) => {
         // Establish a connection to the PostgreSQL database.
         client.connect()

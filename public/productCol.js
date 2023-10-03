@@ -1,10 +1,12 @@
-
+var savedJson;
 // Fetches sellers from the db and creates list items with their name
 // In the future it should be more modular and apply filter options.
 fetch('/getproducts')
     .then(response => response.json())
     .then(data => {
+        savedJson = data;
         const productList = document.getElementById('seller-list');
+        let i = 0;
         data.forEach(product => {
             const listItem = document.createElement('li');
             const span1 = document.createElement('span');
@@ -23,8 +25,8 @@ fetch('/getproducts')
             price.textContent = product.price;
             price.textContent += (' ' + product.unit);
 
-            span1.appendChild(title)
-            span1.appendChild(price)
+            span1.appendChild(title);
+            span1.appendChild(price);
 
 
             //Span 2 p, img and p creation
@@ -45,7 +47,17 @@ fetch('/getproducts')
             span2.appendChild(timestamp);
 
             // listItem.textContent = product.name;
+            listItem.onclick = `populateInfoBox(${i})`;
+            
+            i++;
             productList.appendChild(listItem);
         });
     })
     .catch(error => console.error('Error fetching data:', error));
+
+
+
+function populateInfoBox(index){
+    const infobox = document.getElementById("seller-info");
+    
+}

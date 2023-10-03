@@ -55,21 +55,6 @@ app.get('/getCategories', (req, res) => {
         });
 });
 
-// app.get('/getSub', (req, res) => {
-//     const client = dbCon.getClient();
-
-//     // console.log("")
-//     dbRetreiver.retrieveSubCategories(client, )
-//         .then(result => {
-//             console.log("SQL Rows Retrieved!")
-//             res.json(result);
-//             // console.log(result)
-//         })
-//         .catch(error => {
-//             console.error(error);
-//             res.status(500).json({ error: 'Internal Server Error' });
-//         });
-// });
 
 
 app.post('/getSub', (req, res) => {

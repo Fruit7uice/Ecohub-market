@@ -5,18 +5,12 @@ const dbCon = require('./connection.js');
 const dbRetreiver = require('./retrieverHandler.js');
 const bodyParser = require('body-parser');
 const formFunction = require('./public/formFunctions');
-const insertHandler = require('./insertHandler');
-const coordinateGetter = require('./coordinateGetter');
-
-
-
-
-
+const insertHandler = require('./insertHandler')
+const coordinateGetter = require('./coordinateGetter')
 
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
-
 
 // Only works to retrieve data when the Database is online.
 // If you get the error "Error executing query", the Database may not be active.
@@ -55,22 +49,6 @@ app.get('/getCategories', (req, res) => {
             res.status(500).json({ error: 'Internal Server Error' });
         });
 });
-
-// app.get('/getSub', (req, res) => {
-//     const client = dbCon.getClient();
-
-//     // console.log("")
-//     dbRetreiver.retrieveSubCategories(client, )
-//         .then(result => {
-//             console.log("SQL Rows Retrieved!")
-//             res.json(result);
-//             // console.log(result)
-//         })
-//         .catch(error => {
-//             console.error(error);
-//             res.status(500).json({ error: 'Internal Server Error' });
-//         });
-// });
 
 
 app.post('/getSub', (req, res) => {
@@ -115,5 +93,7 @@ res.send({ message: 'Registration successful' });
 // Redirect the user to the home page
 // res.redirect('/');
 });
+
+
 
 

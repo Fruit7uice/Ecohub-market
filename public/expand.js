@@ -6,24 +6,50 @@
 // Additionally, it attempts to rotate an element with the ID
 // "expandIcon"(though the rotation might not work as intended,
 // depending on the context).
-var expanded = false;
-function expandInfo() {
+var isExpanded;
+
+
+
+
+
+function autoExpand() {
+    console.log("Autoexpand: ", isExpanded);
+
+    if (isExpanded) { // Collapse
+        expand(false)
+    }
+    else { // Expand
+        expand(true);
+    }
+    
+    // isExpanded == !isExpanded;
+    // console.log("Autoexpand Changed: ", isExpanded);
+
+}
+
+function expand(expand) {
+    isExpanded = expand;
+    console.log("Expand fun", isExpanded);
     const infoC = document.getElementById("info-c");
+    infoC.style.display = "flex";
     const fullP = document.getElementById("full-product");
     const expandIcon = document.getElementById("expandIcon");
 
-
-    if (expanded) { // Collapse
+    if (expand) {
+        infoC.style.height = "500px";
+        fullP.style.display = "grid";
+        expandIcon.style.rotate = "180deg";
+    }
+    else {
         infoC.style.height = "50px";
         fullP.style.display = "none";
         expandIcon.style.rotate = "0deg";
     }
-    else { // Expand
-        infoC.style.height = "500px";
-        fullP.style.display = "grid";
-        expandIcon.style.rotate = "180deg";
 
-    }
-    expanded = !expanded;
+}
 
+
+exports = {
+    autoExpand,
+    expand
 }

@@ -20,7 +20,14 @@ body{
     overflow-y: visible;
     color: #fff;
     font-family: 'Alice';
+    font-weight: normal;
+}
+
+a{
     font-weight: bold;
+}
+h1, h2, h3, h4, h5, h6 , p{
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .container{
@@ -178,7 +185,7 @@ main{
 
 .info-c{
     position: absolute;
-    display: flex;
+    display: none;
     align-items: center;
     flex-flow: column;
     width: 100%;
@@ -215,7 +222,7 @@ main{
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);
     /* gap: 2px; */
-    background-color: var(--light);
+    background-color: var(--customGreen);
 }
 
 #full-product > *{

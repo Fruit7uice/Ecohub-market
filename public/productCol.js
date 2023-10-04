@@ -1,6 +1,9 @@
 
 // variable to save Json items from fetch
 var savedJson;
+
+
+
 // Fetches sellers from the db and creates list items with their name
 // In the future it should be more modular and apply filter options.
 fetch('/getproducts')
@@ -65,6 +68,7 @@ fetch('/getproducts')
 
 
 function populateInfoBox(index){
+    expand(true);
     console.log("Json for item: ", savedJson[index])
     
     const infobox = document.getElementById("full-product");

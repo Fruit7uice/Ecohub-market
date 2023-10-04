@@ -1,4 +1,5 @@
-// Fetches products from the db and creates list items with their credentials
+
+// Fetches sellers from the db and creates list items with their name
 // In the future it should be more modular and apply filter options.
 fetch('/getproducts')
     .then(response => response.json())
@@ -16,7 +17,7 @@ fetch('/getproducts')
 
             //Span 1 h4 and p creation
             const title = document.createElement('h5');
-            title.textContent = product.name;
+            title.textContent = product.title;
 
             const price = document.createElement('p');
             price.textContent = product.price;
@@ -28,10 +29,11 @@ fetch('/getproducts')
 
             //Span 2 p, img and p creation
             const city = document.createElement('p');
-            city.textContent = product.locations;
+            city.textContent = product.locationadress;
 
             const img = document.createElement('img');
-            img.src = './assets/tomat.png';
+            const productName = product.name;
+            img.src = './assets/' + product.category.replace(/\s/g, '') + '.jpg';
 
             const timestamp = document.createElement('p');
 
@@ -41,7 +43,6 @@ fetch('/getproducts')
             span2.appendChild(city);
             span2.appendChild(img);
             span2.appendChild(timestamp);
-
 
             // listItem.textContent = product.name;
             productList.appendChild(listItem);

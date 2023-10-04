@@ -49,7 +49,7 @@ function insertFinalJson(locationData, point) {
       "coordinates": point
     };
 
-    insertHandler.insertLocation(dbCon.getClient(), jsonLocation)
+    insertHandler.insertLocation(jsonLocation)
       .then(result => {
         resolve(result); // Resolve the promise with the result if successful
       })

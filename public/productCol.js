@@ -82,14 +82,14 @@ function populateInfoBox(index){
         const title = document.createElement('h1');
         title.innerHTML = item.title;
 
-        const price = document.createElement('h2');
-        price.innerHTML = item.price + " / " + item.unit;
+        const priceUnitType = document.createElement('h2');
+        priceUnitType.innerHTML = item.name + ": " + item.price + " / " + item.unit;
 
         // const unit = document.createElement('h2');
         // unit.innerHTML = item.unit;
 
     titlePrice.appendChild(title);
-    titlePrice.appendChild(price);
+    titlePrice.appendChild(priceUnitType);
     // titlePrice.appendChild(unit);
     //***********
 
@@ -116,7 +116,7 @@ function populateInfoBox(index){
     // *** populate location
     const locationHeader = document.createElement('h4');
     const location = document.createElement('p');
-    locationHeader.innerHTML = "Adress";
+    locationHeader.innerHTML = "Säljes vid";
     location.innerHTML = item.locationadress;
     locationContainer.appendChild(locationHeader);
     locationContainer.appendChild(location);
@@ -125,7 +125,7 @@ function populateInfoBox(index){
     // *** populate seller
     const seller = document.createElement('h4');
     const sellerDescription = document.createElement("p");
-    seller.innerHTML = "Krösus Sork"; //Hårdkodat för nu tills vi har ett attribut för seller description i databasen.
+    seller.innerHTML = "Säljes av"; //Hårdkodat för nu tills vi har ett attribut för seller description i databasen.
     sellerDescription.innerHTML = "Krösus Sork är en affärsman och har en hel stab av arbetande sorkar i olika positioner.";
     // seller.innerHTML = item.seller;
     // sellerDescription.innerHTML = item.sellerDescription;

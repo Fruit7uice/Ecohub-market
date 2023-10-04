@@ -99,14 +99,14 @@ async function retrieveAndLogCoordinates() {
 }
 
 
-retrieveAndLogCoordinates()
+retrieveAndLogCoordinates();
 
 
 
 async function retrieveAllProductIDs() {
     const result = await dbRetreiver.retrieveAllProductIDs('Products');
-    console.log(result)
+    console.log(result);
 }
 
 
-retrieveAllProductIDs()
+retrieveAllProductIDs();

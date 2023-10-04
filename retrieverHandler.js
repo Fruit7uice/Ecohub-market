@@ -4,7 +4,8 @@ module.exports = {
     retrieveCategories,
     retrieveSubCategories,
     retrieveAllDataFromTable,
-    retrieveCoordinates
+    retrieveCoordinates,
+    retrieveAllProductIDs
 }
 
 // Function to retrieve all active categories from the database. E.g ['Meats', 'Fish'...]

@@ -73,7 +73,7 @@ function populateInfoBox(index){
     
     const infobox = document.getElementById("full-product");
     infobox.innerHTML = "";
-    // console.log("Hej petter", index)
+   
     const item = savedJson[index];
 
     const titlePrice = document.createElement('div');
@@ -105,12 +105,12 @@ function populateInfoBox(index){
     description.innerText = item.description;
     descriptionContainer.appendChild(descriptionHeader);
     descriptionContainer.appendChild(description)
+    descriptionContainer.appendChild(document.createElement('hr'))
     //********
 
     // *** populate image
     const image = document.createElement('img'); 
-    // image.src = item.image; // Add url if possible later
-    image.innerHTML = "IMAGE";
+    image.src = './assets/' + item.category.replace(/\s/g, '') + '.jpg';
     imageContainer.innerHTML = "IMAGE";
     imageContainer.appendChild(image);
 

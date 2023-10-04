@@ -1,7 +1,7 @@
 const dbCon = require('./connection.js');
 
 module.exports = {
-    retreiveCategories,
+    retrieveCategories,
     retrieveSubCategories,
     retrieveAllDataFromTable,
     retrieveCoordinates

@@ -114,17 +114,23 @@ function populateInfoBox(index){
     
 
     // *** populate location
-    const locationHeadeer = document.createElement('h4');
+    const locationHeader = document.createElement('h4');
     const location = document.createElement('p');
-    locationHeader = "Adress"
+    locationHeader.innerHTML = "Adress";
     location.innerHTML = item.locationadress;
+    locationContainer.appendChild(locationHeader);
     locationContainer.appendChild(location);
     //********
 
     // *** populate seller
-    const seller = document.createElement('h6');
-    seller.innerHTML = item.seller;
+    const seller = document.createElement('h4');
+    const sellerDescription = document.createElement("p");
+    seller.innerHTML = "Krösus Sork"; //Hårdkodat för nu tills vi har ett attribut för seller description i databasen.
+    sellerDescription.innerHTML = "Krösus Sork är en affärsman och har en hel stab av arbetande sorkar i olika positioner.";
+    // seller.innerHTML = item.seller;
+    // sellerDescription.innerHTML = item.sellerDescription;
     sellerContainer.appendChild(seller);
+    sellerContainer.appendChild(sellerDescription);
     //********
     
     // Creates IDs for each element of the grid

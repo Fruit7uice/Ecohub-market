@@ -199,6 +199,7 @@ main{
     cursor: pointer;
 }
 
+/*INFO BOX*/
 
 .seller-info{
     background-color: #3f6668;
@@ -228,8 +229,8 @@ main{
     flex-flow: column;
     justify-content: center;
     align-items: baseline;
-    margin: 0px;
-    padding: 0px;
+    /* margin: 0px; */
+    /* padding: 0px; */
 }
 
 #info-header h2{
@@ -241,11 +242,12 @@ main{
 #info-description{
     grid-column: 1/4;
     grid-row: 2/5;
+    /* font-size: 1.3rem; */
 }
 
 /*Header of each grid item*/
 #full-product h4{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 
@@ -263,6 +265,13 @@ main{
     grid-column: 1 / 4;
     grid-row: 5;
 }
+
+#full-product p{
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+/*END INFO BOX*/
 
 #expandIcon{
     transition: 0.5s;

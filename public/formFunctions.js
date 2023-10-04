@@ -6,6 +6,7 @@ module.exports = {
   createLocationJSON,
   createProductJSON,
   createSellerJSON
+
 }
 
 // Function to create a JSON object for a seller

@@ -5,12 +5,15 @@ const dbCon = require('./connection.js');
 const dbRetreiver = require('./retrieverHandler.js');
 const bodyParser = require('body-parser');
 const formFunction = require('./public/formFunctions');
+const filterFunction = require ('./public/filterFunction')
 const insertHandler = require('./insertHandler')
 const coordinateGetter = require('./coordinateGetter')
+const filterQuery = require ('./filterQuery.js')
 
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
+
 
 // Only works to retrieve data when the Database is online.
 // If you get the error "Error executing query", the Database may not be active.
@@ -28,6 +31,7 @@ app.get('/getproducts', (req, res) => {
             res.status(500).json({ error: 'Internal Server Error' });
         });
 });
+
 
 app.listen(port, () => {
     console.log(`Server is running on: http://localhost:${port}`);
@@ -78,9 +82,9 @@ app.post('/register', async (req, res) => {
     console.log(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
     console.log(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
-    await insertHandler.insertSeller(dbCon.getClient(), formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
+    await insertHandler.insertSeller(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
     await coordinateGetter.insertLocation(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
-    await insertHandler.insertProduct(dbCon.getClient(), formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
+    await insertHandler.insertProduct(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
 
 // Send a response back to the client
@@ -89,6 +93,45 @@ res.send({ message: 'Registration successful' });
 // res.redirect('/');
 });
 
+app.post('/filter', async (req, res) => {
+    const userData = req.body; // This will contain the JSON data sent from the form
+
+    // *** TODO: INSERT INTO DATABASE ***
+    console.log(userData);
+
+    
+    //prints the information 
+    
+    // Print userData
+    console.log(filterFunction.createCategoryAndItem(userData.item, userData.category));
+    
+    
+    
+
+// Send a response back to the client
+res.send({ message: 'filtering successful' });
+// Redirect the user to the home page
+// res.redirect('/');
+});
 
 
+
+app.get('/getFilteredQuery', (req, res) =>{
+    // Eran kod här för att hämta client och göra query
+    // skicka tillbaka den listan som är filtrerad med res.json(result)
+    
+    //Ex:
+    
+    const client = dbCon.getClient(); // hämta client
+    let categoryAndItem = filterFunction.createCategoryAndItem(userData.item, userData.category);
+        filterQuery.filterProductsFromJSON(client, categoryAndItem)
+            .then(result => {
+                //SQL Rows (result) Retrieved!
+                res.json(result); // Skicka json till client 
+            })
+            .catch(error => {
+                console.error(error);
+                res.status(500).json({ error: 'Internal Server Error' });
+            });
+    });
 

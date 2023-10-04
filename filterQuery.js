@@ -22,7 +22,11 @@ function filterProductsFromJSON(client, jsonObject) {
         let query; // Initialize the query string
         let queryParams = []; // Initialize an array to hold query parameters
 
-        if (category && item) {
+    /*  item !='Item' means that an item is selected e.g. 'Bananas' (if category = 'Fruits') 
+        and is not on the default placeholder ('Item') */
+        if (category && item != 'Item' ) { 
+            console.log(item);
+            console.log(category);
             // Build a query to filter products by both category ($1) and item ($2)
             query = 'SELECT * FROM products WHERE category = $1 AND name = $2;';
             // Set query parameters accordingly
@@ -58,7 +62,8 @@ function filterProductsFromJSON(client, jsonObject) {
 
 // JSON test file. Should yield all meats for sale in a list.
 const jsonCategoryOnly = {
-    "category": 'Seafoods'
+    "category": 'Seafoods',
+    "item": 'Item'
 }
 
 
@@ -68,4 +73,4 @@ const jsonCategoryAndItem = {
     "item" : 'Bananas'
 }
 
-filterProductsFromJSON (dbCon.getClient(), jsonCategoryAndItem);
+//filterProductsFromJSON (dbCon.getClient(), jsonCategoryAndItem);

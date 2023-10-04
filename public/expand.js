@@ -20,7 +20,7 @@ function expandInfo() {
     }
     else { // Expand
         infoC.style.height = "500px";
-        fullP.style.display = "contents";
+        fullP.style.display = "grid";
         expandIcon.style.rotate = "180deg";
 
     }

@@ -183,7 +183,7 @@ main{
     flex-flow: column;
     width: 100%;
     height: 50px;
-    transition: 1s;
+    transition: 0.5s;
     
 }
 
@@ -209,13 +209,63 @@ main{
 
 #full-product{
     display: none;
+    background-color: #fff;
+    height: 100%;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
 }
 
-#full-product *{
+#full-product > *{
     padding-left: 20px;
+    background: rgba(0, 0, 0, 0.2);
 }
+
+#info-header{
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+    display: inline-flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: baseline;
+    margin: 0px;
+    padding: 0px;
+}
+
+#info-header h2{
+    /* margin: 0px 10px; */
+    margin-top: -20px;
+    padding: 0px;
+}
+
+#info-description{
+    grid-column: 1/4;
+    grid-row: 2/5;
+}
+
+/*Header of each grid item*/
+#full-product h4{
+    font-size: 1.5rem;
+}
+
+
+#info-image{
+    grid-column: 4/ span end;
+    grid-row: 1/ 5;
+}
+
+#info-location{
+    grid-column: 4 / span end;
+    grid-row: 5 / span end;
+}
+
+#info-seller{
+    grid-column: 1 / 4;
+    grid-row: 5;
+}
+
 #expandIcon{
-    transition: 1s;
+    transition: 0.5s;
 }
 
 .searchbox{

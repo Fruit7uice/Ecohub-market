@@ -1,3 +1,5 @@
+
+// variable to save Json items from fetch
 var savedJson;
 // Fetches sellers from the db and creates list items with their name
 // In the future it should be more modular and apply filter options.
@@ -5,6 +7,7 @@ fetch('/getproducts')
     .then(response => response.json())
     .then(data => {
         savedJson = data;
+        console.log("Json saved to variable");
         const productList = document.getElementById('seller-list');
         let i = 0;
         data.forEach(product => {
@@ -47,7 +50,11 @@ fetch('/getproducts')
             span2.appendChild(timestamp);
 
             // listItem.textContent = product.name;
-            listItem.onclick = `populateInfoBox(${i})`;
+            
+            listItem.index = i;
+            listItem.addEventListener("click", () => {
+                populateInfoBox(listItem.index)
+            });
             
             i++;
             productList.appendChild(listItem);
@@ -58,6 +65,82 @@ fetch('/getproducts')
 
 
 function populateInfoBox(index){
-    const infobox = document.getElementById("seller-info");
+    console.log("Json for item: ", savedJson[index])
+    
+    const infobox = document.getElementById("full-product");
+    infobox.innerHTML = "";
+    // console.log("Hej petter", index)
+    const item = savedJson[index];
+
+    const titlePrice = document.createElement('div');
+    const descriptionContainer = document.createElement('div');
+    const imageContainer = document.createElement('div');
+    const locationContainer = document.createElement('div');
+    const sellerContainer = document.createElement('div');
+
+    // *** populate title / price ***
+        const title = document.createElement('h1');
+        title.innerHTML = item.title;
+
+        const price = document.createElement('h2');
+        price.innerHTML = item.price + " / " + item.unit;
+
+        // const unit = document.createElement('h2');
+        // unit.innerHTML = item.unit;
+
+    titlePrice.appendChild(title);
+    titlePrice.appendChild(price);
+    // titlePrice.appendChild(unit);
+    //***********
+
+    // *** populate description
+
+    const descriptionHeader = document.createElement('h4');
+    const description = document.createElement('p');
+    descriptionHeader.innerText = "Beskrivning";
+    description.innerText = item.description;
+    descriptionContainer.appendChild(descriptionHeader);
+    descriptionContainer.appendChild(description)
+    //********
+
+    // *** populate image
+    const image = document.createElement('img'); 
+    // image.src = item.image; // Add url if possible later
+    image.innerHTML = "IMAGE";
+    imageContainer.innerHTML = "IMAGE";
+    imageContainer.appendChild(image);
+
+    //********
+    
+
+    // *** populate location
+    const locationHeadeer = document.createElement('h4');
+    const location = document.createElement('p');
+    locationHeader = "Adress"
+    location.innerHTML = item.locationadress;
+    locationContainer.appendChild(location);
+    //********
+
+    // *** populate seller
+    const seller = document.createElement('h6');
+    seller.innerHTML = item.seller;
+    sellerContainer.appendChild(seller);
+    //********
+    
+    // Creates IDs for each element of the grid
+    titlePrice.id = "info-header";
+    descriptionContainer.id = "info-description";
+    imageContainer.id = "info-image";
+    locationContainer.id = "info-location";
+    sellerContainer.id = "info-seller";
+
+    // Appends all the grid items to the grid container.
+    infobox.appendChild(titlePrice); 
+    infobox.appendChild(descriptionContainer);
+    infobox.appendChild(imageContainer);
+    infobox.appendChild(locationContainer);
+    infobox.appendChild(sellerContainer);
+    
     
 }
+

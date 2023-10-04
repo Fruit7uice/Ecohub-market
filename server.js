@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const formFunction = require('./public/formFunctions');
 const insertHandler = require('./insertHandler')
 const coordinateGetter = require('./coordinateGetter')
+const mapPins = require('./public/map')
 
 app.use(bodyParser.json());
 
@@ -86,9 +87,26 @@ app.post('/register', async (req, res) => {
 // Send a response back to the client
 res.send({ message: 'Registration successful' });
 // Redirect the user to the home page
-// res.redirect('/');
+// res.redirect('/')
 });
 
 
 
+async function retrieveAndLogCoordinates() {
+    const kebab = await dbRetreiver.retrieveCoordinates(1);
+    console.log(kebab);
+    console.log("index 0", kebab[0].coordinates.x, kebab[0].coordinates.y);
+}
 
+
+retrieveAndLogCoordinates()
+
+
+
+async function retrieveAllProductIDs() {
+    const result = await dbRetreiver.retrieveAllProductIDs('Products');
+    console.log(result)
+}
+
+
+retrieveAllProductIDs()

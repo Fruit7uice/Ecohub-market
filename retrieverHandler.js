@@ -145,3 +145,34 @@ function retrieveDataByCriteria(tableName, columns = '*', whereClause = '', valu
 }
 
 
+// Function to retrieve coordinates from a specific ad from the products table. 
+function retrieveAllProductIDs(tableName){
+    // Get client 
+    const client = dbCon.getClient();
+
+    return new Promise((resolve, reject) => {
+        // Establish a connection to the PostgreSQL database.
+        client.connect()
+            .then(() => console.log('Connected to PostgreSQL database'))
+            .catch(err => reject('Error connecting to PostgreSQL', err));
+
+        // Construct an SQL query to select all productIDs rom the Products table.
+        const query = `SELECT id FROM ${tableName}`
+        // Execute the SQL query to retrieve data from the table.
+        client.query(query, (err, res) => {
+            if (err) {
+                // If an error occurs during the query execution, reject the promise with an error message.
+                reject(`Error executing query in retrieveAllProductIDs`, err);
+            } else {
+                // If the query is successful, log the retrieved rows and resolve the promise with the data.
+                console.log(res.rows);
+                console.log("Rows Retrieved");
+                resolve(res.rows);
+            }
+            // Close the database connection after the query is complete.
+            client.end();
+            console.log("Client terminated!");
+        });
+    });
+    // Returns the longitude and latitude of the dedicated adress of the ad
+}

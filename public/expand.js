@@ -29,19 +29,21 @@ function autoExpand() {
 
 function expand(expand) {
     isExpanded = expand;
-    console.log("Expand fun", isExpanded);
+    // console.log("Expand fun", isExpanded);
     const infoC = document.getElementById("info-c");
+    const sellerC = document.getElementById("seller-info");
     infoC.style.display = "flex";
     const fullP = document.getElementById("full-product");
     const expandIcon = document.getElementById("expandIcon");
 
     if (expand) {
-        infoC.style.height = "500px";
+        // sellerC.style.height = "500px";
         fullP.style.display = "grid";
         expandIcon.style.rotate = "180deg";
+        sellerC.style.transition ="0.5s";
     }
     else {
-        infoC.style.height = "50px";
+        // sellerC.style.height = "20px";
         fullP.style.display = "none";
         expandIcon.style.rotate = "0deg";
     }

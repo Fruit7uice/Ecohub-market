@@ -111,7 +111,7 @@ function populateInfoBox(index){
     // *** populate image
     const image = document.createElement('img'); 
     image.src = './assets/' + item.category.replace(/\s/g, '') + '.jpg';
-    imageContainer.innerHTML = "IMAGE";
+    // imageContainer.innerHTML = "IMAGE";
     imageContainer.appendChild(image);
 
     //********

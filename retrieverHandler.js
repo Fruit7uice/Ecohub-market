@@ -5,6 +5,7 @@ module.exports = {
     retrieveSubCategories,
     retrieveAllDataFromTable,
     retrieveCoordinates,
+    retrieveAllDataFromView,
     retrieveAllProductIDs
 }
 
@@ -176,4 +177,42 @@ function retrieveAllProductIDs(tableName){
         });
     });
     // Returns the longitude and latitude of the dedicated adress of the ad
+}
+
+
+
+
+
+// Function to retrieve all data from a specific view
+
+function retrieveAllDataFromView(viewName) {
+    // Get client 
+    const client = dbCon.getClient();
+
+    return new Promise((resolve, reject) => {
+        // Establish a connection to the PostgreSQL database.
+        client.connect()
+            .then(() => console.log('Connected to PostgreSQL database'))
+            .catch(err => reject('Error connecting to PostgreSQL', err));
+
+        // Construct an SQL query to select all rows from the specified view.
+        const query = `SELECT * FROM ${viewName};`;
+
+        // Execute the SQL query to retrieve data from the view.
+        client.query(query, (err, res) => {
+            if (err) {
+                // If an error occurs during the query execution, reject the promise with an error message.
+                reject(`Error executing query in retrieveAllDataFromView for ${tableView}`, err);
+            } else {
+                // If the query is successful, log the retrieved rows and resolve the promise with the data.
+                //console.log(res.rows); // Uncomment to log all rows
+                console.log("Rows Retrieved");
+                resolve(res.rows);
+            }
+            
+            // Close the database connection after the query is complete.
+            client.end();
+            console.log("Client terminated!");
+        });
+    });
 }

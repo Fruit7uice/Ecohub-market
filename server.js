@@ -18,7 +18,7 @@ app.use(express.static('public'));
 app.get('/getproducts', (req, res) => {
 
     console.log("Inside Api Call: /getproducts")
-    dbRetreiver.retrieveAllDataFromTable('Products')
+    dbRetreiver.retrieveAllDataFromView('productAndLocation')
         .then(result => {
             console.log("SQL Rows Retrieved!")
             res.json(result);

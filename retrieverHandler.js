@@ -202,7 +202,7 @@ function retrieveAllDataFromView(viewName) {
         client.query(query, (err, res) => {
             if (err) {
                 // If an error occurs during the query execution, reject the promise with an error message.
-                reject(`Error executing query in retrieveAllDataFromView for ${tableView}`, err);
+                reject(`Error executing query in retrieveAllDataFromView for ${viewName}`, err);
             } else {
                 // If the query is successful, log the retrieved rows and resolve the promise with the data.
                 //console.log(res.rows); // Uncomment to log all rows

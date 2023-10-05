@@ -1,9 +1,3 @@
-/*
-1. get the selected category and item. (dummy json for testing).
-2. match the given category and item with the products.
-3. show this in some way...!
-*/
-
 module.exports = {
     filterProductsFromJSON
 }
@@ -59,19 +53,3 @@ function filterProductsFromJSON(client, jsonObject) {
         });
     });
 }
-
-
-// JSON test file. Should yield all meats for sale in a list.
-const jsonCategoryOnly = {
-    "category": 'Seafoods',
-    "item": 'Item'
-}
-
-
-//JSON test file. Should yield all cucumbers for sale in a list.
-const jsonCategoryAndItem = {
-    "category": 'Fruits',
-    "item" : 'Bananas'
-}
-
-//filterProductsFromJSON (dbCon.getClient(), jsonCategoryAndItem);

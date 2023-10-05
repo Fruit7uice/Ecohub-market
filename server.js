@@ -74,8 +74,6 @@ app.post('/register', async (req, res) => {
 
     // *** TODO: INSERT INTO DATABASE ***
     console.log(userData);
-
-    //prints the information 
     
     // Print userData
     console.log(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
@@ -90,17 +88,13 @@ app.post('/register', async (req, res) => {
 // Send a response back to the client
 res.send({ message: 'Registration successful' });
 // Redirect the user to the home page
-// res.redirect('/');
 });
 
 app.post('/filter', async (req, res) => {
     const userData = req.body; // This will contain the JSON data sent from the form
 
-    // *** TODO: INSERT INTO DATABASE ***
     console.log(userData);
 
-    
-    //prints the information 
     
     // Print userData
     const createdJson = filterFunction.createCategoryAndItem(userData.category, userData.item);
@@ -112,28 +106,8 @@ app.post('/filter', async (req, res) => {
 
 // Send a response back to the client
 res.send({ message: 'filtering successful' });
-// Redirect the user to the home page
-// res.redirect('/');
 });
 
 
 
-app.get('/getFilteredQuery', /*async???*/(req, res) =>{
-    // Eran kod här för att hämta client och göra query
-    // skicka tillbaka den listan som är filtrerad med res.json(result)
-    
-    //Ex:
-    
-    const client = dbCon.getClient(); // hämta client
-    let categoryAndItem = filterFunction.createCategoryAndItem(userData.item, userData.category);
-        filterQuery.filterProductsFromJSON(client, categoryAndItem)
-            .then(result => {
-                //SQL Rows (result) Retrieved!
-                res.json(result); // Skicka json till client 
-            })
-            .catch(error => {
-                console.error(error);
-                res.status(500).json({ error: 'Internal Server Error' });
-            });
-    });
 

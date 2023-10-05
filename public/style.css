@@ -107,17 +107,16 @@ main{
 }
 
 
-.seller-column ul li{
+/* .seller-column ul li{
     display: flex;
     width: 100%;
     height: 120px;
     border-bottom: 2px solid black;
     color: white;
-    /* padding-left: 20px; */
     padding-top: 10px;
     padding-bottom: 10px;
     flex-direction: row;
-}
+} */
 
 .seller-column ul li:hover {
     /* background-color: #a1a859; */
@@ -134,11 +133,11 @@ main{
     color: #b4b4b4;
 }
 
-.seller-column ul li span {
+/* .seller-column ul li span {
     padding: 0px 10px 0px 20px;
-}
+} */
 
-.product-info1 {
+/* .product-info1 {
     width: 100%;
     height: 100%;
     display: flex;
@@ -159,7 +158,91 @@ main{
     flex: 1;
     align-items: end;
     font-size: small;
+} */
+
+/* .seller-column ul li{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border-bottom: 2px solid #0000003f;
+    padding: 0 10px;
 }
+
+.product-header {
+    grid-area: 1 / 1 / 2 / 4;
+    place-self: center baseline;
+}
+
+.product-city {
+    grid-area: 1 / 4 / 2 / 6;
+    place-self: center end;
+    
+}
+
+.product-desc {
+    grid-area: 2 / 1 / 4 / 4;
+}
+
+.product-img {
+    grid-area: 2 / 4 / 4 / 6;
+    place-self: center end;
+}
+
+.product-price {
+    grid-area: 4 / 1 / 5 / 4;
+    place-self: center baseline;
+}
+
+.product-time {
+    grid-area: 4 / 4 / 5 / 6;
+    place-self: center end;
+} */
+
+.seller-column ul li {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border-bottom: 2px solid #0000003f;
+    padding: 0 10px;
+    max-height: 150px;
+}
+
+.product-img {
+    grid-area: 1 / 1 / 5 / 4;
+    place-self: center baseline;
+    width: 80% !important;
+    height: 80% !important;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+.product-header {
+    grid-area: 1 / 4 / 2 / 7;
+}
+
+.product-city {
+    grid-area: 2 / 4 / 3 / 7;
+}
+
+.product-desc {
+    grid-area: 3 / 4 / 4 / 7;
+}
+
+.product-price {
+    grid-area: 4 / 4 / 5 / 6;
+}
+
+.product-time {
+    grid-area: 4 / 5 / 5 / 7;
+    place-self: center end;
+}
+
+
 .seller-column ul li img {
     width: 80px;
     height: 80px;

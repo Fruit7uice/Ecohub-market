@@ -6,6 +6,64 @@ var savedJson;
 
 // Fetches sellers from the db and creates list items with their name
 // In the future it should be more modular and apply filter options.
+// fetch('/getproducts')
+//     .then(response => response.json())
+//     .then(data => {
+//         savedJson = data;
+//         console.log("Json saved to variable");
+//         const productList = document.getElementById('seller-list');
+//         let i = 0;
+//         data.forEach(product => {
+//             const listItem = document.createElement('li');
+//             const span1 = document.createElement('span');
+//             span1.className = "product-info1";
+//             const span2 = document.createElement('span');
+//             span2.className = "product-info2";
+
+//             listItem.appendChild(span1)
+//             listItem.appendChild(span2)
+
+//             //Span 1 h4 and p creation
+//             const title = document.createElement('h5');
+//             title.textContent = product.title;
+
+//             const price = document.createElement('p');
+//             price.textContent = product.price;
+//             price.textContent += (' ' + product.unit);
+
+//             span1.appendChild(title);
+//             span1.appendChild(price);
+
+
+//             //Span 2 p, img and p creation
+//             const city = document.createElement('p');
+//             city.textContent = product.city;
+
+//             const img = document.createElement('img');
+//             const productName = product.name;
+//             img.src = './assets/' + product.category.replace(/\s/g, '') + '.jpg';
+
+//             const timestamp = document.createElement('p');
+
+//             timestamp.textContent = product.timeofupload.split('T')[0];
+//             timestamp.id = 'timestamp'
+
+//             span2.appendChild(city);
+//             span2.appendChild(img);
+//             span2.appendChild(timestamp);
+
+//             // listItem.textContent = product.name;
+            
+//             listItem.index = i;
+//             listItem.addEventListener("click", () => {
+//                 populateInfoBox(listItem.index)
+//             });
+            
+//             i++;
+//             productList.appendChild(listItem);
+//         });
+//     })
+//     .catch(error => console.error('Error fetching data:', error));
 fetch('/getproducts')
     .then(response => response.json())
     .then(data => {
@@ -13,58 +71,54 @@ fetch('/getproducts')
         console.log("Json saved to variable");
         const productList = document.getElementById('seller-list');
         let i = 0;
-        data.forEach(product => {
+        savedJson.forEach(product => {
             const listItem = document.createElement('li');
-            const span1 = document.createElement('span');
-            span1.className = "product-info1";
-            const span2 = document.createElement('span');
-            span2.className = "product-info2";
-
-            listItem.appendChild(span1)
-            listItem.appendChild(span2)
-
             //Span 1 h4 and p creation
-            const title = document.createElement('h5');
+            const title = document.createElement('h4');
             title.textContent = product.title;
+            title.className = "product-header";
 
-            const price = document.createElement('p');
+            const price = document.createElement('h3');
             price.textContent = product.price;
             price.textContent += (' ' + product.unit);
-
-            span1.appendChild(title);
-            span1.appendChild(price);
+            price.className = "product-price";
 
 
             //Span 2 p, img and p creation
             const city = document.createElement('p');
-            city.textContent = product.locationadress;
+            city.textContent = product.city;
+            city.className = "product-city";
 
             const img = document.createElement('img');
-            const productName = product.name;
+            // const productName = product.name;
             img.src = './assets/' + product.category.replace(/\s/g, '') + '.jpg';
+            img.className = "product-img";
+
 
             const timestamp = document.createElement('p');
 
             timestamp.textContent = product.timeofupload.split('T')[0];
-            timestamp.id = 'timestamp'
-
-            span2.appendChild(city);
-            span2.appendChild(img);
-            span2.appendChild(timestamp);
+            timestamp.id = 'timestamp';
+            timestamp.className = "product-time"
+            
+            listItem.appendChild(title);
+            listItem.appendChild(price);
+            listItem.appendChild(city);
+            listItem.appendChild(img);
+            listItem.appendChild(timestamp);
 
             // listItem.textContent = product.name;
-            
+
             listItem.index = i;
             listItem.addEventListener("click", () => {
                 populateInfoBox(listItem.index)
             });
-            
+
             i++;
             productList.appendChild(listItem);
         });
     })
     .catch(error => console.error('Error fetching data:', error));
-
 
 
 function populateInfoBox(index){

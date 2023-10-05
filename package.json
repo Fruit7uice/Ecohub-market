@@ -4,16 +4,23 @@
   "description": "Welcome to the locally grown produce and hunted meat application repository. This project aligns with the United Nations Sustainable Development Goals, specifically Goal 2 (End hunger, achieve food security and improved nutrition and promote sustainable agriculture), Goal 11 (Make cities and human settlements inclusive, safe, resilient and sustainable), and Goal 12 (Ensure sustainable consumption and production patterns).",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "mocha insertHandlerTest.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@googlemaps/google-maps-services-js": "^3.3.38",
+    "chai": "^4.3.10",
     "express": "^4.18.2",
-    "pg": "^8.11.3"
+    "fs": "^0.0.1-security",
+    "pg": "^8.11.3",
+    "pg-promise": "^11.5.4",
+    "sinon": "^16.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "mocha": "^10.2.0"
+  }
 }

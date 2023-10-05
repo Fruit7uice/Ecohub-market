@@ -4,7 +4,8 @@ module.exports = {
     retrieveCategories,
     retrieveSubCategories,
     retrieveAllDataFromTable,
-    retrieveCoordinates
+    retrieveCoordinates,
+    retrieveDataByCriteria
 }
 
 // Function to retrieve all active categories from the database. E.g ['Meats', 'Fish'...]
@@ -38,13 +39,13 @@ function retrieveCoordinates(productID){
                 reject(`Error executing query in retrieveCoordinates`, err);
             } else {
                 // If the query is successful, log the retrieved rows and resolve the promise with the data.
-                console.log(res.rows);
-                console.log("Rows Retrieved");
+                //console.log(res.rows);
+                //console.log("Rows Retrieved");
                 resolve(res.rows);
             }
             // Close the database connection after the query is complete.
             client.end();
-            console.log("Client terminated!");
+            //console.log("Client terminated!");
         });
     });
     // Returns the longitude and latitude of the dedicated adress of the ad
@@ -73,13 +74,13 @@ function retrieveAllDataFromTable(tableName) {
             } else {
                 // If the query is successful, log the retrieved rows and resolve the promise with the data.
                 //console.log(res.rows); // Uncomment to log all rows
-                console.log("Rows Retrieved");
+                //console.log("Rows Retrieved");
                 resolve(res.rows);
             }
             
             // Close the database connection after the query is complete.
             client.end();
-            console.log("Client terminated!");
+            //console.log("Client terminated!");
         });
     });
 }
@@ -133,13 +134,13 @@ function retrieveDataByCriteria(tableName, columns = '*', whereClause = '', valu
                 reject(`Error executing query in retrieveData for ${tableName}: ${err}`);
             } else {
                 // If the query is successful, log the result and resolve the promise with the retrieved rows.
-                console.log("Rows Retrieved");
+                //console.log("Rows Retrieved");
                 //console.log(res.rows); // Uncomment to log all rows.
                 resolve(res.rows);
             }
             // Close the database connection after the query is complete.
             client.end();
-            console.log("Client terminated!"); // Log the termination of the client connection.
+            //console.log("Client terminated!"); // Log the termination of the client connection.
         });
     });
 }

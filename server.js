@@ -19,9 +19,9 @@ app.get('/getproducts', (req, res) => {
     console.log("Inside Api Call: /getproducts")
     dbRetreiver.retrieveAllDataFromTable('Products')
         .then(result => {
-            console.log("SQL Rows Retrieved!")
+            //console.log("SQL Rows Retrieved!")
             res.json(result);
-            console.log("JSON Retrieved!")
+            //console.log("JSON Retrieved!")
         })
         .catch(error => {
             console.error(error);
@@ -37,9 +37,9 @@ app.get('/getCategories', (req, res) => {
 
     dbRetreiver.retrieveCategories()
         .then(result => {
-            console.log("SQL Rows Retrieved!")
+            //console.log("SQL Rows Retrieved!")
             res.json(result);
-            console.log(result)
+            //console.log(result)
         })
         .catch(error => {
             console.error(error);
@@ -52,7 +52,7 @@ app.post('/getSub', (req, res) => {
     // console.log("4) INSIDE GETSUB POST REQ");
 
     const receivedData = req.body; // category
-    console.log('5) Received data:', receivedData);
+    //console.log('5) Received data:', receivedData);
 
     dbRetreiver.retrieveSubCategories([receivedData.name])
         .then(result => {
@@ -78,9 +78,9 @@ app.post('/register', async (req, res) => {
     console.log(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
     console.log(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
-    await insertHandler.insertSeller(dbCon.getClient(), formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
+    await insertHandler.insertSeller(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
     await coordinateGetter.insertLocation(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
-    await insertHandler.insertProduct(dbCon.getClient(), formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
+    await insertHandler.insertProduct(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
 
 // Send a response back to the client

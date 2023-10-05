@@ -103,9 +103,11 @@ app.post('/filter', async (req, res) => {
     //prints the information 
     
     // Print userData
-    console.log(filterFunction.createCategoryAndItem(userData.item, userData.category));
+    const createdJson = filterFunction.createCategoryAndItem(userData.category, userData.item);
+    console.log(createdJson);
+
     
-    
+    filterQuery.filterProductsFromJSON(dbCon.getClient(), createdJson);
     
 
 // Send a response back to the client
@@ -116,7 +118,7 @@ res.send({ message: 'filtering successful' });
 
 
 
-app.get('/getFilteredQuery', (req, res) =>{
+app.get('/getFilteredQuery', /*async???*/(req, res) =>{
     // Eran kod här för att hämta client och göra query
     // skicka tillbaka den listan som är filtrerad med res.json(result)
     

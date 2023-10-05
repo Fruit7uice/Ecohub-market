@@ -10,6 +10,7 @@ module.exports = {
 // Import the database connection module
 const dbCon = require('./connection.js');
 
+
 // Function to filter products from the database based on a JSON input
 function filterProductsFromJSON(client, jsonObject) {
     return new Promise((resolve, reject) => {
@@ -23,8 +24,8 @@ function filterProductsFromJSON(client, jsonObject) {
         let queryParams = []; // Initialize an array to hold query parameters
 
     /*  item !='Item' means that an item is selected e.g. 'Bananas' (if category = 'Fruits') 
-        and is not on the default placeholder ('Item') */
-        if (category && item != 'Item' ) { 
+        and is not on the default placeholder  */
+        if (category && item != 'none' ) { 
             console.log(item);
             console.log(category);
             // Build a query to filter products by both category ($1) and item ($2)

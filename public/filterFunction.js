@@ -18,8 +18,8 @@ function createCategoryAndItem(category, item) {
     return jsonCategoryAndItem
 }
 
-//TODO fix
-async function getCatAndItem() {
+//TODO fix (async?)
+function getCatAndItem() {
     console.log('gick in i getCatAndItem');
     const cat = document.getElementById('category');
     const item = document.getElementById('item');

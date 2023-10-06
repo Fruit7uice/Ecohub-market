@@ -1,12 +1,15 @@
 -- This script deletes everything in your database
-\set QUIET true
-SET client_min_messages TO WARNING; -- Less talk please.
+-- \set QUIET true
+-- SET client_min_messages TO WARNING; -- Less talk please.
+-- DROP SCHEMA public CASCADE;
+-- CREATE SCHEMA public;
+-- GRANT ALL ON SCHEMA public TO CURRENT_USER;
+-- \set ON_ERROR_STOP ON
+-- SET client_min_messages TO NOTICE; -- More talk
+-- \set QUIET false
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
 GRANT ALL ON SCHEMA public TO CURRENT_USER;
-\set ON_ERROR_STOP ON
-SET client_min_messages TO NOTICE; -- More talk
-\set QUIET false
 
 /*  
 A seller sells products. The id is the unique personal number of the seller. 
@@ -28,8 +31,8 @@ Contains the different types of allowed categories a product can belong to.
 
 CREATE TABLE Categories ( 
     name TEXT PRIMARY KEY
-    CHECK (name in ('Meats', 'Vegetables', 'Fruits', 'Dairy', 'Berries', 'Bread', 
-                    'Root Vegetables', 'Pastries', 'Seafoods', 'Mushrooms' ))
+    -- CHECK (name in ('Meats', 'Vegetables', 'Fruits', 'Dairy', 'Berries', 'Bread', 
+    -- 'Root Vegetables', 'Pastries', 'Seafoods', 'Mushrooms' ))
 );
 
 /*  

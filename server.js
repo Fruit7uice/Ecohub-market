@@ -22,9 +22,9 @@ app.get('/getproducts', (req, res) => {
     console.log("Inside Api Call: /getproducts")
     dbRetreiver.retrieveAllDataFromView('productAndLocation')
         .then(result => {
-            console.log("SQL Rows Retrieved!")
+            //console.log("SQL Rows Retrieved!")
             res.json(result);
-            console.log("JSON Retrieved!")
+            //console.log("JSON Retrieved!")
         })
         .catch(error => {
             console.error(error);
@@ -48,9 +48,9 @@ app.get('/getCategories', (req, res) => {
 
     dbRetreiver.retrieveCategories()
         .then(result => {
-            console.log("SQL Rows Retrieved!")
+            //console.log("SQL Rows Retrieved!")
             res.json(result);
-            console.log(result)
+            //console.log(result)
         })
         .catch(error => {
             console.error(error);
@@ -61,7 +61,7 @@ app.get('/getCategories', (req, res) => {
 
 app.post('/getSub', (req, res) => {
     const receivedData = req.body; // category
-    console.log('5) Received data:', receivedData);
+    //console.log('5) Received data:', receivedData);
 
     dbRetreiver.retrieveSubCategories([receivedData.name])
         .then(result => {

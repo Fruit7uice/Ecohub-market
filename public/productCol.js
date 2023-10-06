@@ -14,68 +14,58 @@ fetch('/getproducts')
     .catch(error => console.error('Error fetching data:', error));
 
 
-function populateListOfProducts(jsonList){
+    function populateListOfProducts(jsonList) {
+        if (jsonList != null) {
+            savedJson = jsonList;
+        }
     
-    if(jsonList != null){
-        savedJson = jsonList;
-    }
-    
-    const productList = document.getElementById('seller-list');
+        const productList = document.getElementById('seller-list');
         let i = 0;
         savedJson.forEach(product => {
             const listItem = document.createElement('li');
+            
             //Span 1 h4 and p creation
             const title = document.createElement('h4');
             title.textContent = product.title;
             title.className = "product-header";
-
+    
             const price = document.createElement('h3');
             price.textContent = product.price;
             price.textContent += (' ' + product.unit);
             price.className = "product-price";
-
-
+    
             //Span 2 p, img and p creation
             const city = document.createElement('p');
             city.textContent = product.city;
             city.className = "product-city";
-
+    
             const img = document.createElement('img');
-            // const productName = product.name;
             img.src = './assets/' + product.category.replace(/\s/g, '') + '.jpg';
             img.className = "product-img";
-
-
+    
             const timestamp = document.createElement('p');
-
             timestamp.textContent = product.timeofupload.split('T')[0];
             timestamp.id = 'timestamp';
             timestamp.className = "product-time"
-            
+    
             listItem.appendChild(title);
             listItem.appendChild(price);
             listItem.appendChild(city);
             listItem.appendChild(img);
             listItem.appendChild(timestamp);
-
-            // listItem.textContent = product.name;
-
+    
             listItem.index = i;
             listItem.addEventListener("click", () => {
                 populateInfoBox(listItem.index)
             });
-
+    
             i++;
             productList.appendChild(listItem);
-            
         });
-
+    
         addAllMarkersToMap();
-    })
-    .catch(error => console.error('Error fetching data:', error));
-
-
-}
+    }
+    
 
 
 //Function to dislay the marker when it gets clicked in the sellers column
@@ -101,7 +91,7 @@ function addAllMarkersToMap() {
 
 
 
-function populateInfoBox(index){
+function populateInfoBox(index) {
 
     expand(true);
     console.log("Json for item: ", savedJson[index])

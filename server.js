@@ -5,21 +5,16 @@ const dbCon = require('./connection.js');
 const dbRetreiver = require('./retrieverHandler.js');
 const bodyParser = require('body-parser');
 const formFunction = require('./public/formFunctions');
+const filterFunction = require ('./public/filterFunction')
 const insertHandler = require('./insertHandler')
 const coordinateGetter = require('./coordinateGetter')
+const filterQuery = require ('./filterQuery.js')
 const mapPins = require('./public/map')
 
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
-app.listen(port, () => {
-    console.log(`Server is running on: http://localhost:${port}`);
-});
-
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
-})
 
 // Only works to retrieve data when the Database is online.
 // If you get the error "Error executing query", the Database may not be active.
@@ -38,6 +33,9 @@ app.get('/getproducts', (req, res) => {
 });
 
 
+app.listen(port, () => {
+    console.log(`Server is running on: http://localhost:${port}`);
+});
 
 
 
@@ -87,34 +85,38 @@ app.post('/register', async (req, res) => {
     console.log(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
     console.log(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
-    await insertHandler.insertSeller(dbCon.getClient(), formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
+    await insertHandler.insertSeller(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
     await coordinateGetter.insertLocation(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
-    await insertHandler.insertProduct(dbCon.getClient(), formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
+    await insertHandler.insertProduct(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
 
-    // Send a response back to the client
-    // res.send({ message: 'Registration successful' });
-    // Redirect the user to the home page
-    // res.redirect('/');
+// Send a response back to the client
+res.send({ message: 'Registration successful' });
+// Redirect the user to the home page
 });
 
+app.post('/filter', async (req, res) => {
+    // Extract the JSON data sent from the client
+    const userData = req.body; 
+    // Log the received data for debugging purposes
+    console.log(userData);
 
+    // Create a JSON object with category and item properties
+    const jsonCatAndItem = filterFunction.createCategoryAndItem(userData.category, userData.item);
+  
+    // Call the filterProductsFromJSON function to filter products based on the created JSON
+    await filterQuery.filterProductsFromJSON(dbCon.getClient(), jsonCatAndItem)
+    .then(result => {
+            // If the filtering is successful, send the filtered data as a JSON response
+            console.log("FILTERED SQL Rows Retrieved!")
+            res.json(result);
+            // console.log(result)
+        })
+        .catch(error => {
+            // If there is an error during filtering, handle it and send a 500 Internal Server Error response
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
+    
+});
 
-async function retrieveAndLogCoordinates() {
-    const kebab = await dbRetreiver.retrieveCoordinates(1);
-    console.log(kebab);
-    console.log("index 0", kebab[0].coordinates.x, kebab[0].coordinates.y);
-}
-
-
-retrieveAndLogCoordinates();
-
-
-
-async function retrieveAllProductIDs() {
-    const result = await dbRetreiver.retrieveAllProductIDs('Products');
-    console.log(result);
-}
-
-
-retrieveAllProductIDs();

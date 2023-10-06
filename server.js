@@ -9,6 +9,7 @@ const filterFunction = require ('./public/filterFunction')
 const insertHandler = require('./insertHandler')
 const coordinateGetter = require('./coordinateGetter')
 const filterQuery = require ('./filterQuery.js')
+const mapPins = require('./public/map')
 
 app.use(bodyParser.json());
 
@@ -18,9 +19,8 @@ app.use(express.static('public'));
 // Only works to retrieve data when the Database is online.
 // If you get the error "Error executing query", the Database may not be active.
 app.get('/getproducts', (req, res) => {
-
     console.log("Inside Api Call: /getproducts")
-    dbRetreiver.retrieveAllDataFromTable('Products')
+    dbRetreiver.retrieveAllDataFromView('productAndLocation')
         .then(result => {
             console.log("SQL Rows Retrieved!")
             res.json(result);
@@ -36,6 +36,13 @@ app.get('/getproducts', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on: http://localhost:${port}`);
 });
+
+
+
+app.get('/sellaproduct', (req,res) => {
+    res.sendFile(__dirname + '/public/sellForm.html');
+})
+
 
 app.get('/getCategories', (req, res) => {
 
@@ -53,14 +60,11 @@ app.get('/getCategories', (req, res) => {
 
 
 app.post('/getSub', (req, res) => {
-    // console.log("4) INSIDE GETSUB POST REQ");
-
     const receivedData = req.body; // category
     console.log('5) Received data:', receivedData);
 
     dbRetreiver.retrieveSubCategories([receivedData.name])
         .then(result => {
-            // console.log("6)SERVER!!!: retrieveSubCategories result:  ", result)
             res.json(result);
         })
         .catch(error => {
@@ -73,7 +77,8 @@ app.post('/register', async (req, res) => {
     const userData = req.body; // This will contain the JSON data sent from the form
 
     // *** TODO: INSERT INTO DATABASE ***
-    console.log(userData);
+
+    //prints the information 
     
     // Print userData
     console.log(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
@@ -110,4 +115,21 @@ res.send({ message: 'filtering successful' });
 
 
 
+async function retrieveAndLogCoordinates() {
+    const kebab = await dbRetreiver.retrieveCoordinates(1);
+    console.log(kebab);
+    console.log("index 0", kebab[0].coordinates.x, kebab[0].coordinates.y);
+}
 
+
+retrieveAndLogCoordinates();
+
+
+
+async function retrieveAllProductIDs() {
+    const result = await dbRetreiver.retrieveAllProductIDs('Products');
+    console.log(result);
+}
+
+
+retrieveAllProductIDs();

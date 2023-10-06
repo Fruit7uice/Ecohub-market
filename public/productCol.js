@@ -14,58 +14,62 @@ fetch('/getproducts')
     .catch(error => console.error('Error fetching data:', error));
 
 
-    function populateListOfProducts(jsonList) {
-        if (jsonList != null) {
-            savedJson = jsonList;
-        }
+function populateListOfProducts(jsonList){
     
-        const productList = document.getElementById('seller-list');
+    if(jsonList != null){
+        savedJson = jsonList;
+    }
+    
+    const productList = document.getElementById('seller-list');
         let i = 0;
         savedJson.forEach(product => {
             const listItem = document.createElement('li');
-            
             //Span 1 h4 and p creation
             const title = document.createElement('h4');
             title.textContent = product.title;
             title.className = "product-header";
-    
+
             const price = document.createElement('h3');
             price.textContent = product.price;
             price.textContent += (' ' + product.unit);
             price.className = "product-price";
-    
+
+
             //Span 2 p, img and p creation
             const city = document.createElement('p');
             city.textContent = product.city;
             city.className = "product-city";
-    
+
             const img = document.createElement('img');
+            // const productName = product.name;
             img.src = './assets/' + product.category.replace(/\s/g, '') + '.jpg';
             img.className = "product-img";
-    
+
+
             const timestamp = document.createElement('p');
             timestamp.textContent = product.timeofupload.split('T')[0];
             timestamp.id = 'timestamp';
             timestamp.className = "product-time"
-    
+            
             listItem.appendChild(title);
             listItem.appendChild(price);
             listItem.appendChild(city);
             listItem.appendChild(img);
             listItem.appendChild(timestamp);
-    
+
+            // listItem.textContent = product.name;
+
             listItem.index = i;
             listItem.addEventListener("click", () => {
                 populateInfoBox(listItem.index)
             });
-    
+
             i++;
             productList.appendChild(listItem);
         });
-    
         addAllMarkersToMap();
-    }
-    
+}
+
 
 
 //Function to dislay the marker when it gets clicked in the sellers column
@@ -77,6 +81,7 @@ function displayPin(index) {
 }
 
 
+//Function to add all markers to map from beginning
 function addAllMarkersToMap() {
 
     for (let i = 0; i < savedJson.length; i++) {
@@ -90,15 +95,14 @@ function addAllMarkersToMap() {
 
 
 
-
-function populateInfoBox(index) {
-
+function populateInfoBox(index){
     expand(true);
     console.log("Json for item: ", savedJson[index])
+    
     displayPin(index)
     const infobox = document.getElementById("full-product");
     infobox.innerHTML = "";
-
+   
     const item = savedJson[index];
 
     const titlePrice = document.createElement('div');
@@ -108,14 +112,14 @@ function populateInfoBox(index) {
     const sellerContainer = document.createElement('div');
 
     // *** populate title / price ***
-    const title = document.createElement('h1');
-    title.innerHTML = item.title;
+        const title = document.createElement('h1');
+        title.innerHTML = item.title;
 
-    const priceUnitType = document.createElement('h2');
-    priceUnitType.innerHTML = item.name + ": " + item.price + " / " + item.unit;
+        const priceUnitType = document.createElement('h2');
+        priceUnitType.innerHTML = item.name + ": " + item.price + " / " + item.unit;
 
-    // const unit = document.createElement('h2');
-    // unit.innerHTML = item.unit;
+        // const unit = document.createElement('h2');
+        // unit.innerHTML = item.unit;
 
     titlePrice.appendChild(title);
     titlePrice.appendChild(priceUnitType);
@@ -134,13 +138,13 @@ function populateInfoBox(index) {
     //********
 
     // *** populate image
-    const image = document.createElement('img');
+    const image = document.createElement('img'); 
     image.src = './assets/' + item.category.replace(/\s/g, '') + '.jpg';
     // imageContainer.innerHTML = "IMAGE";
     imageContainer.appendChild(image);
 
     //********
-
+    
 
     // *** populate location
     const locationHeader = document.createElement('h4');
@@ -161,7 +165,7 @@ function populateInfoBox(index) {
     sellerContainer.appendChild(seller);
     sellerContainer.appendChild(sellerDescription);
     //********
-
+    
     // Creates IDs for each element of the grid
     titlePrice.id = "info-header";
     descriptionContainer.id = "info-description";
@@ -170,12 +174,14 @@ function populateInfoBox(index) {
     sellerContainer.id = "info-seller";
 
     // Appends all the grid items to the grid container.
-    infobox.appendChild(titlePrice);
+    infobox.appendChild(titlePrice); 
     infobox.appendChild(descriptionContainer);
     infobox.appendChild(imageContainer);
     infobox.appendChild(locationContainer);
     infobox.appendChild(sellerContainer);
-
-
+    
+    
 }
+
+
 

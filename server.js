@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const formFunction = require('./public/formFunctions');
 const insertHandler = require('./insertHandler')
 const coordinateGetter = require('./coordinateGetter')
-const mapPins = require('./public/map')
+
 
 app.use(bodyParser.json());
 
@@ -69,44 +69,19 @@ app.post('/getSub', (req, res) => {
 app.post('/register', async (req, res) => {
     const userData = req.body; // This will contain the JSON data sent from the form
 
-    // *** TODO: INSERT INTO DATABASE ***
-    console.log(userData);
-
-    //prints the information 
-    
-    // Print userData
-    console.log(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
-    console.log(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
-    console.log(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
-
-    await insertHandler.insertSeller(dbCon.getClient(), formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
+//Insert into the registration into database.
+    await insertHandler.insertSeller(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
     await coordinateGetter.insertLocation(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
-    await insertHandler.insertProduct(dbCon.getClient(), formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
+    await insertHandler.insertProduct(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
 
 
 // Send a response back to the client
 res.send({ message: 'Registration successful' });
+
 // Redirect the user to the home page
-// res.redirect('/')
+//res.redirect('/')
 });
 
 
 
-async function retrieveAndLogCoordinates() {
-    const kebab = await dbRetreiver.retrieveCoordinates(1);
-    console.log(kebab);
-    console.log("index 0", kebab[0].coordinates.x, kebab[0].coordinates.y);
-}
 
-
-retrieveAndLogCoordinates();
-
-
-
-async function retrieveAllProductIDs() {
-    const result = await dbRetreiver.retrieveAllProductIDs('Products');
-    console.log(result);
-}
-
-
-retrieveAllProductIDs();

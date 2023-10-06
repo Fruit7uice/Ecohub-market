@@ -28,20 +28,6 @@ function initMap() {
 
 }
 
-
-/*
-// TODO query all the prodycts
-async function createCordinateList(){
-    Products.forEach(async id => {
-        const currentIdCoordinates = await dbRetreiver.retrieveCoordinates(id);
-        const long = currentIdCoordinates[0].coordinated.x;
-        const lat = currentIdCoordinates[0].coordinated.y;
-        addMarker({lat: lat, lng: long});
-    });
-}
-
-*/
-
 // Define an array to store markers
 const markers = [];
 
@@ -62,15 +48,14 @@ function addMarker(location, address, name) {
         map: map,
     });
 
-    // Calculate the offset latitude (adjust the offset value as needed)
-    const offsetLat = loc.lat - 0.02; // Adjust the offset value as needed
+    const offsetLat = loc.lat - 0.03; // Adjust the offset value as needed
 
     // Create a new position with the offset
     const centeredPosition = { lat: offsetLat, lng: loc.lng };
 
-    // Set the center position and adjust the zoom level
+    // Set the center position and adjust the zoom level for zoom-in
     map.setCenter(centeredPosition);
-    map.setZoom(13);
+    map.setZoom(12); // Increased zoom level for zoom-in effect
 
     // Add the marker to the array of markers
     markers.push(marker);
@@ -90,5 +75,8 @@ function addMarker(location, address, name) {
             infoWindow.close();
         }, 5000); // 5000 milliseconds = 5 seconds
     });
+
+
+   
 }
 

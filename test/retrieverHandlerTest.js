@@ -1,8 +1,8 @@
 // Import necessary libraries and modules
 const { expect } = require('chai');  // Chai assertion library
-const sinon = require('sinon');  // Sinon for mocking and stubbing
+//const sinon = require('sinon');  // Sinon for mocking and stubbing
 const retrieverHandler = require('../retrieverHandler');  // Import the function from your module
-const setupTestDatabase = require('../setup-testdatabase');  // Database setup function
+const setupTestDatabase = require('./setup-testdatabase');  // Database setup function
 const { Pool } = require('pg');  // PostgreSQL database pool
 const db = require('../connection.js');  // Database connection
 
@@ -36,7 +36,6 @@ describe('retrieverHandler', () => {
 // });
 
 // Test suite for retrieving subcategories
-//describe('retrieveSubCategories', () => {
 
 // Test case: Should retrieve the correct items from the "ValidProducts" table
 it('should retrieve the correct items from the "ValidProducts" table', async () => {
@@ -54,11 +53,6 @@ it('should retrieve the correct items from the "ValidProducts" table', async () 
   expect(result).to.deep.equal(expectedResult);
 });
 
-//});
-
-// Test suite for retrieving coordinates
-//describe('retrieveCoordinates', () => {
-
 // Test case: Should retrieve the correct coordinates for a given product ID
 it('should retrieve the correct coordinates for a given product ID', async () => {
   const productID = 1;
@@ -68,8 +62,6 @@ it('should retrieve the correct coordinates for a given product ID', async () =>
     { coordinates: { x: 1, y: 1 } }
   ];
 
-  test = await retrieverHandler.retrieveAllDataFromTable('Products');
-
   // Call the function to be tested
   result = await retrieverHandler.retrieveCoordinates(productID);
 
@@ -78,12 +70,7 @@ it('should retrieve the correct coordinates for a given product ID', async () =>
   expect(result).to.deep.equal(expectedResult);
 });
 
-//});
-
-// Test suite for retrieving data from a table by criteria
-//describe('retrieveAllDataFromTable', () => {
-
-// Test case: Should correctly retrieve all data from the given table
+//Test case: Should correctly retrieve all data from the given table
 it('should correctly retrieve all data from the given table', async () => {
   const tableName = 'Sellers';
 
@@ -102,7 +89,6 @@ it('should correctly retrieve all data from the given table', async () => {
   expect(result).to.deep.equal(expectedResult);
 });
 
-//});
 // Test case 1: Should retrieve correct data from the "Sellers" table
 it('should retrieve correct data from the Sellers table', async () => {
   const tableName = 'Sellers'; // Table to retrieve data from
@@ -169,7 +155,7 @@ it('should retrieve correct data from "Locations" table', async () => {
   ];
 
   // Call the function to be tested
-  const result = await retrieverHandler.retrieveDataByCriteria(tableName, columns, whereClause, values, orderBy);
+  const result = await retrieverHandler.retrieveDataByCriteria(tableName);
 
   // Perform assertions using Chai
   expect(result).to.deep.equal(expectedResult);

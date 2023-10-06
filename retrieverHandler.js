@@ -9,18 +9,18 @@ module.exports = {
 }
 
 // Function to retrieve all active categories from the database. E.g ['Meats', 'Fish'...]
-function retrieveCategories() {
+async function retrieveCategories() {
     return retrieveDataByCriteria('Categories', '*', '', [], 'name')
     //return retrieveAllDataFromTable('Categories');
 }
 
 // Function to retrieve all active subcategories of the input argument 'category'. 
-function retrieveSubCategories(category) {
+async function retrieveSubCategories(category) {
     return retrieveDataByCriteria('ValidProducts', 'product', 'category', category,'product');
 }
 
 // Function to retrieve coordinates from a specific ad from the products table. 
-function retrieveCoordinates(productID){
+async function retrieveCoordinates(productID){
     // Get client 
     const client = dbCon.getClient();
 
@@ -96,7 +96,7 @@ function retrieveAllDataFromTable(tableName) {
 
  returns a JSON object with all rows from the query.
 */
-function retrieveDataByCriteria(tableName, columns = '*', whereClause = '', values = '', orderBy = '' ) {
+async function retrieveDataByCriteria(tableName, columns = '*', whereClause = '', values = '', orderBy = '' ) {
     // Get a client instance from the database connection module (assumed to be named dbCon).
     const client = dbCon.getClient();
 

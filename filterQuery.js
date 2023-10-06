@@ -1,7 +1,5 @@
 /*
-1. get the selected category and item. (dummy json for testing).
-2. match the given category and item with the products.
-3. show this in some way...!
+This file creates a list of JSON documents that are sorted based on the chosen category and item.
 */
 
 module.exports = {
@@ -22,7 +20,14 @@ function filterProductsFromJSON(client, jsonObject) {
         let query; // Initialize the query string
         let queryParams = []; // Initialize an array to hold query parameters
 
-        if (category && item) {
+    /*  item !='Item' means that an item is selected e.g. 'Bananas' (if category = 'Fruits') 
+        and is not on the default placeholder  */
+        if (category == 'none' && item == 'none'){
+            query = 'SELECT * FROM products';
+
+        }else if (category && item != 'none' ) { 
+            console.log(item);
+            console.log(category);
             // Build a query to filter products by both category ($1) and item ($2)
             query = 'SELECT * FROM products WHERE category = $1 AND name = $2;';
             // Set query parameters accordingly
@@ -45,8 +50,6 @@ function filterProductsFromJSON(client, jsonObject) {
                 reject(`Error executing query for products: ${err}`);
             } else {
                 // Log the retrieved rows and resolve with the result  
-                console.log(res.rows);
-                console.log("Rows Retrieved");
                 resolve(res.rows);
             }
             client.end();  // Close the database connection after the query
@@ -54,18 +57,3 @@ function filterProductsFromJSON(client, jsonObject) {
         });
     });
 }
-
-
-// JSON test file. Should yield all meats for sale in a list.
-const jsonCategoryOnly = {
-    "category": 'Seafoods'
-}
-
-
-//JSON test file. Should yield all cucumbers for sale in a list.
-const jsonCategoryAndItem = {
-    "category": 'Fruits',
-    "item" : 'Bananas'
-}
-
-filterProductsFromJSON (dbCon.getClient(), jsonCategoryAndItem);

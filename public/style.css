@@ -107,16 +107,6 @@ main{
 }
 
 
-/* .seller-column ul li{
-    display: flex;
-    width: 100%;
-    height: 120px;
-    border-bottom: 2px solid black;
-    color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    flex-direction: row;
-} */
 
 .seller-column ul li:hover {
     /* background-color: #a1a859; */
@@ -132,73 +122,6 @@ main{
 #timestamp {
     color: #b4b4b4;
 }
-
-/* .seller-column ul li span {
-    padding: 0px 10px 0px 20px;
-} */
-
-/* .product-info1 {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-top: 0;
-    flex: 2;
-    font-size: 1.5em;
-    padding-bottom: 10px;
-}
-.product-info2 {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-top: 0;
-    flex: 1;
-    align-items: end;
-    font-size: small;
-} */
-
-/* .seller-column ul li{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    border-bottom: 2px solid #0000003f;
-    padding: 0 10px;
-}
-
-.product-header {
-    grid-area: 1 / 1 / 2 / 4;
-    place-self: center baseline;
-}
-
-.product-city {
-    grid-area: 1 / 4 / 2 / 6;
-    place-self: center end;
-    
-}
-
-.product-desc {
-    grid-area: 2 / 1 / 4 / 4;
-}
-
-.product-img {
-    grid-area: 2 / 4 / 4 / 6;
-    place-self: center end;
-}
-
-.product-price {
-    grid-area: 4 / 1 / 5 / 4;
-    place-self: center baseline;
-}
-
-.product-time {
-    grid-area: 4 / 4 / 5 / 6;
-    place-self: center end;
-} */
 
 .seller-column ul li {
     display: grid;
@@ -312,15 +235,13 @@ main{
     grid-template-rows: repeat(4, 1fr);
     /* gap: 2px; */
     background-color: var(--customGreen);
-    border: solid 4px red;
+    /* border: solid 4px red; */
 
 }
 
 #full-product > *{
     padding-left: 20px;
     background-color:var(--customGreen);
-    border: 2px solid #000;
-    /* background: rgba(0, 0, 0, 0.2); */
 }
 
 #info-header{
@@ -328,27 +249,25 @@ main{
     grid-row: 1 / 3;
     display: inline-flex;
     flex-flow: column;
-    /* justify-content: center; */
     align-items: baseline;
-    /* margin: 0px; */
-    /* padding: 0px; */
+
 }
 
 #info-header h2{
     margin-top: -20px;
+    border-bottom: 1px solid gray;
 }
 
 #info-description{
     grid-column: 1/4;
     grid-row: 2/4;
     /* font-size: 1.3rem; */
-    /* border-bottom: 1px solid gray; */
+    border-bottom: 1px solid gray;
 }
 
 /*Header of each grid item*/
 #full-product h4{
     font-size: 1.3rem;
-    
 }
 
 

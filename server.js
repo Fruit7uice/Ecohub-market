@@ -95,10 +95,6 @@ res.send({ message: 'Registration successful' });
 
 
 
-// Send a response back to the client
-res.send({ message: 'Registration successful' });
-// Redirect the user to the home page
-});
 
 app.post('/filter', async (req, res) => {
     // Extract the JSON data sent from the client

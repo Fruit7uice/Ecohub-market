@@ -1,12 +1,3 @@
-/**
- * @initMap
- * Firstly the map is being centered to #center-coordinates of ones choice
- * Zooms to a certain level of zoom
- * 
- * Markers can be predefined, with the help of our database of lat & long values
- * markers are looped through and added to the map
- * 
-**/
 
 let map; // Define a global variable to hold the map object
 
@@ -14,28 +5,13 @@ function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 57.70544078751393, lng: 11.985471236320263 },
         zoom: 12
-        
     });
 
     // TODO: On launch, add the markers on the map based on the coordinates in the database.
 
-
-    const names = ["Tomater", "Gurkor"];
-    // Define an array of markers with their respective coordinates and information
-    const markers = [
-        {
-            position: { lat: 57.71, lng: 11.9060 }, 
-            info: names[0] + " - latitude: 57.71, Longitude: 11.1060"
-        },
-        {
-            position: { lat: 57.7128, lng: 11.8060 }, 
-            info: names[1] + " - Latitude: 57.7128, Longitude: 11.0060"
-        }
-        // Add more markers here as needed
-    ];
-
     // Loop through the markers and create them on the map
     markers.forEach(markerInfo => {
+        marker.setMap(null);
         const marker = new google.maps.Marker({
             position: markerInfo.position,
             map: map,
@@ -50,26 +26,57 @@ function initMap() {
         });
     });
 
-
-
-
 }
 
-function addMarker(location) {
-    // Create a marker
+// Define an array to store markers
+const markers = [];
+
+// Function to add a marker to the map with the desired parameters
+function addMarker(location, address, name) {
+    // Log the address to the console
+    console.log(address);
+
+    // Create a location object with latitude and longitude
+    const loc = { lat: parseFloat(location.x), lng: parseFloat(location.y) };
+    
+    // Log the latitude and longitude to the console
+    console.log(loc.lat, loc.lng);
+
+    // Create a new marker object
     const marker = new google.maps.Marker({
-        position: location,
+        position: loc,
         map: map,
     });
 
-    // Create an info window
+    const offsetLat = loc.lat - 0.03; // Adjust the offset value as needed
 
+    // Create a new position with the offset
+    const centeredPosition = { lat: offsetLat, lng: loc.lng };
+
+    // Set the center position and adjust the zoom level for zoom-in
+    map.setCenter(centeredPosition);
+    map.setZoom(12); // Increased zoom level for zoom-in effect
+
+    // Add the marker to the array of markers
+    markers.push(marker);
+
+    // Create an info window with the concatenated address and name
     const infoWindow = new google.maps.InfoWindow({
-        content: `Latitude: ${location.lat()}, Longitude: ${location.lng()}`
+        content: `${address}, ${name}`
     });
 
     // Add a click event listener to the marker
     marker.addListener("click", () => {
+        // Open the info window when the marker is clicked
         infoWindow.open(map, marker);
+
+        // Automatically close the info window after 5 seconds
+        setTimeout(() => {
+            infoWindow.close();
+        }, 5000); // 5000 milliseconds = 5 seconds
     });
+
+
+   
 }
+

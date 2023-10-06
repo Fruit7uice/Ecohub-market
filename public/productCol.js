@@ -2,8 +2,6 @@
 // variable to save Json items from fetch
 var savedJson;
 
-
-
 // Fetches sellers from the db and creates list items with their name
 // In the future it should be more modular and apply filter options.
 fetch('/getproducts')
@@ -11,7 +9,18 @@ fetch('/getproducts')
     .then(data => {
         savedJson = data;
         console.log("Json saved to variable");
-        const productList = document.getElementById('seller-list');
+        populateListOfProducts();
+    })
+    .catch(error => console.error('Error fetching data:', error));
+
+
+function populateListOfProducts(jsonList){
+    
+    if(jsonList != null){
+        savedJson = jsonList;
+    }
+    
+    const productList = document.getElementById('seller-list');
         let i = 0;
         savedJson.forEach(product => {
             const listItem = document.createElement('li');
@@ -59,9 +68,7 @@ fetch('/getproducts')
             i++;
             productList.appendChild(listItem);
         });
-    })
-    .catch(error => console.error('Error fetching data:', error));
-
+}
 
 function populateInfoBox(index){
     expand(true);

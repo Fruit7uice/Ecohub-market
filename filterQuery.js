@@ -1,9 +1,12 @@
+/*
+This file creates a list of JSON documents that are sorted based on the chosen category and item.
+*/
+
 module.exports = {
     filterProductsFromJSON
 }
 // Import the database connection module
 const dbCon = require('./connection.js');
-
 
 // Function to filter products from the database based on a JSON input
 function filterProductsFromJSON(client, jsonObject) {
@@ -19,7 +22,10 @@ function filterProductsFromJSON(client, jsonObject) {
 
     /*  item !='Item' means that an item is selected e.g. 'Bananas' (if category = 'Fruits') 
         and is not on the default placeholder  */
-        if (category && item != 'none' ) { 
+        if (category == 'none' && item == 'none'){
+            query = 'SELECT * FROM products';
+
+        }else if (category && item != 'none' ) { 
             console.log(item);
             console.log(category);
             // Build a query to filter products by both category ($1) and item ($2)
@@ -44,8 +50,6 @@ function filterProductsFromJSON(client, jsonObject) {
                 reject(`Error executing query for products: ${err}`);
             } else {
                 // Log the retrieved rows and resolve with the result  
-                console.log(res.rows);
-                console.log("Rows Retrieved");
                 resolve(res.rows);
             }
             client.end();  // Close the database connection after the query

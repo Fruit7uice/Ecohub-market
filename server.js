@@ -96,40 +96,27 @@ res.send({ message: 'Registration successful' });
 });
 
 app.post('/filter', async (req, res) => {
-    const userData = req.body; // This will contain the JSON data sent from the form
-
+    // Extract the JSON data sent from the client
+    const userData = req.body; 
+    // Log the received data for debugging purposes
     console.log(userData);
 
+    // Create a JSON object with category and item properties
+    const jsonCatAndItem = filterFunction.createCategoryAndItem(userData.category, userData.item);
+  
+    // Call the filterProductsFromJSON function to filter products based on the created JSON
+    await filterQuery.filterProductsFromJSON(dbCon.getClient(), jsonCatAndItem)
+    .then(result => {
+            // If the filtering is successful, send the filtered data as a JSON response
+            console.log("FILTERED SQL Rows Retrieved!")
+            res.json(result);
+            // console.log(result)
+        })
+        .catch(error => {
+            // If there is an error during filtering, handle it and send a 500 Internal Server Error response
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
     
-    // Print userData
-    const createdJson = filterFunction.createCategoryAndItem(userData.category, userData.item);
-    console.log(createdJson);
-
-    
-    filterQuery.filterProductsFromJSON(dbCon.getClient(), createdJson);
-    
-
-// Send a response back to the client
-res.send({ message: 'filtering successful' });
 });
 
-
-
-async function retrieveAndLogCoordinates() {
-    const kebab = await dbRetreiver.retrieveCoordinates(1);
-    console.log(kebab);
-    console.log("index 0", kebab[0].coordinates.x, kebab[0].coordinates.y);
-}
-
-
-retrieveAndLogCoordinates();
-
-
-
-async function retrieveAllProductIDs() {
-    const result = await dbRetreiver.retrieveAllProductIDs('Products');
-    console.log(result);
-}
-
-
-retrieveAllProductIDs();

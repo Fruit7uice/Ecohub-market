@@ -93,7 +93,6 @@ function retrieveAllDataFromTable(tableName) {
  values: A list of values that the WHERE clause should be equal to. E.g ['Berries'].
  orderBy: If you want to add a order, choose an attribute to order by. If argument='' no order will be added. Optional is to add DESC or ASC after attribute.
 
-
  returns a JSON object with all rows from the query.
 */
 async function retrieveDataByCriteria(tableName, columns = '*', whereClause = '', values = '', orderBy = '' ) {

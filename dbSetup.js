@@ -19,7 +19,7 @@ async function dbSetup() {
     await pool.query('TRUNCATE TABLE Products, Sellers, Locations;');
 
     // Insert test data (example)
-    //await pool.query('INSERT INTO Sellers (id, name, phonenumber, description) VALUES ($1, $2, $3, $4);', ['111111111111', 'Seller1', '1111111111', 'SellerDescription'])
+    await pool.query('INSERT INTO Sellers (id, name, phonenumber, description) VALUES ($1, $2, $3, $4);', ['111111111111', 'Seller1', '1111111111', 'SellerDescription'])
 
 
     // More setup tasks can go here

@@ -9,11 +9,11 @@ async function executeSqlFile(filePath) {
     await db.none(sql);
     console.log(`Executed SQL file: ${filePath}`);
   } catch (error) {
-    console.error(`Error executing SQL file: ${filePath}`, error);
+     console.error(`Error executing SQL file: ${filePath}`, error);
   }
 }
 
-async function setupDatabase() {
+async function setupTestDatabase() {
 
     
   const sqlFiles = [
@@ -28,4 +28,4 @@ async function setupDatabase() {
   pgp.end();
 }
 
-module.exports = setupDatabase;
+module.exports = setupTestDatabase;

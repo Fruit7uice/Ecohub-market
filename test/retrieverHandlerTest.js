@@ -1,18 +1,19 @@
 // Import necessary libraries and modules
 const { expect } = require('chai');  // Chai assertion library
 const sinon = require('sinon');  // Sinon for mocking and stubbing
-const retrieverHandler = require('./retrieverHandler');  // Import the function from your module
-const dbSetup = require('./setup-database');  // Database setup function
+const retrieverHandler = require('../retrieverHandler');  // Import the function from your module
+const setupTestDatabase = require('../setup-testdatabase');  // Database setup function
 const { Pool } = require('pg');  // PostgreSQL database pool
-const db = require('./connection.js');  // Database connection
+const db = require('../connection.js');  // Database connection
 
-// Test suite for retrieving categories
-describe('retrieveCategories', () => {
+before(async () => {
+  await setupTestDatabase()
+});
+
+// Test suite for retrieverHandler
+describe('retrieverHandler', () => {
 
   // Before each test, set up the database
-  beforeEach(async () => {
-    await dbSetup()
-  });
 
   // Test case: Should retrieve the correct data from the "categories" table
   it('should retrieve the correct data from the "categories" table', async () => {
@@ -32,71 +33,74 @@ describe('retrieveCategories', () => {
     expect(result).to.deep.equal(expectedResult);
   })
 
-});
+// });
 
 // Test suite for retrieving subcategories
 //describe('retrieveSubCategories', () => {
 
-  // Test case: Should retrieve the correct items from the "ValidProducts" table
-  it('should retrieve the correct items from the "ValidProducts" table', async () => {
-    const category = ['Category1'];
+// Test case: Should retrieve the correct items from the "ValidProducts" table
+it('should retrieve the correct items from the "ValidProducts" table', async () => {
+  const category = ['Category1'];
 
-    // Define the expected result
-    expectedResult = [
-      { product: 'Item1' }
-    ];
+  // Define the expected result
+  expectedResult = [
+    { product: 'Item1' }
+  ];
 
-    // Call the function to be tested
-    const result = await retrieverHandler.retrieveSubCategories(category);
+  // Call the function to be tested
+  const result = await retrieverHandler.retrieveSubCategories(category);
 
-    // Perform assertions using Chai
-    expect(result).to.deep.equal(expectedResult);
-  });
+  // Perform assertions using Chai
+  expect(result).to.deep.equal(expectedResult);
+});
 
 //});
 
 // Test suite for retrieving coordinates
 //describe('retrieveCoordinates', () => {
 
-  // Test case: Should retrieve the correct coordinates for a given product ID
-  it('should retrieve the correct coordinates for a given product ID', async () => {
-    const productID = 1;
+// Test case: Should retrieve the correct coordinates for a given product ID
+it('should retrieve the correct coordinates for a given product ID', async () => {
+  const productID = 1;
 
-    // Define the expected result
-    expectedResult = [
-      { coordinates: { x: 1, y: 1 } }
-    ];
+  // Define the expected result
+  expectedResult = [
+    { coordinates: { x: 1, y: 1 } }
+  ];
 
-    // Call the function to be tested
-    result = await retrieverHandler.retrieveCoordinates(productID);
+  test = await retrieverHandler.retrieveAllDataFromTable('Products');
 
-    // Perform assertions using Chai
-    expect(result).to.deep.equal(expectedResult);
-  });
+  // Call the function to be tested
+  result = await retrieverHandler.retrieveCoordinates(productID);
+
+
+  // Perform assertions using Chai
+  expect(result).to.deep.equal(expectedResult);
+});
 
 //});
 
 // Test suite for retrieving data from a table by criteria
 //describe('retrieveAllDataFromTable', () => {
 
-  // Test case: Should correctly retrieve all data from the given table
-  it('should correctly retrieve all data from the given table', async () => {
-    const tableName = 'Sellers';
+// Test case: Should correctly retrieve all data from the given table
+it('should correctly retrieve all data from the given table', async () => {
+  const tableName = 'Sellers';
 
-    // Define the expected result
-    const expectedResult = [
-      { id: '111111111111', name: 'Seller1', phonenumber: '1111111111', description: 'SellerDescription' },
-      { id: '222222222222', name: 'Seller2', phonenumber: '2222222222', description: 'SellerDescription' },
-      { id: '333333333333', name: 'Seller3', phonenumber: '3333333333', description: 'SellerDescription' },
-      { id: '444444444444', name: 'Seller4', phonenumber: '4444444444', description: 'SellerDescription' }
-    ];
+  // Define the expected result
+  const expectedResult = [
+    { id: '111111111111', name: 'Seller1', phonenumber: '1111111111', description: 'SellerDescription' },
+    { id: '222222222222', name: 'Seller2', phonenumber: '2222222222', description: 'SellerDescription' },
+    { id: '333333333333', name: 'Seller3', phonenumber: '3333333333', description: 'SellerDescription' },
+    { id: '444444444444', name: 'Seller4', phonenumber: '4444444444', description: 'SellerDescription' }
+  ];
 
-    // Call the function to be tested
-    const result = await retrieverHandler.retrieveAllDataFromTable(tableName);
+  // Call the function to be tested
+  const result = await retrieverHandler.retrieveAllDataFromTable(tableName);
 
-    // Perform assertions using Chai
-    expect(result).to.deep.equal(expectedResult);
-  });
+  // Perform assertions using Chai
+  expect(result).to.deep.equal(expectedResult);
+});
 
 //});
 // Test case 1: Should retrieve correct data from the "Sellers" table
@@ -194,4 +198,5 @@ it('should be able to receive ordered items from the database', async () => {
 
   // Perform assertions using Chai
   expect(result).to.deep.equal(expectedResult);
+});
 });

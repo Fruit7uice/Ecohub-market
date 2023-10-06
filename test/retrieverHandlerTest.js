@@ -1,19 +1,20 @@
+/*
+  Test file for testing the retrieverHandler functions. Before tests are run setupDatabase will be run, that file
+  runs the Table.sql file and the chaiInserts.sql
+*/
+
 // Import necessary libraries and modules
 const { expect } = require('chai');  // Chai assertion library
-//const sinon = require('sinon');  // Sinon for mocking and stubbing
 const retrieverHandler = require('../retrieverHandler');  // Import the function from your module
 const setupTestDatabase = require('./setup-testdatabase');  // Database setup function
-const { Pool } = require('pg');  // PostgreSQL database pool
-const db = require('../connection.js');  // Database connection
 
+// Before test suite, set up the database
 before(async () => {
   await setupTestDatabase()
 });
 
 // Test suite for retrieverHandler
 describe('retrieverHandler', () => {
-
-  // Before each test, set up the database
 
   // Test case: Should retrieve the correct data from the "categories" table
   it('should retrieve the correct data from the "categories" table', async () => {
@@ -32,10 +33,6 @@ describe('retrieverHandler', () => {
     expect(result).to.have.lengthOf(4);
     expect(result).to.deep.equal(expectedResult);
   })
-
-// });
-
-// Test suite for retrieving subcategories
 
 // Test case: Should retrieve the correct items from the "ValidProducts" table
 it('should retrieve the correct items from the "ValidProducts" table', async () => {
@@ -64,7 +61,6 @@ it('should retrieve the correct coordinates for a given product ID', async () =>
 
   // Call the function to be tested
   result = await retrieverHandler.retrieveCoordinates(productID);
-
 
   // Perform assertions using Chai
   expect(result).to.deep.equal(expectedResult);

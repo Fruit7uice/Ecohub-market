@@ -8,8 +8,8 @@ const formFunction = require('./public/formFunctions');
 const filterFunction = require ('./public/filterFunction')
 const insertHandler = require('./insertHandler')
 const coordinateGetter = require('./coordinateGetter')
+
 const filterQuery = require ('./filterQuery.js')
-const mapPins = require('./public/map')
 
 app.use(bodyParser.json());
 
@@ -76,18 +76,23 @@ app.post('/getSub', (req, res) => {
 app.post('/register', async (req, res) => {
     const userData = req.body; // This will contain the JSON data sent from the form
 
-    // *** TODO: INSERT INTO DATABASE ***
 
-    //prints the information 
-    
-    // Print userData
-    console.log(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
-    console.log(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
-    console.log(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
+//Insert into the registration into database.
 
     await insertHandler.insertSeller(formFunction.createSellerJSON(userData.personalNumber, userData.firstName, userData.lastName, userData.phoneNumber, userData.sellerDescription));
     await coordinateGetter.insertLocation(formFunction.createLocationJSON(userData.adress, userData.zipCode, userData.city));
     await insertHandler.insertProduct(formFunction.createProductJSON(userData.item, userData.category, userData.productName,  userData.adress, userData.price, userData.unit, userData.zipCode, userData.productDescription, userData.personalNumber));
+
+
+// Send a response back to the client
+res.send({ message: 'Registration successful' });
+
+// Redirect the user to the home page
+//res.redirect('/')
+
+});
+
+
 
 
 // Send a response back to the client
@@ -119,4 +124,5 @@ app.post('/filter', async (req, res) => {
         });
     
 });
+
 

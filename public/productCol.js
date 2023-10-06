@@ -13,44 +13,41 @@ fetch('/getproducts')
         console.log("Json saved to variable");
         const productList = document.getElementById('seller-list');
         let i = 0;
-        data.forEach(product => {
+        savedJson.forEach(product => {
             const listItem = document.createElement('li');
-            const span1 = document.createElement('span');
-            span1.className = "product-info1";
-            const span2 = document.createElement('span');
-            span2.className = "product-info2";
-
-            listItem.appendChild(span1)
-            listItem.appendChild(span2)
-
             //Span 1 h4 and p creation
-            const title = document.createElement('h5');
+            const title = document.createElement('h4');
             title.textContent = product.title;
+            title.className = "product-header";
 
-            const price = document.createElement('p');
+            const price = document.createElement('h3');
             price.textContent = product.price;
             price.textContent += (' ' + product.unit);
-
-            span1.appendChild(title);
-            span1.appendChild(price);
+            price.className = "product-price";
 
 
             //Span 2 p, img and p creation
             const city = document.createElement('p');
-            city.textContent = product.locationadress;
+            city.textContent = product.city;
+            city.className = "product-city";
 
             const img = document.createElement('img');
-            const productName = product.name;
+            // const productName = product.name;
             img.src = './assets/' + product.category.replace(/\s/g, '') + '.jpg';
+            img.className = "product-img";
+
 
             const timestamp = document.createElement('p');
 
             timestamp.textContent = product.timeofupload.split('T')[0];
-            timestamp.id = 'timestamp'
-
-            span2.appendChild(city);
-            span2.appendChild(img);
-            span2.appendChild(timestamp);
+            timestamp.id = 'timestamp';
+            timestamp.className = "product-time"
+            
+            listItem.appendChild(title);
+            listItem.appendChild(price);
+            listItem.appendChild(city);
+            listItem.appendChild(img);
+            listItem.appendChild(timestamp);
 
             // listItem.textContent = product.name;
 
@@ -66,9 +63,6 @@ fetch('/getproducts')
         addAllMarkersToMap();
     })
     .catch(error => console.error('Error fetching data:', error));
-
-
-
 
 
 
@@ -93,7 +87,10 @@ function addAllMarkersToMap() {
 
 
 
-function populateInfoBox(index) {
+
+
+function populateInfoBox(index){
+
     expand(true);
     console.log("Json for item: ", savedJson[index])
     displayPin(index)

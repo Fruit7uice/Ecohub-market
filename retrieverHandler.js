@@ -6,22 +6,23 @@ module.exports = {
     retrieveAllDataFromTable,
     retrieveCoordinates,
     retrieveAllDataFromView,
-    retrieveAllProductIDs
+    retrieveAllProductIDs,
+    retrieveDataByCriteria
 }
 
 // Function to retrieve all active categories from the database. E.g ['Meats', 'Fish'...]
-function retrieveCategories() {
+async function retrieveCategories() {
     return retrieveDataByCriteria('Categories', '*', '', [], 'name')
     //return retrieveAllDataFromTable('Categories');
 }
 
 // Function to retrieve all active subcategories of the input argument 'category'. 
-function retrieveSubCategories(category) {
+async function retrieveSubCategories(category) {
     return retrieveDataByCriteria('ValidProducts', 'product', 'category', category,'product');
 }
 
 // Function to retrieve coordinates from a specific ad from the products table. 
-function retrieveCoordinates(productID){
+async function retrieveCoordinates(productID){
     // Get client 
     const client = dbCon.getClient();
 
@@ -40,13 +41,13 @@ function retrieveCoordinates(productID){
                 reject(`Error executing query in retrieveCoordinates`, err);
             } else {
                 // If the query is successful, log the retrieved rows and resolve the promise with the data.
-                console.log(res.rows);
-                console.log("Rows Retrieved");
+                //console.log(res.rows);
+                //console.log("Rows Retrieved");
                 resolve(res.rows);
             }
             // Close the database connection after the query is complete.
             client.end();
-            console.log("Client terminated!");
+            //console.log("Client terminated!");
         });
     });
     // Returns the longitude and latitude of the dedicated adress of the ad
@@ -75,13 +76,13 @@ function retrieveAllDataFromTable(tableName) {
             } else {
                 // If the query is successful, log the retrieved rows and resolve the promise with the data.
                 //console.log(res.rows); // Uncomment to log all rows
-                console.log("Rows Retrieved");
+                //console.log("Rows Retrieved");
                 resolve(res.rows);
             }
             
             // Close the database connection after the query is complete.
             client.end();
-            console.log("Client terminated!");
+            //console.log("Client terminated!");
         });
     });
 }
@@ -94,10 +95,9 @@ function retrieveAllDataFromTable(tableName) {
  values: A list of values that the WHERE clause should be equal to. E.g ['Berries'].
  orderBy: If you want to add a order, choose an attribute to order by. If argument='' no order will be added. Optional is to add DESC or ASC after attribute.
 
-
  returns a JSON object with all rows from the query.
 */
-function retrieveDataByCriteria(tableName, columns = '*', whereClause = '', values = '', orderBy = '' ) {
+async function retrieveDataByCriteria(tableName, columns = '*', whereClause = '', values = '', orderBy = '' ) {
     // Get a client instance from the database connection module (assumed to be named dbCon).
     const client = dbCon.getClient();
 
@@ -135,13 +135,13 @@ function retrieveDataByCriteria(tableName, columns = '*', whereClause = '', valu
                 reject(`Error executing query in retrieveData for ${tableName}: ${err}`);
             } else {
                 // If the query is successful, log the result and resolve the promise with the retrieved rows.
-                console.log("Rows Retrieved");
+                //console.log("Rows Retrieved");
                 //console.log(res.rows); // Uncomment to log all rows.
                 resolve(res.rows);
             }
             // Close the database connection after the query is complete.
             client.end();
-            console.log("Client terminated!"); // Log the termination of the client connection.
+            //console.log("Client terminated!"); // Log the termination of the client connection.
         });
     });
 }

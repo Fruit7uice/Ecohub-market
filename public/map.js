@@ -1,12 +1,4 @@
-/**
- * @initMap
- * Firstly the map is being centered to #center-coordinates of ones choice
- * Zooms to a certain level of zoom
- * 
- * Markers can be predefined, with the help of our database of lat & long values
- * markers are looped through and added to the map
- * 
-**/
+
 
 let map; // Define a global variable to hold the map object
 
@@ -19,21 +11,7 @@ function initMap() {
 
     // TODO: On launch, add the markers on the map based on the coordinates in the database.
 
-
-    const names = ["Tomater", "Gurkor"];
-    // Define an array of markers with their respective coordinates and information
-    const markers = [
-        {
-            position: { lat: 57.71, lng: 11.9060 }, 
-            info: names[0] + " - latitude: 57.71, Longitude: 11.1060"
-        },
-        {
-            position: { lat: 57.7128, lng: 11.8060 }, 
-            info: names[1] + " - Latitude: 57.7128, Longitude: 11.0060"
-        }
-        // Add more markers here as needed
-    ];
-
+/* 
     // Loop through the markers and create them on the map
     markers.forEach(markerInfo => {
         const marker = new google.maps.Marker({
@@ -49,11 +27,21 @@ function initMap() {
             infoWindow.open(map, marker);
         });
     });
-
-
-
+ */
 
 }
+
+//TODO query all the prodycts
+async function createCordinateList(){
+    Products.forEach(async id => {
+        const currentIdCoordinates = await dbRetreiver.retrieveCoordinates(id);
+        const long = currentIdCoordinates[0].coordinated.x;
+        const lat = currentIdCoordinates[0].coordinated.y;
+        addMarker({lat: lat, lng: long});
+    });
+}
+
+
 
 function addMarker(location) {
     // Create a marker
@@ -73,3 +61,5 @@ function addMarker(location) {
         infoWindow.open(map, marker);
     });
 }
+
+

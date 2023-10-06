@@ -39,8 +39,19 @@ CREATE VIEW columnProductInfo AS (
     
 );
 
+
+CREATE VIEW productAndLocation AS(
+    SELECT * FROM
+    Products
+    JOIN
+    Locations ON locationZipcode = zipcode AND locationAdress = adress
+);
+
+
 SELECT * FROM Sellers;
 
 SELECT * FROM Locations;
 
-SELECT * FROM Products
+SELECT * FROM Products;
+
+SELECT * FROM productAndLocation;

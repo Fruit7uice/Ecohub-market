@@ -7,119 +7,134 @@
   <title>Become a seller</title>
   <link rel="stylesheet" href="./sellStyle.css" />
   <script src="dropdown.js"></script>
+  <script src="progress.js"></script>
 </head>
 
 <body>
+  
   <div class="container-main">
     <div class="container nav">
-      <a href="">Home</a>
-      <a href="./sellForm.html">Sell a product</a>
-      <a href="" id="brand-logo">
+      <a href="./sellaproduct">Sell a product</a>
+      <a href="./" id="brand-logo">
         <img src="./assets/AgilLogo.png" alt="BrandLogo" style="width: 100px; height: auto;">
       </a>
-      <a href="">Become a Seller</a>
       <a href="">Info</a>
     </div>
+    
     <main>
       <div class="container container-form">
-        <h1>
-          Enter your personal info
-        </h1>
-        <form>
-        <!--  <div class="form-x" id="form-1">
-                          <div class="left-half">
-                              <label for="f-name-in">First name:</label>
-                              <input type="text" id="f-name-in" name="f-name-in" placeholder="first name">
-
-                              <label for="personal-nr">Personal number:</label>
-                              <input type="text" id="personal-nr" name="personal-nr" placeholder="yyyymmddxxxx" maxlength="12">
-
-                              <label for="adress">Adress:</label>
-                              <input type="text" id="adress" name="adress" placeholder="adress">
-
-                              <label for="description-in">Description:</label>
-                              <textarea class="c-description-i" id="description-in" name="description-in" placeholder="short discription of yourself" maxlength="350"></textarea>
-                          </div>
-                          <div class="right-half">
-                                <label for="l-name-in">Last name:</label>
-                                <input type="text" id="l-name-in" name="l-name-in" placeholder="last name">
-
-                              <label for="phone-nr">Phonenumber:</label>
-                              <input type="text" id="phone-nr" name="phone-nr" placeholder="phonenumber">
-                            
-                              <div class="c-city-zip">
-                                <div class="c-city">
-                                  <label for="city-in">City:</label>
-                                  <input class="half-input" type="text" id="city-in" name="city" placeholder="city">
-                                </div>
-                                <div class="c-zip">
-                                  <label for="zip-code-in">Zip code:</label>
-                                  <input class="half-input" type="text" id="zip-code-in" name="zip-code" placeholder="zip code">
-                                </div>
-                            </div>
-                          </div>
-            </div>   -->    
-            <div class="form-x" id="form-2">
-              <div class="f2-left-half">
-                  <label for="p-name-in">Product name:</label>
-                  <input type="text" id="p-name-in" name="p-name-in" placeholder="product name">
-                  
-                  <label for="description-in">Description:</label>
-                  <textarea class="c-description-i" id="description-in" name="description-in" placeholder="short discription of the product" maxlength="350"></textarea>
-                  
-                  <label for="image">Choose an image:</label>
-                  <input class="img-in" type="file" name="image" accept="image/png, image/jpeg" />
-                  
-                </div>             
+        
+        <form id="registrationForm" action="/register">
+          <div class="all-forms">
+            
+            <div class="form-x" id="form-1">
+              <div class="left-half">
+                <label for="firstName">First name:</label>
+                <input type="text" id="firstName" name="firstName" placeholder="First name">
+                
+                <label for="personalNumber">Personal number:</label>
+                <input type="number" id="personalNumber" name="personalNumber" placeholder="(yyyymmddxxxx)" >
+                
+                <label for="adress">Adress:</label>
+                <input type="text" id="adress" name="adress" placeholder="Adress">
+                
+                <label for="sellerDescription">Description:</label>
+                <textarea id="sellerDescription" name="sellerDescription" placeholder="Short discription of yourself" maxlength="350"></textarea>
+              </div>
               
+              <div class="right-half">
+                <label for="lastName">Last name:</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Last name">
+                
+                <label for="phoneNumber">Phonenumber:</label>
+                <input type="number" id="phoneNumber" name="phoneNumber" placeholder="Phonenumber" >
+                
+                <div class="c-city-zip">
+                  <div>
+                    <label for="city">City:</label>
+                    <input class="half-input" type="text" id="city" name="city" placeholder="City">
+                  </div>
+                  <div>
+                    <label for="zipCode">Zip code:</label>
+                    <input class="half-input" type="number" id="zipCode" name="zipCode" placeholder="Zip code">
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-x" id="form-2">
+              <div>
+                <label for="productName">Product name:</label>
+                <input type="text" id="productName" name="productName" placeholder="Product name">
+                
+                <label for="productDescription">Description:</label>
+                <textarea id="productDescription" name="productDescription" placeholder="Short discription of the product"
+                maxlength="350"></textarea>
+                
+                <label for="img">Choose an image:</label>
+                <input class="img" type="file" name="img" accept="image/png, image/jpeg" />
+                
+              </div>
               <div class="f2-right-half">
-                <label for="price">price</label>
+                <label for="price">Price</label>
                 
                 <div class="c-price">
+                  <input id="price" name="price" type="number" placeholder="0">
                   
-                  <input type="price" placeholder="0">
-                  <div class="radio-btns">
-
-                    <label class="container">kr/kg</label>
-                    <input class="checkmark-in" type="radio" checked="checked" name="radio">
-                    
-                    <label class="container">kr/unit</label>
-                    <input class="checkmark-in" type="radio" name="radio">
-                    
+                  <div class="unit-dropdown">
+                    <select name="unit" id="unit">
+                      <option value="" selected="selected">Select pricing</option>
+                    </select>
                   </div>
                   
                 </div>
-                  <label>Category:</label>
-                  <select name="category" id="category">
+                
+                <label class="r-label">Category:</label>
+                <select name="category" id="category" class="category-dropdown">
                   <option value="" selected="selected">Select category</option>
                 </select>
-                <label>Item:</label>
                 
-                <select name="item" id="item">
+                <label class="r-label">Item:</label>
+                <select name="item" id="item" class="category-dropdown">
                   <option value="" selected="selected">Select category first</option>
-                
                 </select>
-                
-                
               </div>
-            </div>    
-    <!-- 
-
+            </div>
+            
+            
             <div class="form-x" id="form-3">
               <p>
-                Welcome ******* to "website name", you have now succesfully been registered to "website name".
-              </p>  
+                Welcome ******* to "website name", press "Register" to register your information and product.
+              </p>
               
-            </div>  
-          -->           
+            </div>
             
-        </form> 
-        <button type="button" class="button-1" id ="button-1"> Next </button>
-
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-state" id="state1">1</div>
+              <div class="progress-line" id="line1"></div>
+              <div class="progress-state" id="state2">2</div>
+              <div class="progress-line" id="line2"></div>
+              <div class="progress-state" id="state3">3</div>
+            </div>
+            <div class="progress-btns">
+              <div>
+                <button onclick="backwardProgress()" type="button" id="previous-btn">Previous</button>
+              </div>
+              <div>
+                <button onclick="forwardProgress()" type="button" id="next-btn">Next</button>
+                <button onclick="document.location.href = './'" type="submit" style="visibility: hidden;" id="register-btn">Register</button>
+              </div>
+            </div>
+          </div>
+          
+        </form>
+        <script src="formInformation.js"></script> <!-- Must be here after the form <div> -->
       </div>
-  </div>
+    </div>
   </main>
-  </div>
+</div>
 </body>
 
 </html>

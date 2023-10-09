@@ -1,18 +1,22 @@
 -- This script deletes everything in your database
-\set QUIET true
-SET client_min_messages TO WARNING; -- Less talk please.
+-- \set QUIET true
+-- SET client_min_messages TO WARNING; -- Less talk please.
+-- DROP SCHEMA public CASCADE;
+-- CREATE SCHEMA public;
+-- GRANT ALL ON SCHEMA public TO CURRENT_USER;
+-- \set ON_ERROR_STOP ON
+-- SET client_min_messages TO NOTICE; -- More talk
+-- \set QUIET false
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
 GRANT ALL ON SCHEMA public TO CURRENT_USER;
-\set ON_ERROR_STOP ON
-SET client_min_messages TO NOTICE; -- More talk
-\set QUIET false
 
 /*  
 A seller sells products. The id is the unique personal number of the seller. 
 A seller also has a name, a phone number and an optional description.
 
 */  
+
 CREATE TABLE Sellers ( 
     id CHAR(12) CHECK(id ~ '^[0-9]+$') PRIMARY KEY,
     name TEXT NOT NULL, 
@@ -27,8 +31,8 @@ Contains the different types of allowed categories a product can belong to.
 
 CREATE TABLE Categories ( 
     name TEXT PRIMARY KEY
-    CHECK (name in ('Meats', 'Vegetables', 'Fruits', 'Dairy', 'Berries', 'Bread', 
-                    'Root vegetables', 'Pastries', 'Seafoods', 'Mushrooms' ))
+    -- CHECK (name in ('Meats', 'Vegetables', 'Fruits', 'Dairy', 'Berries', 'Bread', 
+    -- 'Root Vegetables', 'Pastries', 'Seafoods', 'Mushrooms' ))
 );
 
 /*  
@@ -40,17 +44,22 @@ Possible problem: If a seller adds a product on a location that is already in
 the database.
 */  
 CREATE TABLE Locations (
-    adress TEXT PRIMARY KEY,
-    coordinates POINT -- TODO make trigger for 
+    adress TEXT,
+    zipcode CHAR(5),
+    city TEXT NOT NULL,
+    coordinates POINT, -- TODO make trigger for 
                       -- automatically inserting coordinates
-    
+    PRIMARY KEY (zipcode, adress)
 );
 
 /*
 A table that contains all valid products. Is populated through the inserts.sql file.
 */
 CREATE TABLE ValidProducts(
-    product VARCHAR(30) NOT NULL PRIMARY KEY
+    category TEXT NOT NULL REFERENCES Categories,
+    product TEXT NOT NULL,
+    PRIMARY KEY(category, product) 
+    
 );
 
 
@@ -61,15 +70,19 @@ CREATE TABLE ValidProducts(
  */
 CREATE TABLE Products(
     id SERIAL PRIMARY KEY, -- Increments with SERIAL
-    name TEXT NOT NULL REFERENCES ValidProducts,
-    category TEXT NOT NULL REFERENCES Categories,
+    name TEXT NOT NULL,
+    category TEXT NOT NULL,
+    title TEXT NOT NULL,
     price FLOAT CHECK (price >=0),
     unit CHAR(12) CHECK (unit in ('kg', 'hg', 'g', 'pcs')),
-    locations TEXT NOT NULL REFERENCES Locations,
+    locationAdress TEXT NOT NULL,
+    locationZipcode CHAR(5) NOT NULL, 
     picture TEXT, -- TODO be able to add picture
-    description TEXT NOT NULL,
+    description TEXT,
     seller CHAR(12) NOT NULL REFERENCES Sellers,
-    timeOfUpload TIMESTAMP NOT NULL --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
+    timeOfUpload TIMESTAMP DEFAULT CURRENT_TIMESTAMP, --Timestamp is in format: YYYY-MM-DD HH24:MI:SS
+    FOREIGN KEY (category, name) REFERENCES ValidProducts(category,product),
+    FOREIGN KEY (locationZipcode, locationAdress) REFERENCES Locations(zipcode, adress) -- Reference both columns as a composite foreign key
 
 
 );

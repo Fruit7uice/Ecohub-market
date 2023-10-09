@@ -13,9 +13,6 @@ SELECT * FROM Sellers
 ); 
 
 
-
-
-
 -- A view of all added locations.
 CREATE VIEW allLocations AS (
 SELECT * FROM Locations
@@ -28,14 +25,33 @@ CREATE VIEW meatProducts AS (
 );
 
 CREATE VIEW simpleProductInfo AS (
-    SELECT Products.name AS product, Products.description, price, unit, locations, Sellers.name AS seller, 
+    SELECT Products.name AS product, Products.description, price, unit, locationAdress, locationZipcode, Sellers.name AS seller, 
            phoneNumber
     FROM Products, Sellers
     WHERE Products.seller = Sellers.id
 );
 
+-- Contains all info used for the product-element in the seller column. Orders by lowest price first.
 CREATE VIEW columnProductInfo AS (
-    SELECT name, price, unit, locations, timeOfUpload
+    SELECT name, price, unit, locationAdress, timeOfUpload, title
     FROM Products
-)
+    ORDER BY price ASC
+    
+);
 
+
+CREATE VIEW productAndLocation AS(
+    SELECT * FROM
+    Products
+    JOIN
+    Locations ON locationZipcode = zipcode AND locationAdress = adress
+);
+
+
+SELECT * FROM Sellers;
+
+SELECT * FROM Locations;
+
+SELECT * FROM Products;
+
+SELECT * FROM productAndLocation;

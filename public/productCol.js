@@ -98,8 +98,6 @@ function addAllMarkersToMap() {
 function populateInfoBox(index){
     expand(true);
     console.log("Json for item: ", savedJson[index])
-    
-    displayPin(index)
     const infobox = document.getElementById("full-product");
     infobox.innerHTML = "";
    
@@ -180,7 +178,7 @@ function populateInfoBox(index){
     infobox.appendChild(locationContainer);
     infobox.appendChild(sellerContainer);
     
-    
+    displayPin(index)
 }
 
 

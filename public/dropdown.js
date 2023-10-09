@@ -14,7 +14,6 @@ async function categorySelect() {
     categorySel.appendChild(option);
   })
 
-  
 //when the category changes aka when you choose a category
   categorySel.onchange = function () {
     // Empty item dropdown

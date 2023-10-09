@@ -1,4 +1,3 @@
-
 let map; // Define a global variable to hold the map object
 
 function initMap() {
@@ -6,8 +5,6 @@ function initMap() {
         center: { lat: 57.70544078751393, lng: 11.985471236320263 },
         zoom: 12
     });
-
-    // TODO: On launch, add the markers on the map based on the coordinates in the database.
 
     // Loop through the markers and create them on the map
     markers.forEach(markerInfo => {
@@ -70,13 +67,9 @@ function addMarker(location, address, name) {
         // Open the info window when the marker is clicked
         infoWindow.open(map, marker);
 
-        // Automatically close the info window after 5 seconds
+        // Automatically close the info window after 5 seconds (5000 miliseconds)
         setTimeout(() => {
             infoWindow.close();
-        }, 5000); // 5000 milliseconds = 5 seconds
+        }, 5000);
     });
-
-
-   
 }
-

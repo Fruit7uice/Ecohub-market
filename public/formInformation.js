@@ -21,15 +21,15 @@ function sendData() {
 
     // Send data to the server using the fetch API
     fetch('/register', {
-        method: 'POST', // Use the POST method
+        method: 'POST',
         headers: {
-            'Content-Type': 'application/json' // Specify the content type as JSON
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify(jsonObject) // Convert JSON object to a string and send as the request body
+        body: JSON.stringify(jsonObject)
     })
         .then(response => response.json()) // Parse the response as JSON
         .then(data => console.log(data)) // Log the response data to the console
-        .catch(error => console.error('Error:', error)); // Handle errors, if any
+        .catch(error => console.error('Error:', error));
 }
 
 

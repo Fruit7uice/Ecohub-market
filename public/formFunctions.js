@@ -17,7 +17,7 @@ function createSellerJSON(id, firstName, lastName, phoneNumber, description) {
 }
 
 // Function to create a JSON object for a location
-function createLocationJSON(adress,  zip, city) {
+function createLocationJSON(adress, zip, city) {
     // Create a location JSON object with provided properties
   const locationJSON = {
       "adress": adress,

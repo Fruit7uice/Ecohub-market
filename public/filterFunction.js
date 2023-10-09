@@ -41,7 +41,6 @@ function getCatAndItem() {
             productList.innerHTML = '';
             // Call a function to populate the list of products with the filtered data
             populateListOfProducts(data)
-            
         })
         .catch((error) => {
             // Handle errors that occur during the fetch request and log an error message

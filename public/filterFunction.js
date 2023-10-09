@@ -5,18 +5,14 @@ Creates a JSON object with the chosen category and item.
 module.exports = {
     createCategoryAndItem,
     getCatAndItem
-
 }
-
 
 // Function to create a JSON object category + item
 function createCategoryAndItem(category, item) {
-    // Create a category and item json
     const jsonCategoryAndItem = {
         "category": category,
         "item": item
     }
-   
     return jsonCategoryAndItem
 }
 
@@ -39,7 +35,6 @@ function getCatAndItem() {
         .then((response) => response.json())
         .then(data => {
             // Handle the filtered data and update the user interface (UI) here
-
             // Get a reference to the 'seller-list' element in the HTML
             const productList = document.getElementById('seller-list');
             // Clear the existing list of products in the UI
@@ -54,6 +49,5 @@ function getCatAndItem() {
         });
     // Log a message to indicate that the fetch request for filtering has been made
     console.log("fetch filter");
-
 }
 

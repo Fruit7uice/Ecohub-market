@@ -1,4 +1,3 @@
-
 var activeColor = "#e7b06f";
 var passiveColor = "#adadad";
 var counter = 1;
@@ -26,7 +25,6 @@ function forwardProgress() {
         const state2 = document.getElementById('state2');
         const line1 = document.getElementById('line1');
 
-        
         form1.style.zIndex = -1;
         form2.style.zIndex = 1;
         form3.style.zIndex = -1;
@@ -42,12 +40,10 @@ function forwardProgress() {
     if (counter == 3) {
         const state3 = document.getElementById('state3');
         const line2 = document.getElementById('line2');
-
      
         form1.style.zIndex = -1;
         form2.style.zIndex = -1;
         form3.style.zIndex = 1;
-
 
         state3.style.border = "5px solid " + activeColor;
         state3.style.color = activeColor;
@@ -60,7 +56,6 @@ function forwardProgress() {
         reg_btn.style.visibility = "visible";
     }
 }
-
 
 // The backwardProgress function is responsible for controlling the backward 
 // progression of a 3 - step process, represented visually on a webpage.
@@ -114,5 +109,4 @@ function backwardProgress() {
         const reg_btn = document.getElementById('register-btn');
         reg_btn.style.visibility = "hidden";
     }
-
 }

@@ -31,7 +31,7 @@ function populateListOfProducts(jsonList){
 
             const price = document.createElement('h3');
             price.textContent = product.price;
-            price.textContent += (' ' + product.unit);
+            price.textContent += (' ' + " kr / " + product.unit);
             price.className = "product-price";
 
 
@@ -98,8 +98,6 @@ function addAllMarkersToMap() {
 function populateInfoBox(index){
     expand(true);
     console.log("Json for item: ", savedJson[index])
-    
-    displayPin(index)
     const infobox = document.getElementById("full-product");
     infobox.innerHTML = "";
    
@@ -116,7 +114,7 @@ function populateInfoBox(index){
         title.innerHTML = item.title;
 
         const priceUnitType = document.createElement('h2');
-        priceUnitType.innerHTML = item.name + ": " + item.price + " / " + item.unit;
+        priceUnitType.innerHTML = item.name + ": " + item.price + " kr "+ " / " + item.unit;
 
         // const unit = document.createElement('h2');
         // unit.innerHTML = item.unit;
@@ -180,7 +178,7 @@ function populateInfoBox(index){
     infobox.appendChild(locationContainer);
     infobox.appendChild(sellerContainer);
     
-    
+    displayPin(index)
 }
 
 

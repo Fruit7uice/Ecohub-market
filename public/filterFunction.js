@@ -7,7 +7,7 @@ module.exports = {
     getCatAndItem
 
 }
-const filterQuery = require('../filterQuery.js'); // Make sure to use the correct path
+
 
 // Function to create a JSON object category + item
 function createCategoryAndItem(category, item) {

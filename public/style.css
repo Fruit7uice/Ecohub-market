@@ -30,11 +30,6 @@ h1, h2, h3, h4, h5, h6 , p{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* .container{
-    width: auto;
-    height: auto;
-} */
-
 main{
     margin: 0;
     padding: 0;
@@ -60,7 +55,6 @@ main{
     height: 40px;
     border-radius: 25px;
     background-color: #f5f1e2;
-    /* background-color: #e7b06f; */
     color: #3f6668;
     text-decoration: none;
     margin: auto;
@@ -71,7 +65,6 @@ main{
 }
 
 .nav a:hover {
-    /* background-color: #3f6668; */
     background-color: #e7b06f;
     color: #f5f1e2;
 }
@@ -83,7 +76,6 @@ main{
 .seller-column{
     background-color: #3f6668;
     width: 30%;
-    /* height: 100%; */
     height: 100vh;
     
     position: relative;
@@ -99,7 +91,6 @@ main{
     list-style-position: inside;
     padding-left: 0;
     overflow-y: scroll;
-    /* background-color: #bfc66e; */
     background-color: #53313e;
     height: 100%;
     font-size: 14px;
@@ -109,7 +100,6 @@ main{
 
 
 .seller-column ul li:hover {
-    /* background-color: #a1a859; */
     background-color: #432832;
     cursor: pointer;
 }
@@ -177,7 +167,6 @@ main{
     position: relative;
     width: 70%;
     height: 100vh;
-    /* height: 100%; */
     display: flex;
     flex-direction: column-reverse;
     flex: 3;
@@ -197,9 +186,7 @@ main{
     display: none;
     align-items: center;
     flex-flow: column;
-    /* flex-flow: column-reverse; */
     width: 100%;
-    /* height: 50px; */
     transition: 0.5s;
 }
 
@@ -222,21 +209,15 @@ main{
 .seller-info{
     background-color: #3f6668;
     width: 100%;
-    /* min-height: 20px; */
     transition: 0.5s;
 }
 
 #full-product{
-    /* position: absolute; */
     display: none;
     background-color: #fff;
-    /* height: 100%; */
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    /* gap: 2px; */
     background-color: var(--customGreen);
-    /* border: solid 4px red; */
-
 }
 
 #full-product > *{
@@ -261,7 +242,6 @@ main{
 #info-description{
     grid-column: 1/4;
     grid-row: 2/4;
-    /* font-size: 1.3rem; */
     border-bottom: 1px solid gray;
 }
 

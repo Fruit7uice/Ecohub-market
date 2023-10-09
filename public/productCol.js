@@ -31,7 +31,7 @@ function populateListOfProducts(jsonList){
 
             const price = document.createElement('h3');
             price.textContent = product.price;
-            price.textContent += (' ' + product.unit);
+            price.textContent += (' ' + "kr / " + product.unit);
             price.className = "product-price";
 
 

@@ -14,6 +14,3 @@ function expandCollapseFilter() {
     }
     expanded = !expanded;
 }
-
-
-

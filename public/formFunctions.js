@@ -1,12 +1,7 @@
-//import insertHandler from '../insertHandler';
-//const dbCon = require('./connection.js');
-
-//exported functions
 module.exports = {
   createLocationJSON,
   createProductJSON,
   createSellerJSON
-
 }
 
 // Function to create a JSON object for a seller
@@ -31,6 +26,7 @@ function createLocationJSON(adress,  zip, city) {
   }
   return locationJSON;
 }
+
 // Function to create a JSON object for a product
 function createProductJSON(item, category, title, adress, price, unit, zip, description, seller) {
     // Create a product JSON object with provided properties
@@ -48,6 +44,3 @@ function createProductJSON(item, category, title, adress, price, unit, zip, desc
   }
   return productJSON;
 }
-
-
-

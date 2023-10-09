@@ -24,7 +24,6 @@ function populateListOfProducts(jsonList){
         let i = 0;
         savedJson.forEach(product => {
             const listItem = document.createElement('li');
-            //Span 1 h4 and p creation
             const title = document.createElement('h4');
             title.textContent = product.title;
             title.className = "product-header";
@@ -34,14 +33,11 @@ function populateListOfProducts(jsonList){
             price.textContent += (' ' + " kr / " + product.unit);
             price.className = "product-price";
 
-
-            //Span 2 p, img and p creation
             const city = document.createElement('p');
             city.textContent = product.city;
             city.className = "product-city";
 
             const img = document.createElement('img');
-            // const productName = product.name;
             img.src = './assets/' + product.category.replace(/\s/g, '') + '.jpg';
             img.className = "product-img";
 
@@ -55,8 +51,6 @@ function populateListOfProducts(jsonList){
             listItem.appendChild(city);
             listItem.appendChild(img);
             listItem.appendChild(timestamp);
-
-            // listItem.textContent = product.name;
 
             listItem.index = i;
             listItem.addEventListener("click", () => {

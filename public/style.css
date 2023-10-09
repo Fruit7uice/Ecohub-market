@@ -131,7 +131,7 @@ main{
     grid-row-gap: 0px;
     border-bottom: 2px solid #0000003f;
     padding: 0 10px;
-    max-height: 150px;
+    max-height: 170px;
 }
 
 .product-img {
@@ -157,11 +157,11 @@ main{
 }
 
 .product-price {
-    grid-area: 4 / 4 / 5 / 6;
+    grid-area: 3/ 4/ 4 / 6;
 }
 
 .product-time {
-    grid-area: 4 / 5 / 5 / 7;
+    grid-area: 4 / 3 / 4 / 7;
     place-self: center end;
 }
 

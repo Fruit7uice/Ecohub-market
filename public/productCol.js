@@ -31,7 +31,7 @@ function populateListOfProducts(jsonList){
 
             const price = document.createElement('h3');
             price.textContent = product.price;
-            price.textContent += (' ' + "kr / " + product.unit);
+            price.textContent += (' ' + product.unit);
             price.className = "product-price";
 
 
@@ -116,7 +116,7 @@ function populateInfoBox(index){
         title.innerHTML = item.title;
 
         const priceUnitType = document.createElement('h2');
-        priceUnitType.innerHTML = item.name + ": " + item.price + " / " + item.unit;
+        priceUnitType.innerHTML = item.name + ": " + item.price + " kr "+ " / " + item.unit;
 
         // const unit = document.createElement('h2');
         // unit.innerHTML = item.unit;

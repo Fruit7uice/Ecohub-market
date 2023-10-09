@@ -27,7 +27,7 @@ async function insertData(table, data) {
             .then(() => console.log('Connected to PostgreSQL database in insertData'))
             .catch(err => reject('Error connecting to PostgreSQL', err));
 
-        // queries the client database with the insertQuery, and logging "Data inserted successfully" upon success and logging detailed error information upon failure.
+        // Queries the client database with the insertQuery, and logging "Data inserted successfully" upon success and logging detailed error information upon failure.
         client.query(insertQuery, values)
             .then(result => {
             console.log("Data inserted successfully")
@@ -51,6 +51,3 @@ async function insertLocation(locationData) {
 async function insertProduct(productData) {
     insertData('Products', productData)
 }
-
-
-

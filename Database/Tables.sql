@@ -72,7 +72,7 @@ CREATE TABLE Products(
     id SERIAL PRIMARY KEY, -- Increments with SERIAL
     name TEXT NOT NULL,
     category TEXT NOT NULL,
-    title VARCHAR(30) NOT NULL,
+    title VARCHAR(40) NOT NULL,
     price FLOAT CHECK (price >=0),
     unit CHAR(12) CHECK (unit in ('kg', 'hg', 'g', 'pcs')),
     locationAdress TEXT NOT NULL,

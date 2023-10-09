@@ -55,9 +55,7 @@ The chillis are perfect for stews, there are some variety in spiceness.', 199811
 ('Fresh green apples', 'Apples', 'Fruits', 20 , 'kg', 'Ostindiegatan 26', '41452', NULL, 
 'Juicy apples from my garden, perfect for baking an autumn apple pie', 200204051632),
 
-('Frozen elk meat from this last weekends hunt', 'Elk', 'Meats', 300 ,'kg', 'Majstångsgatan 12','41472', NULL, 
-'Me and my boyfriend went hunting this last weekend, we got a big 20-taggare. The meat from the elk does not fit in the freezer so we 
-are selling some.', 200001123188);
+('Hunted Elk meat', 'Elk', 'Meats', 300 ,'kg', 'Majstångsgatan 12','41472', NULL, 'Me and my boyfriend went hunting this last weekend, we got a big 20-taggare. The meat from the elk does not fit in the freezer so we are selling some.', 200001123188);
 
 ---------------------------------------------------------------------------------------------------------
 

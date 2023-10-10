@@ -123,8 +123,17 @@ form{
   z-index: -1;
 }
 #form-3{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   z-index: -1;
+}
+
+.third-form-text{
+  margin: 5% 5% 5% 5%;
+  padding: 5% 5% 5% 5%;
+  color: #3b3d3d;
 }
 
 label{

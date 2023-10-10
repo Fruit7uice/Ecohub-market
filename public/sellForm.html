@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./sellStyle.css" />
   <script src="dropdown.js"></script>
   <script src="progress.js"></script>
+  <script src="thirdForm.js"></script>
 </head>
 
 <body>
@@ -96,9 +97,15 @@
               </div>
             </div>
             <div class="form-x" id="form-3">
-              <p>
-                Welcome ******* to "website name", press "Register" to register your information and product.
+              <p class="third-form-text">
+                Welcome <span id="welcome-name"></span> to "website name", press "Register" to register your information and product
               </p>
+              <p>
+                By registering, you agree to our [Terms and Conditions] and [Privacy Policy]. We respect your privacy and will never share your information with third parties.
+
+Once registered, you'll have access to a wide range of locally sourced, seasonal produce. We can't wait to have you on board!
+              </p>
+
             </div>
           </div>
           <div class="progress-container">
@@ -114,7 +121,7 @@
                 <button onclick="backwardProgress()" type="button" id="previous-btn">Previous</button>
               </div>
               <div>
-                <button onclick="forwardProgress()" type="button" id="next-btn">Next</button>
+                <button onclick="forwardProgress(), saveInfo()" type="button" id="next-btn">Next</button>
                 <button onclick="document.location.href = './'" type="submit" style="visibility: hidden;" id="register-btn">Register</button>
               </div>
             </div>

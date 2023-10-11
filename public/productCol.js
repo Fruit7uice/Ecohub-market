@@ -8,6 +8,10 @@ fetch('/getproducts')
     .then(response => response.json())
     .then(data => {
         savedJson = data;
+        // updateHashmapAndMarkers() --> 
+        // savedJson.forEach(element => {
+        //         map.set(element.id, createMarker(elements.id))
+        //     });
         console.log("Json saved to variable");
         populateListOfProducts();
     })
@@ -62,6 +66,13 @@ function populateListOfProducts(jsonList){
         });
         addAllMarkersToMap();
 }
+
+
+const map = new Map();
+
+map.set()
+
+
 
 //Function to dislay the marker when it gets clicked in the sellers column
 function displayPin(index) {

@@ -12,7 +12,7 @@ body{
   border: 0;
   max-width: 100vw;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: visible;
   color: #fff;
   font-family: 'Alice';
   font-weight: bold;
@@ -63,4 +63,43 @@ main{
 
 #brand-logo{
   background-color: transparent;
+}
+/* the above code is a duplicate and needed for the navigation */
+.flex-container{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  color: #f5f1e2;
+}
+.purpose{
+  width: 100%;
+  height: auto;
+  background-color: #3f6668;
+  padding-left: 2%;
+}
+.how-it-works{
+  width: 100%;
+  height: auto;
+  background-color: #e08d65;
+  padding-left: 2%;
+  color: #3b3d3d;
+}
+.accountability{
+  width: 100%;
+  height: auto;
+  background-color: #cf6956;
+  padding-left: 2%;
+
+}
+.about-us{
+  width: 100%;
+  height: auto;
+  padding-left: 2%;
+  background-color: #e7b06f;
+  color: #3b3d3d;
+}
+p{
+  padding-left: 2%;
+  font-size: 18px;
 }

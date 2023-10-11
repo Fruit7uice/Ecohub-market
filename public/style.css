@@ -1,25 +1,51 @@
 :root {
     --customGreen: #3f6668;
+    --customGreenLight: #4C7B7E;
+    --customGreenLightGrass: #c0c76d;
     --customPurple: #432832;
-    --customWhite: #f5f1e2;
+    --customBeige: #f5f1e2;
     --customWhite2: #fff;
     --customOrange: #e7b16f;
+    --customOrangeDark: #df8c65;
+    --customBlueOcean: #9cc0f9;
+    --customGreenMap: #bbe2c6;
+    --customGray: #d3d3d3;
+
+    --CustomPinkScream: #d2177f;
+    
+
+    /* Förslag 1 */
 
     /* Nav Bar */
-    --navBarBackground: var(--customWhite);
-    --navBarButton: var(--customWhite);
+    --navBarBackground: var(--customBeige);
     --navBarButtonHover: var(--customOrange);
     --navBarButtonText: var(--customGreen);
 
     /* Product Column */
-    --productColumnBackground: var(--customPurple);
-    --productColumnHover: var(--customPurple);
+    --productColumnBackground: var(--customGreen);
+    --productColumnHover: var(--customGreenLight);
     --productColumnText: var(--customWhite2);
 
     /* Filter Bar */
-    --filterBarBackground: var(--customGreen);
+    --filterBarBackground: var(--customGreen); 
+    --filterBarDropDownBackground: var(--customGreen);
 
+
+    /* Förslag 2 */
+
+        /* Nav Bar */
+        /* --navBarBackground: var(--CustomGreen);
+        --navBarButton: var(--customBeige);
+        --navBarButtonHover: var(--customOrange);
+        --navBarButtonText: var(--customGreen); */
     
+        /* Product Column */
+        /* --productColumnBackground: var(--customBeige);
+        --productColumnHover: var(--customPurple);
+        --productColumnText: var(--customGreen); */
+    
+        /* Filter Bar */
+         /* --filterBarBackground: var(--customGreen);    */
 
 }
 
@@ -94,7 +120,7 @@ main{
 }
 
 .seller-column{
-    background-color: var(--productColumnBackground);
+    background-color: var(--filterBarBackground);
     width: 30%;
     height: 100vh;
     
@@ -350,11 +376,13 @@ main{
 /* FILTER BUTTON */
 
 #filterBtn{
-    background: #d3d3d3;
-    width: 35px;
-    height: 35px;
+    background: var(--customWhite2);
+    width: 40px;
+    height: 40px;
     border: none;
     margin: 10px;
+    border-radius: 5px; 
+    
 }
 
 #filterBtn:active {
@@ -372,7 +400,7 @@ main{
     align-items: center;
     text-align: center;
     justify-content: space-around;
-    background-color: var(--customGreen);
+    background-color: var(--filterBarDropDownBackground);
     transition: 1s;
 }
 

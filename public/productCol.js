@@ -1,4 +1,3 @@
-
 // variable to save Json items from fetch
 var savedJson;
 
@@ -8,10 +7,6 @@ fetch('/getproducts')
     .then(response => response.json())
     .then(data => {
         savedJson = data;
-        // updateHashmapAndMarkers() --> 
-        // savedJson.forEach(element => {
-        //         map.set(element.id, createMarker(elements.id))
-        //     });
         console.log("Json saved to variable");
         populateListOfProducts();
     })
@@ -67,13 +62,6 @@ function populateListOfProducts(jsonList){
         addAllMarkersToMap();
 }
 
-
-const map = new Map();
-
-map.set()
-
-
-
 //Function to dislay the marker when it gets clicked in the sellers column
 function displayPin(index) {
     const item = savedJson[index];
@@ -81,11 +69,21 @@ function displayPin(index) {
 }
 
 
+
+
+// Function to display initial pins from database in the initialization of the map
+function displayInitalPins(index) {
+    const item = savedJson[index];
+    addInitalMarkers(item.coordinates, item.locationadress, item.name)
+}
+
+
 //Function to add all markers to map from beginning
 function addAllMarkersToMap() {
     for (let i = 0; i < savedJson.length; i++) {
-        displayPin(i)
+        displayInitalPins(i)
         console.log("whole object = ", savedJson[i])
+        //setCenter();
     }
 }
 

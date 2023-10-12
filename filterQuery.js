@@ -23,18 +23,18 @@ function filterProductsFromJSON(client, jsonObject) {
     /*  item !='Item' means that an item is selected e.g. 'Bananas' (if category = 'Fruits') 
         and is not on the default placeholder  */
         if (category == 'none' && item == 'none'){
-            query = 'SELECT * FROM productAndLocation';
+            query = 'SELECT * FROM productAndLocationAndSeller';
 
         }else if (category && item != 'none' ) { 
             console.log(item);
             console.log(category);
             // Build a query to filter products by both category ($1) and item ($2)
-            query = 'SELECT * FROM productAndLocation WHERE category = $1 AND name = $2;';
+            query = 'SELECT * FROM productAndLocationAndSeller WHERE category = $1 AND name = $2;';
             // Set query parameters accordingly
             queryParams = [category, item];
         } else if (category) {
             // Build a query to filter products by category only (item not required)
-            query = 'SELECT * FROM productAndLocation WHERE category = $1;';
+            query = 'SELECT * FROM productAndLocationAndSeller WHERE category = $1;';
             queryParams = [category];
         } else {
             // Reject if the JSON object does not contain the required "category" property.

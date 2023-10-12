@@ -18,7 +18,7 @@ app.use(express.static('public'));
 // If you get the error "Error executing query", the Database may not be active.
 app.get('/getproducts', (req, res) => {
     console.log("Inside Api Call: /getproducts")
-    dbRetreiver.retrieveAllDataFromView('productAndLocation')
+    dbRetreiver.retrieveAllDataFromView('productAndLocationAndSeller')
         .then(result => {
             res.json(result);
         })
@@ -40,20 +40,6 @@ app.get('/getproductsAndSellers'), (req, res) =>{
             res.status(500).json({ error: 'Internal Server Error' });
         });
 }
-
-app.get('/productAndLocationAndSeller', (req, res) => {
-    console.log("Inside Api Call: /productAndLocationAndSeller");
-    dbRetreiver.retrieveAllDataFromView('productAndLocationAndSeller')
-        .then(result => {
-            res.json(result);
-        })
-        .catch(error => {
-            console.error(error);
-            res.status(500).json({ error: 'Internal Server Error' });
-        });
-});
-
-
 
 
 app.listen(port, () => {

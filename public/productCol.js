@@ -1,30 +1,21 @@
 // variable to save Json items from fetch
 var savedJson;
 
-// fetch('/productAndLocationAndSeller')
-//     .then(response => response.json())
-//     .then(data => {
-//         productAndSellerJson = data;
-//         console.log("Json saved to variable");
-//         populateListOfProducts();
-
-//     })
-//     .catch(error => console.error('Error fetching data:', error));
-
 // Fetches sellers from the db and creates list items with their name
 // In the future it should be more modular and apply filter options.
-fetch('/productAndLocationAndSeller')
+fetch('/getproducts')
     .then(response => response.json())
     .then(data => {
         savedJson = data;
-        console.log("Json saved to variable");
+        
+        console.log("Json saved to variable", savedJson);
         populateListOfProducts();
     })
     .catch(error => console.error('Error fetching data:', error));
 
 
+
 function populateListOfProducts(jsonList){
-    
     if(jsonList != null){
         savedJson = jsonList;
     }
@@ -115,7 +106,6 @@ function populateInfoBox(index){
     //***********
 
     // *** populate description
-
     const descriptionHeader = document.createElement('h4');
     const description = document.createElement('p');
     descriptionHeader.innerText = "Description";
@@ -142,13 +132,12 @@ function populateInfoBox(index){
     //********
 
     // *** populate seller
-
     const seller = document.createElement('h4');
     const sellerDescription = document.createElement("p");
-    const sellerDescriptionText = item.sellerDescription;
-    seller.innerHTML = "Vendor";
-    // sellerDescription.innerHTML = "Vendor description here"; // TODO: lägg in description för säljaren här
-    sellerDescription.innerHTML = sellerDescriptionText; // TODO: lägg in description för säljaren här
+    const sellerDescriptionText = item.seller_info;
+    const sellerName = item.seller_name;
+    seller.innerHTML = sellerName;
+    sellerDescription.innerHTML = sellerDescriptionText;
     
     sellerContainer.appendChild(seller);
     sellerContainer.appendChild(sellerDescription);
@@ -170,6 +159,3 @@ function populateInfoBox(index){
     
     displayPin(index)
 }
-
-
-

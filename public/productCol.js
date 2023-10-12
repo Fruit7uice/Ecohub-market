@@ -1,4 +1,3 @@
-
 // variable to save Json items from fetch
 var savedJson;
 
@@ -8,14 +7,15 @@ fetch('/getproducts')
     .then(response => response.json())
     .then(data => {
         savedJson = data;
-        console.log("Json saved to variable");
+        
+        console.log("Json saved to variable", savedJson);
         populateListOfProducts();
     })
     .catch(error => console.error('Error fetching data:', error));
 
 
+
 function populateListOfProducts(jsonList){
-    
     if(jsonList != null){
         savedJson = jsonList;
     }
@@ -87,6 +87,7 @@ function populateInfoBox(index){
    
     const item = savedJson[index];
 
+
     const titlePrice = document.createElement('div');
     const descriptionContainer = document.createElement('div');
     const imageContainer = document.createElement('div');
@@ -105,7 +106,6 @@ function populateInfoBox(index){
     //***********
 
     // *** populate description
-
     const descriptionHeader = document.createElement('h4');
     const description = document.createElement('p');
     descriptionHeader.innerText = "Description";
@@ -134,8 +134,11 @@ function populateInfoBox(index){
     // *** populate seller
     const seller = document.createElement('h4');
     const sellerDescription = document.createElement("p");
-    seller.innerHTML = "Vendor";
-    sellerDescription.innerHTML = "Vendor description here"; // TODO: lägg in description för säljaren här
+    const sellerDescriptionText = item.seller_info;
+    const sellerName = item.seller_name;
+    seller.innerHTML = sellerName;
+    sellerDescription.innerHTML = sellerDescriptionText;
+    
     sellerContainer.appendChild(seller);
     sellerContainer.appendChild(sellerDescription);
     //********
@@ -156,6 +159,3 @@ function populateInfoBox(index){
     
     displayPin(index)
 }
-
-
-

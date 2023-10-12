@@ -1,10 +1,19 @@
-
 // variable to save Json items from fetch
 var savedJson;
 
+// fetch('/productAndLocationAndSeller')
+//     .then(response => response.json())
+//     .then(data => {
+//         productAndSellerJson = data;
+//         console.log("Json saved to variable");
+//         populateListOfProducts();
+
+//     })
+//     .catch(error => console.error('Error fetching data:', error));
+
 // Fetches sellers from the db and creates list items with their name
 // In the future it should be more modular and apply filter options.
-fetch('/getproducts')
+fetch('/productAndLocationAndSeller')
     .then(response => response.json())
     .then(data => {
         savedJson = data;
@@ -87,6 +96,7 @@ function populateInfoBox(index){
    
     const item = savedJson[index];
 
+
     const titlePrice = document.createElement('div');
     const descriptionContainer = document.createElement('div');
     const imageContainer = document.createElement('div');
@@ -132,10 +142,14 @@ function populateInfoBox(index){
     //********
 
     // *** populate seller
+
     const seller = document.createElement('h4');
     const sellerDescription = document.createElement("p");
+    const sellerDescriptionText = item.sellerDescription;
     seller.innerHTML = "Vendor";
-    sellerDescription.innerHTML = "Vendor description here"; // TODO: lägg in description för säljaren här
+    // sellerDescription.innerHTML = "Vendor description here"; // TODO: lägg in description för säljaren här
+    sellerDescription.innerHTML = sellerDescriptionText; // TODO: lägg in description för säljaren här
+    
     sellerContainer.appendChild(seller);
     sellerContainer.appendChild(sellerDescription);
     //********

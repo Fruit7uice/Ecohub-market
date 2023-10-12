@@ -28,6 +28,34 @@ app.get('/getproducts', (req, res) => {
         });
 });
 
+// Used to get both product and seller info.
+app.get('/getproductsAndSellers'), (req, res) =>{
+    console.log("Inside Api Call: /getproductsAndSellers")
+    dbRetreiver.retrieveAllDataFromView('simpleProductInfo')
+        .then(result => {
+            res.json(result);
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
+}
+
+app.get('/productAndLocationAndSeller', (req, res) => {
+    console.log("Inside Api Call: /productAndLocationAndSeller");
+    dbRetreiver.retrieveAllDataFromView('productAndLocationAndSeller')
+        .then(result => {
+            res.json(result);
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        });
+});
+
+
+
+
 app.listen(port, () => {
     console.log(`Server is running on: http://localhost:${port}`);
 });

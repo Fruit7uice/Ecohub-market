@@ -47,6 +47,27 @@ CREATE VIEW productAndLocation AS(
     Locations ON locationZipcode = zipcode AND locationAdress = adress
 );
 
+-- CREATE VIEW productAndLocationAndSeller AS(
+--     SELECT * FROM
+--     Products
+--     JOIN
+--     Locations ON locationZipcode = zipcode AND locationAdress = adress
+--     JOIN Sellers ON Products.sellerID = sellerID AND sellerDescription = description
+-- );
+
+CREATE VIEW productAndLocationAndSeller AS
+SELECT 
+    p.*,
+    l.locationZipcode,
+    l.locationAddress,
+    s.sellerDescription
+FROM 
+    Products p
+JOIN 
+    Locations l ON p.locationZipcode = l.zipcode AND p.locationAddress = l.address
+JOIN 
+    Sellers s ON p.sellerID = s.sellerID;
+
 
 SELECT * FROM Sellers;
 

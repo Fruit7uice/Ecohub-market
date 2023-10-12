@@ -27,6 +27,8 @@ function updateSavedJson(data) {
 }
 
 
+
+
 function createHashMapFromJSONArray(data) {
     const hashMap = new Map();
     data.forEach(item => {
@@ -89,7 +91,7 @@ function populateListOfProducts(jsonList) {
 
         listItem.addEventListener("click", () => {
             populateInfoBox(key);
-            showMarker(value.coordinates);
+            showMarker(key, value.coordinates, value.product.locationadress);
         });
 
         productList.appendChild(listItem);
@@ -99,30 +101,30 @@ function populateListOfProducts(jsonList) {
 }
 
 //Function to dislay the marker when it gets clicked in the sellers column
-function displayPin(index) {
-    const item = savedJson[index];
-    addMarker(item.coordinates, item.locationadress, item.name)
-}
+// function displayPin(index) {
+//     const item = savedJson[index];
+//     addMarker(item.coordinates, item.locationadress, item.name)
+// }
 
 
 
 
 
 // Function to display initial pins from database in the initialization of the map
-function displayInitalPins(index) {
-    const item = savedJson[index];
-    addInitalMarkers(item.coordinates, item.locationadress, item.name)
-}
+// function displayInitalPins(index) {
+//     const item = savedJson[index];
+//     addInitalMarkers(item.coordinates, item.locationadress, item.name)
+// }
 
 
-//Function to add all markers to map from beginning
-function addAllMarkersToMap() {
-    for (let i = 0; i < savedJson.length; i++) {
-        displayInitalPins(i)
-        console.log("whole object = ", savedJson[i])
-        //setCenter();
-    }
-}
+// //Function to add all markers to map from beginning
+// function addAllMarkersToMap() {
+//     for (let i = 0; i < savedJson.length; i++) {
+//         displayInitalPins(i)
+//         console.log("whole object = ", savedJson[i])
+//         //setCenter();
+//     }
+// }
 
 
 function populateInfoBox(productID) {
@@ -201,7 +203,7 @@ function populateInfoBox(productID) {
     infobox.appendChild(locationContainer);
     infobox.appendChild(sellerContainer);
 
-    displayPin(index)
+
 }
 
 

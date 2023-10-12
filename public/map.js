@@ -55,6 +55,9 @@ function createMarker(productID, location, adress){
         marker.addListener("click", () =>{
             populateInfoBox(productID);
             infoWindow.open(map, marker);
+            setTimeout(() => {
+                infoWindow.close();
+            }, 5000);
             
         });
     }
@@ -67,55 +70,47 @@ function InitMarkersFromHashMap(hashMap){
     }
 }
 
+
 // Function to add a marker to the map with the desired parameters
-function showMarker(location, address, name) {
+function showMarker(productID, location, adress) {
     
+    console.log("markerList: ", markerList)
+    // if location already exist in markerList Then zoom onto the already existing marker/coordinates
+    //else: create marker and then zoom in.
+    if(markerList.indexOf(location) > -1){
+        console.log("already exist")
+        const loc = { lat: parseFloat(location.x), lng: parseFloat(location.y) };
 
-    // Log the address to the console
-    console.log(address);
-
-    // Create a location object with latitude and longitude
-    const loc = { lat: parseFloat(location.x), lng: parseFloat(location.y) };
-
-    // Log the latitude and longitude to the console
-    console.log(loc.lat, loc.lng);
-
-    //if(markerList.indexOf(coordinates) == -1){
-    //Create a new marker object
-    const marker = new google.maps.Marker({
-        position: loc,
-        map: map,
-    });
+        const offsetLat = loc.lat - 0.01; // Adjust the offset value as needed
+        // Create a new position with the offset
+        const centeredPosition = { lat: offsetLat, lng: loc.lng };
+        // Then zoom onto the already existing marker/coordinates
+        map.setCenter(centeredPosition);
+        map.setZoom(13);
     
     
-    const offsetLat = loc.lat - 0.01; // Adjust the offset value as needed
-    // Create a new position with the offset
-    const centeredPosition = { lat: offsetLat, lng: loc.lng };
-    // Set the center position and adjust the zoom level for zoom-in
-    map.setCenter(centeredPosition);
-    map.setZoom(14); // Increased zoom level for zoom-in effect
-    // Add the marker to the array of markers
-    markerList.push(marker);
 
-    // Create an info window with the concatenated address and name
-    const infoWindow = new google.maps.InfoWindow({
-        content: `${address}, ${name}`
-    });
+        /*Om detta ska fungera s måste du leta igenom map.markers ish som matchar coordinates och hämta den markern...
+        const infoWindow = new google.maps.InfoWindow({
+            content: adress
+        });
+     
+        markerList.forEach(marker => {
+            if (location.equals(marker.getPosition())) {
+                infoWindow.open(map, marker);
+            }
+        });
 
-    infoWindow.open(map, marker);
-
-    setTimeout(() => {
-        infoWindow.close();
-
-    }, 9000);
-
-    // Add a click event listener to the marker
-    marker.addListener("click", () => {
-        // Open the info window when the marker is clicked
-        infoWindow.open(map, marker);
-        // Automatically close the info window after 5 seconds (5000 miliseconds)
         setTimeout(() => {
             infoWindow.close();
-        }, 5000);
-    });
+
+        }, 9000);
+        */
+    
+    }
+    else{
+        // Create marker
+        createMarker(productID, location, adress)
+    }
+    
 }

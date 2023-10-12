@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'Alice';
-    src: url('./fonts/Alice-Regular.ttf');
+    font-family: Arial;
+    /* src: url('./fonts/Alice-Regular.ttf'); */
     /* Add other formats if available */
     font-weight: normal;
     font-style: normal;
@@ -14,7 +14,7 @@ body{
     overflow-x: hidden;
     overflow-y: hidden;
     color: #fff;
-    font-family: 'Alice';
+    font-family: Arial;
     font-weight: bold;
 }
 
@@ -88,7 +88,7 @@ h1{
 
 p{
   text-align: center;
-  font-family: 'Alice';
+  font-family: Arial;
   color: #3b3d3d;
   font-size: 20px;
 }
@@ -139,7 +139,7 @@ input{
   height: 40px;
   margin-bottom: 10px;
   border: none;
-  font-family: 'Alice';
+  font-family: Arial;
   box-shadow: 0px 0px 5px grey;
   padding-left: 12px;
   margin-top: 7px;
@@ -151,7 +151,7 @@ textarea{
     resize: none;
     border: none;
     border-radius: 5px;
-    font-family: 'Alice';
+    font-family: Arial;
     box-shadow: 0px 0px 5px grey;
     padding: 2px 2px 2px 10px;
     margin: 7px 0px 10px;
@@ -292,7 +292,7 @@ textarea{
 }
 
 .progress-btns button{
-  font-family: 'Alice';
+  font-family: Arial;
   background: #f5f1e2;
   border-radius: 25px;
   border: #3f6668;

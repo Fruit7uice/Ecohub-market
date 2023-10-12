@@ -1,10 +1,10 @@
-@font-face {
-  font-family: 'Alice';
-  src: url('./fonts/Alice-Regular.ttf');
+/* @font-face {
+  /* font-family: 'Alice';
+  src: url('./fonts/Alice-Regular.ttf'); */
   /* Add other formats if available */
-  font-weight: normal;
+  /* font-weight: normal;
   font-style: normal;
-}
+} */ 
 
 body{
   margin: 0px;
@@ -14,7 +14,7 @@ body{
   overflow-x: hidden;
   overflow-y: visible;
   color: #fff;
-  font-family: 'Alice';
+  font-family: Arial;
   font-weight: bold;
 }
 
@@ -47,7 +47,7 @@ main{
   height: 40px;
   border-radius: 25px;
   background-color: #f5f1e2;
-  color: #3b3d3d;
+  color: #3f6668;
   text-decoration: none;
   margin: auto;
   display: flex;

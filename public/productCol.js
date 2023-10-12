@@ -26,9 +26,6 @@ function updateSavedJson(data) {
     console.log("Hashmap: ", jsonHashMap);
 }
 
-
-
-
 function createHashMapFromJSONArray(data) {
     const hashMap = new Map();
     data.forEach(item => {
@@ -42,10 +39,6 @@ function createHashMapFromJSONArray(data) {
     return hashMap;
     // jsonHashMap.add(key:productID, valeu: (product, createMarker(product.location)));
 }
-
-
-
-
 
 
 function populateListOfProducts() {
@@ -97,32 +90,6 @@ function populateListOfProducts() {
 
     
 }
-
-//Function to dislay the marker when it gets clicked in the sellers column
-// function displayPin(index) {
-//     const item = savedJson[index];
-//     addMarker(item.coordinates, item.locationadress, item.name)
-// }
-
-
-
-
-
-// Function to display initial pins from database in the initialization of the map
-// function displayInitalPins(index) {
-//     const item = savedJson[index];
-//     addInitalMarkers(item.coordinates, item.locationadress, item.name)
-// }
-
-
-// //Function to add all markers to map from beginning
-// function addAllMarkersToMap() {
-//     for (let i = 0; i < savedJson.length; i++) {
-//         displayInitalPins(i)
-//         console.log("whole object = ", savedJson[i])
-//         //setCenter();
-//     }
-// }
 
 
 function populateInfoBox(productID) {
@@ -200,7 +167,6 @@ function populateInfoBox(productID) {
     infobox.appendChild(imageContainer);
     infobox.appendChild(locationContainer);
     infobox.appendChild(sellerContainer);
-
 
 }
 

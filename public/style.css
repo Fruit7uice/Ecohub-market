@@ -97,6 +97,7 @@ main{
     align-items: center;
     color: var(--customGreen);
     flex-direction: row;
+    border-bottom: 2px solid white;
 }
 
 .nav a{
@@ -360,6 +361,7 @@ main{
 .searchbox{
     height: auto;
     width: 100%;
+   
 }
 
 .searchbox input{
@@ -370,6 +372,7 @@ main{
 
     border-radius: 30px;
     padding-left: 2.2rem;
+   
 }
 
 .icon{
@@ -387,6 +390,7 @@ main{
     display: flex;
     align-items: center;
     flex-flow: row;
+    border-top: 2px;
 }
 
 
@@ -438,6 +442,7 @@ main{
 
 #filter-dd button{
     height: 30px;
+
 }
 
 #filter-dd select, option{

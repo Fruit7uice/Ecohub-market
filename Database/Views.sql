@@ -47,6 +47,20 @@ CREATE VIEW productAndLocation AS(
     Locations ON locationZipcode = zipcode AND locationAdress = adress
 );
 
+-- Retrieves all the attrubutes from product And Location And Seller tables (By Using the productAndLocation view)
+CREATE VIEW productAndLocationAndSeller AS (
+    WITH RenamedSellers AS (
+        SELECT s.id as seller_id, s.name as seller_name, s.description as seller_info, s.phoneNumber
+        FROM Sellers s
+    )
+SELECT *
+FROM 
+    productAndLocation pl
+JOIN
+    RenamedSellers rs ON rs.seller_id = pl.seller
+);
+
+
 
 SELECT * FROM Sellers;
 
@@ -55,3 +69,6 @@ SELECT * FROM Locations;
 SELECT * FROM Products;
 
 SELECT * FROM productAndLocation;
+
+SELECT * FROM productAndLocationAndSeller;
+

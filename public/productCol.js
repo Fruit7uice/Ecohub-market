@@ -10,7 +10,6 @@ var jsonHashMap;
 fetch('/getproducts')
     .then(response => response.json())
     .then(data => {
-        // savedJson = data;
         updateSavedJson(data);
         console.log("Json saved to variable");
         populateListOfProducts();
@@ -19,12 +18,14 @@ fetch('/getproducts')
 
 
 
+
 function updateSavedJson(data) {
     savedJson = data;
     jsonHashMap = createHashMapFromJSONArray(savedJson);
     InitMarkersFromHashMap(jsonHashMap);
     console.log("Hashmap: ", jsonHashMap);
-}
+
+
 
 function createHashMapFromJSONArray(data) {
     const hashMap = new Map();
@@ -84,11 +85,8 @@ function populateListOfProducts() {
             populateInfoBox(key);
             showMarker(key, value.coordinates, value.product.locationadress);
         });
-
         productList.appendChild(listItem);
     }
-
-    
 }
 
 
@@ -100,6 +98,7 @@ function populateInfoBox(productID) {
     infobox.innerHTML = "";
 
     // const item = savedJson[index];
+
 
     const titlePrice = document.createElement('div');
     const descriptionContainer = document.createElement('div');
@@ -119,7 +118,6 @@ function populateInfoBox(productID) {
     //***********
 
     // *** populate description
-
     const descriptionHeader = document.createElement('h4');
     const description = document.createElement('p');
     descriptionHeader.innerText = "Description";
@@ -148,8 +146,11 @@ function populateInfoBox(productID) {
     // *** populate seller
     const seller = document.createElement('h4');
     const sellerDescription = document.createElement("p");
-    seller.innerHTML = "Vendor";
-    sellerDescription.innerHTML = "Vendor description here"; // TODO: lägg in description för säljaren här
+    const sellerDescriptionText = item.seller_info;
+    const sellerName = item.seller_name;
+    seller.innerHTML = sellerName;
+    sellerDescription.innerHTML = sellerDescriptionText;
+    
     sellerContainer.appendChild(seller);
     sellerContainer.appendChild(sellerDescription);
     //********
@@ -167,8 +168,4 @@ function populateInfoBox(productID) {
     infobox.appendChild(imageContainer);
     infobox.appendChild(locationContainer);
     infobox.appendChild(sellerContainer);
-
 }
-
-
-

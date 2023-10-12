@@ -8,7 +8,7 @@ function initMap() {
 }
 
 // Define an array to store markers
-const markers = [];
+const markerList = [];
 
 function addInitalMarkers(location, address, name) {
     const loc = { lat: parseFloat(location.x), lng: parseFloat(location.y) };
@@ -17,7 +17,7 @@ function addInitalMarkers(location, address, name) {
         position: loc,
         map: map,
     });
-    markers.push(marker);
+    markerList.push(marker);
 
     const infoWindow = new google.maps.InfoWindow({
         content: `${address}, ${name}`
@@ -32,12 +32,45 @@ function addInitalMarkers(location, address, name) {
     });
 }
 
+// Given when a marker is clicked that markers associated info 
+// will get displayed in the infoBox
 
+function createMarker(productID, location, adress){
+    console.log("Inne i createMarker");
+    if(markerList.indexOf(location) == -1){
+        console.log("Inne i if-satsen")
+        const loc = { lat: parseFloat(location.x), lng: parseFloat(location.y)};
+        console.log(loc);
+        const marker = new google.maps.Marker({
+            position: loc,
+            map: map,
+        });
+        
+        markerList.push(location);
 
+        const infoWindow = new google.maps.InfoWindow({
+            content: adress
+        });
 
+        marker.addListener("click", () =>{
+            populateInfoBox(productID);
+            infoWindow.open(map, marker);
+            
+        });
+    }
+
+}
+
+function InitMarkersFromHashMap(hashMap){
+    for(let [key, value] of hashMap){
+        createMarker(key, value.product.coordinates, value.product.adress)
+    }
+}
 
 // Function to add a marker to the map with the desired parameters
-function addMarker(location, address, name) {
+function showMarker(location, address, name) {
+    
+
     // Log the address to the console
     console.log(address);
 
@@ -47,11 +80,13 @@ function addMarker(location, address, name) {
     // Log the latitude and longitude to the console
     console.log(loc.lat, loc.lng);
 
+    //if(markerList.indexOf(coordinates) == -1){
     //Create a new marker object
     const marker = new google.maps.Marker({
         position: loc,
         map: map,
     });
+    
     
     const offsetLat = loc.lat - 0.01; // Adjust the offset value as needed
     // Create a new position with the offset
@@ -60,7 +95,7 @@ function addMarker(location, address, name) {
     map.setCenter(centeredPosition);
     map.setZoom(14); // Increased zoom level for zoom-in effect
     // Add the marker to the array of markers
-    markers.push(marker);
+    markerList.push(marker);
 
     // Create an info window with the concatenated address and name
     const infoWindow = new google.maps.InfoWindow({
@@ -71,6 +106,7 @@ function addMarker(location, address, name) {
 
     setTimeout(() => {
         infoWindow.close();
+
     }, 9000);
 
     // Add a click event listener to the marker

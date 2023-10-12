@@ -35,18 +35,16 @@ function getCatAndItem() {
         .then((response) => response.json())
         .then(data => {
             // Handle the filtered data and update the user interface (UI) here
-            // Get a reference to the 'seller-list' element in the HTML
-            const productList = document.getElementById('seller-list');
-            // Clear the existing list of products in the UI
-            productList.innerHTML = '';
             // Call a function to populate the list of products with the filtered data
-            populateListOfProducts(data)
+            updateSavedJson(data);
+            console.log("Json saved to variable");
+            populateListOfProducts();
         })
         .catch((error) => {
             // Handle errors that occur during the fetch request and log an error message
             console.error('Error fetching data:', error);
         });
     // Log a message to indicate that the fetch request for filtering has been made
-    console.log("fetch filter");
+    // console.log("fetch filter");
 }
 

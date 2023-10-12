@@ -48,14 +48,12 @@ function createHashMapFromJSONArray(data) {
 
 
 
-function populateListOfProducts(jsonList) {
+function populateListOfProducts() {
 
-    if (jsonList != null) {
-        savedJson = jsonList;
-    }
-
+    // Get a reference to the 'seller-list' element in the HTML
     const productList = document.getElementById('seller-list');
-    // let i = 0;
+     // Clear the existing list of products in the UI
+     productList.innerHTML = '';
 
     for (let [key, value] of jsonHashMap) {
         console.log()

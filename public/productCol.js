@@ -24,7 +24,7 @@ function updateSavedJson(data) {
     jsonHashMap = createHashMapFromJSONArray(savedJson);
     InitMarkersFromHashMap(jsonHashMap);
     console.log("Hashmap: ", jsonHashMap);
-
+}
 
 
 function createHashMapFromJSONArray(data) {
@@ -46,8 +46,8 @@ function populateListOfProducts() {
 
     // Get a reference to the 'seller-list' element in the HTML
     const productList = document.getElementById('seller-list');
-     // Clear the existing list of products in the UI
-     productList.innerHTML = '';
+    // Clear the existing list of products in the UI
+    productList.innerHTML = '';
 
     for (let [key, value] of jsonHashMap) {
         console.log()
@@ -150,7 +150,7 @@ function populateInfoBox(productID) {
     const sellerName = item.seller_name;
     seller.innerHTML = sellerName;
     sellerDescription.innerHTML = sellerDescriptionText;
-    
+
     sellerContainer.appendChild(seller);
     sellerContainer.appendChild(sellerDescription);
     //********

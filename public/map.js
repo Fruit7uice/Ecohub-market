@@ -34,6 +34,7 @@ function createMarker(productID, location, adress){
         });
 
         marker.addListener("click", () =>{
+            focusMarker(productID, location, adress);
             populateInfoBox(productID);
             infoWindow.open(map, marker);
             setTimeout(() => {

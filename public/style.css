@@ -176,6 +176,11 @@ main{
     max-height: 170px;
 }
 
+.seller-column ul li:hover {
+    cursor: pointer;
+    background-color: #0000001a;
+}
+
 .product-img {
     grid-area: 1 / 1 / 5 / 4;
     place-self: center baseline;
@@ -211,7 +216,6 @@ main{
 .seller-column ul li img {
     width: 80px;
     height: 80px;
-
 }
 
 
@@ -285,7 +289,6 @@ main{
     display: inline-flex;
     flex-flow: column;
     align-items: baseline;
-
 }
 
 #info-header h2{

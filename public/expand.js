@@ -8,7 +8,7 @@
 var isExpanded;
 
 function autoExpand() {
-    console.log("Autoexpand: ", isExpanded);
+    // console.log("Autoexpand: ", isExpanded);
 
     if (isExpanded) { // Collapse
         expand(false)
@@ -20,21 +20,21 @@ function autoExpand() {
 
 function expand(expand) {
     isExpanded = expand;
-    const infoC = document.getElementById("info-c");
-    const sellerC = document.getElementById("seller-info");
+    const infoC = document.getElementById("info-c"); // Contatiner of button and  
     infoC.style.display = "flex";
+
     const fullP = document.getElementById("full-product");
     const expandIcon = document.getElementById("expandIcon");
 
     if (expand) {
-        sellerC.style.height = "400px";
+        fullP.style.height = "400px";
         fullP.style.display = "grid";
+
         expandIcon.style.rotate = "180deg";
-        sellerC.style.transition ="0.5s";
     }
     else {
         fullP.style.display = "none";
-        sellerC.style.height = "0px";
+        fullP.style.height = "0px";
 
         expandIcon.style.rotate = "0deg";
     }

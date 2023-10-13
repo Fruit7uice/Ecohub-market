@@ -32,7 +32,7 @@
                                 </path>
                             </g>
                         </svg>
-                        <input placeholder="eg. &quot;Petter's tomatoes&quot;">
+                        <input id="product-search" placeholder="eg. &quot;Petter's tomatoes&quot;" onkeyup="searchProducts()">
                         <button type="button" id="filterBtn" onclick="expandCollapseFilter()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-filter" viewBox="0 0 16 16">
@@ -42,26 +42,29 @@
                         </button>
                     </div>
                     <div id="filter-dd">
-                            <select name="category" id="category">
+                        <select name="category" id="category">
                             <option value="none">Category</option>
                         </select>
                         <select name="item" id="item">
                             <option value="none">Item</option>
                         </select>
-                        <button onclick="getCatAndItem()" type="button" >Filter</button> 
+                        <button onclick="getCatAndItem()" type="button">Filter</button>
                     </div>
                 </div>
                 <script src="filterVisuals.js"></script>
                 <script src="dropdown.js"></script>
-                <ul id="seller-list">   
+                
+                <ul id="seller-list">
+                    <!-- Products will be created in here-->
                 </ul>
             </div>
             <div class="right-content">
                 <div class="container map" id="map"> <!--Always need the id to render the map-->
-                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwr8jBrc60ZcZ2iifSYupGIoGH3YB9fMo&callback=initMap"></script>
+                    <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwr8jBrc60ZcZ2iifSYupGIoGH3YB9fMo&callback=initMap"></script>
                 </div>
                 <div class="container info-c" id="info-c">
-                    <button type="button"  onclick="autoExpand()">
+                    <button type="button" onclick="autoExpand()">
                         <svg id="expandIcon" xmlns="http://www.w3.org/2000/svg" height="2em" fill="#fff"
                             viewBox="0 0 448 512">
                             <path

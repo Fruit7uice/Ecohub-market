@@ -124,7 +124,6 @@ function populateInfoBox(productID) {
     description.innerText = item.description;
     descriptionContainer.appendChild(descriptionHeader);
     descriptionContainer.appendChild(description)
-    descriptionContainer.appendChild(document.createElement('hr'))
     //********
 
     // *** populate image

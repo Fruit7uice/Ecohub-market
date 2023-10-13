@@ -1,14 +1,63 @@
 :root {
     --customGreen: #3f6668;
-    --light: #f5f1e2;
+    --customGreenLight: #4C7B7E;
+    --customGreenLightGrass: #c0c76d;
+    --customPurple: #432832;
+    --customBeige: #f5f1e2;
+    --customWhite: #fff;
+    --customOrange: #e7b16f;
+    --customOrangeDark: #df8c65;
+    --customBlueOcean: #9cc0f9;
+    --customGreenMap: #bbe2c6;
+    --customGray: #d3d3d3;
+
+    --CustomPinkScream: #d2177f;
+    
+
+    /* Förslag 1 */
+
+    /* Nav Bar */
+    --navBarBackground: var(--customBeige);
+    --navBarButtonHover: var(--customOrange);
+    --navBarButtonText: var(--customGreen);
+
+    /* Product Column */
+    --productColumnBackground: var(--customGreen);
+    --productColumnHover: var(--customGreenLight);
+    --productColumnText: var(--customWhite);
+    --productTimeStamp: var(--customWhite);
+
+    /* Filter Bar */
+    --filterBarBackground: var(--customGreen); 
+    --filterBarDropDownBackground: var(--customGreen);
+
+    /* Info Box Background */
+    --infoBoxBackground: var(--customGreen);
+
+
+    /* Förslag 2 */
+
+        /* Nav Bar */
+        /* --navBarBackground: var(--CustomGreen);
+        --navBarButton: var(--customBeige);
+        --navBarButtonHover: var(--customOrange);
+        --navBarButtonText: var(--customGreen); */
+    
+        /* Product Column */
+        /* --productColumnBackground: var(--customBeige);
+        --productColumnHover: var(--customPurple);
+        --productColumnText: var(--customGreen); */
+    
+        /* Filter Bar */
+         /* --filterBarBackground: var(--customGreen);    */
+
 }
 
 @font-face {
-    font-family: 'Alice';
-    src: url('./fonts/Alice-Regular.ttf');
+    font-family: Arial, sans-serif;
     /* Add other formats if available */
-    font-weight: normal;
-    font-style: normal;
+    /* font-weight: normal; */
+    /* font-style: normal; */
 }
 
 body{
@@ -18,8 +67,8 @@ body{
     max-width: 100vw;
     overflow-x: hidden;
     overflow-y: visible;
-    color: #fff;
-    font-family: 'Alice';
+    color: var(--productColumnText);
+    font-family: Arial;
     font-weight: normal;
 }
 
@@ -42,20 +91,21 @@ main{
     width: 100%;
     height: 100px;
     position: relative;
-    background-color: var(--light);
+    background-color: var(--navBarBackground);
     display: flex;
     justify-content: center;
     align-items: center;
     color: var(--customGreen);
     flex-direction: row;
+    border-bottom: 2px solid white;
 }
 
 .nav a{
     width: 200px;
     height: 40px;
     border-radius: 25px;
-    background-color: #f5f1e2;
-    color: #3f6668;
+    background-color: var(--navBarButton);
+    color: var(--navBarButtonText);
     text-decoration: none;
     margin: auto;
     display: flex;
@@ -65,7 +115,7 @@ main{
 }
 
 .nav a:hover {
-    background-color: #e7b06f;
+    background-color: var(--navBarButtonHover);
     color: #f5f1e2;
 }
 
@@ -74,7 +124,7 @@ main{
 }
 
 .seller-column{
-    background-color: #3f6668;
+    background-color: var(--filterBarBackground);
     width: 30%;
     height: 100vh;
     
@@ -83,6 +133,7 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
 }
 
 
@@ -90,19 +141,20 @@ main{
     margin: 0 0 0 0;
     list-style-position: inside;
     padding-left: 0;
+    padding-right: 0;
     overflow-y: scroll;
-    background-color: #53313e;
+    background-color: var(--productColumnBackground);
     height: 100%;
     font-size: 14px;
     font-weight: normal;
+    border-top: 2px solid;
+    border-right: 2px;
+    /* Hide the vertical scrollbar */
+    scrollbar-width: auto; /* "auto" also works */
+    scrollbar-color: transparent transparent;
 }
 
 
-
-.seller-column ul li:hover {
-    background-color: #432832;
-    cursor: pointer;
-}
 
 .seller-column ul li h5, p {
     padding: 0;
@@ -110,7 +162,7 @@ main{
 }
 
 #timestamp {
-    color: #b4b4b4;
+    color: var(--productTimeStamp);
 }
 
 .seller-column ul li {
@@ -119,7 +171,7 @@ main{
     grid-template-rows: repeat(4, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    border-bottom: 2px solid #0000003f;
+    border-bottom: 2px solid #ffffffff;
     padding: 0 10px;
     max-height: 170px;
 }
@@ -173,7 +225,8 @@ main{
 }
 
 .map{
-    position: relative;
+    position: relative; 
+    display: flex;
     background-color: #e7b06f;
     width: 100%;
     height: 100%;
@@ -188,6 +241,7 @@ main{
     flex-flow: column;
     width: 100%;
     transition: 0.5s;
+    
 }
 
 .info-c button{
@@ -291,16 +345,18 @@ main{
 .searchbox{
     height: auto;
     width: 100%;
+   
 }
 
 .searchbox input{
     border: 0px solid transparent;
     width: 80%;
     height: 40px;
-    font-family: 'Alice';
+    font-family: Arial;
 
     border-radius: 30px;
     padding-left: 2.2rem;
+   
 }
 
 .icon{
@@ -318,6 +374,7 @@ main{
     display: flex;
     align-items: center;
     flex-flow: row;
+    border-top: 2px;
 }
 
 
@@ -330,11 +387,13 @@ main{
 /* FILTER BUTTON */
 
 #filterBtn{
-    background: #d3d3d3;
-    width: 35px;
-    height: 35px;
+    background: var(--customWhite);
+    width: 40px;
+    height: 40px;
     border: none;
     margin: 10px;
+    border-radius: 5px; 
+    
 }
 
 #filterBtn:active {
@@ -345,15 +404,17 @@ main{
 #filter-dd{
     height: 200px;
     width: inherit;
-    min-width: 160px;
+    min-width: 160px; 
     position: absolute;
     display: none;
     flex-flow: column;
     align-items: center;
     text-align: center;
     justify-content: space-around;
-    background-color: var(--customGreen);
+    background-color: var(--filterBarDropDownBackground);
     transition: 1s;
+    border-bottom: 2px solid;
+    border-top: 2px solid;
 }
 
 /* FILTER BOX CHILDREN */
@@ -365,6 +426,7 @@ main{
 
 #filter-dd button{
     height: 30px;
+
 }
 
 #filter-dd select, option{

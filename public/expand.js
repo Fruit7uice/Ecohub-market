@@ -27,12 +27,15 @@ function expand(expand) {
     const expandIcon = document.getElementById("expandIcon");
 
     if (expand) {
+        sellerC.style.height = "400px";
         fullP.style.display = "grid";
         expandIcon.style.rotate = "180deg";
         sellerC.style.transition ="0.5s";
     }
     else {
         fullP.style.display = "none";
+        sellerC.style.height = "0px";
+
         expandIcon.style.rotate = "0deg";
     }
 }

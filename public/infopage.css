@@ -9,6 +9,10 @@ body{
   font-family: Arial;
 }
 
+a{
+  font-weight: bold;
+}
+
 .container{
   width: auto;
   height: auto;

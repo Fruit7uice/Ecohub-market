@@ -2,7 +2,6 @@
 -- This script deletes everything in your database
 \set QUIET true
 SET client_min_messages TO WARNING; -- Less talk please.
--- This script deletes everything in your database
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
 GRANT ALL ON SCHEMA public TO CURRENT_USER;
@@ -19,11 +18,3 @@ SET client_min_messages TO NOTICE; -- More talk
 \ir Insert.sql
 \ir test.sql
 \ir Views.sql
-
-
-
---SELECT * FROM simpleProductInfo
-
---SELECT * FROM allSellers;
--- Life-hack: When working on a new view you can write it as a query here 
---(without creating a view) and when it works just add CREATE VIEW and put it in views.sql*/

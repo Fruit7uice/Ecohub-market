@@ -5,18 +5,14 @@ Creates a JSON object with the chosen category and item.
 module.exports = {
     createCategoryAndItem,
     getCatAndItem
-
 }
-const filterQuery = require('../filterQuery.js'); // Make sure to use the correct path
 
 // Function to create a JSON object category + item
 function createCategoryAndItem(category, item) {
-    // Create a category and item json
     const jsonCategoryAndItem = {
         "category": category,
         "item": item
     }
-   
     return jsonCategoryAndItem
 }
 
@@ -39,21 +35,32 @@ function getCatAndItem() {
         .then((response) => response.json())
         .then(data => {
             // Handle the filtered data and update the user interface (UI) here
-
-            // Get a reference to the 'seller-list' element in the HTML
-            const productList = document.getElementById('seller-list');
-            // Clear the existing list of products in the UI
-            productList.innerHTML = '';
             // Call a function to populate the list of products with the filtered data
-            populateListOfProducts(data)
-            
+            updateSavedJson(data);
+            console.log("Json saved to variable");
+            populateListOfProducts();
         })
         .catch((error) => {
             // Handle errors that occur during the fetch request and log an error message
             console.error('Error fetching data:', error);
         });
     // Log a message to indicate that the fetch request for filtering has been made
-    console.log("fetch filter");
-
+    // console.log("fetch filter");
 }
 
+
+function searchProducts() {
+    var input, filter, ul, li, i, txtValue;
+    input = document.getElementById("product-search");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("seller-list");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        txtValue = li[i].textContent || li[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}

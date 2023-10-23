@@ -13,7 +13,6 @@ module.exports = {
 // Function to retrieve all active categories from the database. E.g ['Meats', 'Fish'...]
 async function retrieveCategories() {
     return retrieveDataByCriteria('Categories', '*', '', [], 'name')
-    //return retrieveAllDataFromTable('Categories');
 }
 
 // Function to retrieve all active subcategories of the input argument 'category'. 
@@ -23,7 +22,6 @@ async function retrieveSubCategories(category) {
 
 // Function to retrieve coordinates from a specific ad from the products table. 
 async function retrieveCoordinates(productID){
-    // Get client 
     const client = dbCon.getClient();
 
     return new Promise((resolve, reject) => {
@@ -41,13 +39,11 @@ async function retrieveCoordinates(productID){
                 reject(`Error executing query in retrieveCoordinates`, err);
             } else {
                 // If the query is successful, log the retrieved rows and resolve the promise with the data.
-                //console.log(res.rows);
-                //console.log("Rows Retrieved");
                 resolve(res.rows);
             }
             // Close the database connection after the query is complete.
             client.end();
-            //console.log("Client terminated!");
+            console.log("Client terminated!");
         });
     });
     // Returns the longitude and latitude of the dedicated adress of the ad
@@ -75,14 +71,11 @@ function retrieveAllDataFromTable(tableName) {
                 reject(`Error executing query in retrieveAllDataFromTable for ${tableName}`, err);
             } else {
                 // If the query is successful, log the retrieved rows and resolve the promise with the data.
-                //console.log(res.rows); // Uncomment to log all rows
-                //console.log("Rows Retrieved");
                 resolve(res.rows);
             }
-            
             // Close the database connection after the query is complete.
             client.end();
-            //console.log("Client terminated!");
+            console.log("Client terminated!");
         });
     });
 }
@@ -109,14 +102,11 @@ async function retrieveDataByCriteria(tableName, columns = '*', whereClause = ''
         .catch(err => reject(`Error connecting to PostgreSQL: ${err}`)); // Reject the Promise if there's an error.
 
         // Create placeholders for the values to be used in the SQL query.
-        
         let placeholders
         
         if (values) {
-
             placeholders = values.map((_, index) => `$${index + 1}`).join(', ');
         }
-            
         // Construct the SQL query with optional columns, WHERE clause, and ORDER BY clause.
         let query = `SELECT ${columns} FROM ${tableName}`;
 
@@ -135,21 +125,17 @@ async function retrieveDataByCriteria(tableName, columns = '*', whereClause = ''
                 reject(`Error executing query in retrieveData for ${tableName}: ${err}`);
             } else {
                 // If the query is successful, log the result and resolve the promise with the retrieved rows.
-                //console.log("Rows Retrieved");
-                //console.log(res.rows); // Uncomment to log all rows.
                 resolve(res.rows);
             }
             // Close the database connection after the query is complete.
             client.end();
-            //console.log("Client terminated!"); // Log the termination of the client connection.
+            console.log("Client terminated!");
         });
     });
 }
 
-
 // Function to retrieve coordinates from a specific ad from the products table. 
 function retrieveAllProductIDs(tableName){
-    // Get client 
     const client = dbCon.getClient();
 
     return new Promise((resolve, reject) => {
@@ -176,15 +162,9 @@ function retrieveAllProductIDs(tableName){
             console.log("Client terminated!");
         });
     });
-    // Returns the longitude and latitude of the dedicated adress of the ad
 }
 
-
-
-
-
 // Function to retrieve all data from a specific view
-
 function retrieveAllDataFromView(viewName) {
     // Get client 
     const client = dbCon.getClient();
@@ -194,10 +174,8 @@ function retrieveAllDataFromView(viewName) {
         client.connect()
             .then(() => console.log('Connected to PostgreSQL database'))
             .catch(err => reject('Error connecting to PostgreSQL', err));
-
         // Construct an SQL query to select all rows from the specified view.
         const query = `SELECT * FROM ${viewName};`;
-
         // Execute the SQL query to retrieve data from the view.
         client.query(query, (err, res) => {
             if (err) {
@@ -205,11 +183,9 @@ function retrieveAllDataFromView(viewName) {
                 reject(`Error executing query in retrieveAllDataFromView for ${viewName}`, err);
             } else {
                 // If the query is successful, log the retrieved rows and resolve the promise with the data.
-                //console.log(res.rows); // Uncomment to log all rows
                 console.log("Rows Retrieved");
                 resolve(res.rows);
             }
-            
             // Close the database connection after the query is complete.
             client.end();
             console.log("Client terminated!");

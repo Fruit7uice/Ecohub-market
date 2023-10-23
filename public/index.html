@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EcoHub</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="map.js"></script>
     <script src="expand.js"></script>
@@ -19,11 +19,10 @@
             <a href="" id="brand-logo">
                 <img src="./assets/AgilLogo.png" alt="BrandLogo" style="width: 100px; height: auto;">
             </a>
-            <a href="">Info</a>
+            <a href="./infoPage.html">Info</a>
         </div>
         <main>
             <div class="container seller-column">
-
                 <div class="searchbox">
                     <div class="filter-options">
                         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
@@ -33,8 +32,7 @@
                                 </path>
                             </g>
                         </svg>
-                        <input placeholder="eg. &quot;Petters tomater&quot;">
-
+                        <input id="product-search" placeholder="eg. &quot;Petter's tomatoes&quot;" onkeyup="searchProducts()">
                         <button type="button" id="filterBtn" onclick="expandCollapseFilter()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                 class="bi bi-filter" viewBox="0 0 16 16">
@@ -43,45 +41,39 @@
                             </svg>
                         </button>
                     </div>
-
                     <div id="filter-dd">
-                            <select name="category" id="category">
+                        <select name="category" id="category">
                             <option value="none">Category</option>
                         </select>
-
                         <select name="item" id="item">
                             <option value="none">Item</option>
                         </select>
-                        <button onclick="getCatAndItem()" type="button" >Filter</button> 
+                        <button onclick="getCatAndItem()" type="button">Filter</button>
                     </div>
-
                 </div>
-
                 <script src="filterVisuals.js"></script>
                 <script src="dropdown.js"></script>
+                
                 <ul id="seller-list">
-                    
+                    <!-- Products will be created in here-->
                 </ul>
             </div>
-
             <div class="right-content">
                 <div class="container map" id="map"> <!--Always need the id to render the map-->
-                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwr8jBrc60ZcZ2iifSYupGIoGH3YB9fMo&callback=initMap"></script>
+                    <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwr8jBrc60ZcZ2iifSYupGIoGH3YB9fMo&callback=initMap"></script>
                 </div>
                 <div class="container info-c" id="info-c">
-                    
-                    <button type="button"  onclick="autoExpand()">
+                    <button type="button" onclick="autoExpand()">
                         <svg id="expandIcon" xmlns="http://www.w3.org/2000/svg" height="2em" fill="#fff"
-                            viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                            viewBox="0 0 448 512">
                             <path
                                 d="M246.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L224 109.3 361.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160zm160 352l-160-160c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L224 301.3 361.4 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3z" />
                         </svg>
                     </button>
-
-                    <div class="seller-info" id="seller-info">
-                        <div id="full-product">
-                            
-                        </div>
+                    <div class="seller-info" id="full-product">
+                        <!-- <div id="full-product">
+                        </div> -->
                     </div>
                 </div>
             </div>

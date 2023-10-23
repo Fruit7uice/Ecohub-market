@@ -4,7 +4,7 @@ async function categorySelect() {
   if (listOfCategories.length == 0) // if the list is empty wait for getCategories function to be done
     await getCategories()
   
-    //fetches the id of the html elements and "stores" them in variables
+    // Fetches the id of the html elements and "stores" them in variables
     var categorySel = document.getElementById("category");
     var itemSel = document.getElementById("item");
   // Loop through the list of categories and create options for each in the category dropdown
@@ -14,7 +14,6 @@ async function categorySelect() {
     categorySel.appendChild(option);
   })
 
-  
 //when the category changes aka when you choose a category
   categorySel.onchange = function () {
     // Empty item dropdown
@@ -42,7 +41,6 @@ var priceObject = {
   "g": []
 };
 
-
 function unitSelect() {
   //fetches the id of the html element and "stores" it in variables
   var unitSel = document.getElementById("unit");
@@ -52,9 +50,8 @@ function unitSelect() {
   }
 }
 
-
 async function getCategories() {
-  await fetch('/getCategories') // needed for functioning
+  await fetch('/getCategories')
     .then(response => response.json())
     .then(data => {
       data.forEach(category => {
@@ -63,7 +60,7 @@ async function getCategories() {
           category,
           'items' : list
         }
-        listOfCategories.push(obj) // 
+        listOfCategories.push(obj) 
       });
     })
     .catch(error => console.error('Error fetching data:', error));
@@ -81,7 +78,7 @@ function getSub(category) {
     body: JSON.stringify(category)
   })
     .then(response => response.json())
-    .then(data => { // LIST OF {CATEGORY : ITEM} OBJECTS
+    .then(data => {
       data.forEach(obj => {
         items.push(obj.product)
       });

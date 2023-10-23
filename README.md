@@ -1,4 +1,5 @@
-# Project Overview (No name yet)
+# EcoHub
+# Project Overview
 Welcome to the locally grown produce and hunted meat application repository. This project aligns with the United Nations Sustainable Development Goals, specifically Goal 2 (End hunger, achieve food security and improved nutrition and promote sustainable agriculture), Goal 11 (Make cities and human settlements inclusive, safe, resilient and sustainable), and Goal 12 (Ensure sustainable consumption and production patterns).
 
 ## Sustainable Development Goals
@@ -41,7 +42,22 @@ Note: This README file serves as a high-level overview. For detailed documentati
 ## How to run
 The project is using Node.js and Express to launch a web server which is available on localhost:3000.
 
-1. Open the folder which contains the server.js file in the terminal (VSC: right-click and select open in integrated terminal).
+### Run database (PostgreSQL):
+* Enter the project path into the terminal.
+
+* From there do:
+    ``` cd Database ```
+
+* Then using the default name run:
+    ```psql -U postgres -d postgres``` (Password: ``` postgres ```)
+
+* Then run the runTests.sql file to initiate:
+    ``` \i runTests.sql ```
+* Now quit the database:
+  ``` \q ```
+
+### Run webserver:
+1. Open the folder that contains the server.js file in the terminal (VSC: right-click and select open in integrated terminal).
 2. In the terminal window, type: "npm install" (So that all the packages from the package.json file are installed on your machine).
-3. When installed, in the terminal window, type "node server.js", which will run the server.
-4. In your browser, enter in the url bar: localhost:3000. (This will display the home page, index.html)
+3. When installed, in the terminal window, type ``` node server.js ``` or ```npm start```, which will run the server.
+4. In your browser, enter in the URL bar: localhost:3000. (This will display the home page, index.html)
